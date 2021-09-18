@@ -1,4 +1,4 @@
-baseurl: https://eastarpen/github.io
+baseurl: https://eastarpen.github.io/
 languageCode: zh-cn
 theme: hugo-theme-stack
 paginate: 5
@@ -22,7 +22,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: /img/favicon.png/
+    favicon: /img/favicon.png
 
     footer:
         since: 2020
