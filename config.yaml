@@ -14,6 +14,8 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: zh-cn
 
+publishDir: docs
+
 permalinks:
     page: /:slug/
 
