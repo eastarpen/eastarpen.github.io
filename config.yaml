@@ -14,8 +14,6 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it
 DefaultContentLanguage: zh-cn
 
-publishDir: docs
-
 permalinks:
     page: /:slug/
 
@@ -24,7 +22,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: /img/favicon.png
+    favicon: /img/favicon.png/
 
     footer:
         since: 2020
