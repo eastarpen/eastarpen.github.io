@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Eastarpen の Blog</title>
+    <link>https://eastarpen.github.io/post/</link>
+    <description>Recent content in Posts on Eastarpen の Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 18 Sep 2021 18:15:47 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[python] 多线程爬取海贼王漫画版</title>
+      <link>https://eastarpen.github.io/post/python/one-piece-colored-spider/</link>
+      <pubDate>Sat, 18 Sep 2021 18:15:47 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/python/one-piece-colored-spider/</guid>
+      <description>概述 利用python爬取海贼王漫画彩色版
+库介绍  requests beautifulSoup re (正则表达式) cloudscrapy 第三方库，用来突破cloudflare限制 threading 其他  网页分析 获取章节页面 章节页面URL很简单 基本样式如下https://ww8.readonepiece.com/chapter/one-piece-digital-colored-comics-chapter-001/ 末尾是章节序号
+获取图片URL 根据之前获得的章节页面获取每章图片的URL，下面是关键代码解释
+res = BeautifulSoup(html, &amp;#34;lxml&amp;#34;).find(attrs={&amp;#34;class&amp;#34;:&amp;#34;js-pages-container&amp;#34;}) 利用 class=&amp;ldquo;js-pages-container&amp;rdquo; 这个唯一属性获取图片url父标签
+ls = [] for img in res.find_all(name=&amp;#34;img&amp;#34;): url = img.attrs[&amp;#34;src&amp;#34;] if check.search(url) != None: ls.append(url) 将url父标签中所有img标签提取出来，它的&amp;quot;src&amp;quot;属性就是需要的图片url
+将所有的图片url放到列表中，返回主函数
+获取图片 def getPng(pictureName, url): if os.path.exists(pictureName): return True content = getPictureContent(url) if content == None: return False else: with open(pictureName, &amp;#34;wb&amp;#34;) as fout: fout.write(content) return True getPng(pictureName, url) 函数的两个参数分别表示当前下载图片的文件名和url，其中文件名包括路径 示例： .</description>
+    </item>
+    
+  </channel>
+</rss>
