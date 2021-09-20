@@ -13,6 +13,16 @@ date: 2021-09-18T18:28:57
 1. 零成本，使用 hugo 搭建个人网站并部署在 GitHub Page 上。
 2. 附脚本
 3. 本文不能让你对 hugo 有全面的认知，由此需求请自行搜索教程或阅读官方文档
+4. github 在国内使用体验极差, 可以转换到国内平台 Gitee, 教程通用
+    
+	对于有代理的用户通过 git 访问 GitHub 仍然没有速度，建议使用如下命令
+
+	```shell
+	git config --global http.proxy "socks5://127.0.0.1:7891"
+    git config --global https.proxy "socks5://127.0.0.1:7891"
+	```
+
+	把后面的端口号改为你的端口号。
 
 ### 本文受众
 
