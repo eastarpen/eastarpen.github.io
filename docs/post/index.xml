@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Eastarpen の Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 18 Sep 2021 18:15:47 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Sep 2021 18:28:57 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[blog] 使用 hugo 搭建个人博客</title>
+      <link>https://eastarpen.github.io/post/skill/build-blog-with-hugo/</link>
+      <pubDate>Sat, 18 Sep 2021 18:28:57 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skill/build-blog-with-hugo/</guid>
+      <description>前言 概述  零成本，使用 hugo 搭建个人网站并部署在 GitHub Page 上。 附脚本 本文不能让你对 hugo 有全面的认知，由此需求请自行搜索教程或阅读官方文档  本文受众  自己(备忘录) 使用过 git 且对搭建个人博客有兴趣; 未使用 git 但对 搭建个人博客有强烈需求的或爱折腾的; 单纯的了解一下。  相关  hugo 官网 git 下载  前置条件 搭建博客的必要条件，但与本文无关，不赘述。
+ 一个 github 账号; 下载安装 git 并绑定 github 账号;  搭建博客 下载安装 hugo 网络上有很多下载安装 hugo 的方法, 这里给出最简单的。
+  到 github hugo release 下载 hugo 二进制文件压缩包。
+ windows 有四个版本，选择适合自己系统的下载即可。 其中带 extended 的是高级版本，建议下载它。(按照本文设置不用 extended 版会出错)    解压下载的文件到某文件夹下并将此文件夹放入系统变量 Path中。</description>
+    </item>
+    
     <item>
       <title>[python] 多线程爬取海贼王漫画版</title>
       <link>https://eastarpen.github.io/post/python/one-piece-colored-spider/</link>
