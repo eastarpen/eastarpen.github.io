@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://eastarpen.github.io/post/skill/build-blog-with-hugo/</loc>
+    <loc>https://eastarpen.github.io/</loc>
+    <lastmod>2021-09-21T22:35:45+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/</loc>
+    <lastmod>2021-09-21T22:35:45+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/</loc>
+    <lastmod>2021-09-21T22:35:45+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</loc>
+    <lastmod>2021-09-21T22:35:45+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2021-09-21T22:35:45+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</loc>
     <lastmod>2021-09-18T18:28:57+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/blog/</loc>
-    <lastmod>2021-09-18T18:28:57+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/</loc>
-    <lastmod>2021-09-18T18:28:57+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/post/</loc>
-    <lastmod>2021-09-18T18:28:57+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/tags/</loc>
     <lastmod>2021-09-18T18:28:57+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/post/python/one-piece-colored-spider/</loc>

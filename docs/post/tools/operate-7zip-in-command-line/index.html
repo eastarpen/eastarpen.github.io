@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='用命令行操作7zip 实现批量压缩与解压缩'><title>命令行操作 7zip (附脚本)</title>
+
+<link rel='canonical' href='https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='命令行操作 7zip (附脚本)'>
+<meta property='og:description' content='用命令行操作7zip 实现批量压缩与解压缩'>
+<meta property='og:url' content='https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/'>
+<meta property='og:site_name' content='Eastarpen の Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='脚本' /><meta property='article:published_time' content='2021-09-21T22:35:45&#43;00:00'/><meta property='article:modified_time' content='2021-09-21T22:35:45&#43;00:00'/>
+<meta name="twitter:title" content="命令行操作 7zip (附脚本)">
+<meta name="twitter:description" content="用命令行操作7zip 实现批量压缩与解压缩">
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://eastarpen.github.io/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/tools/operate-7zip-in-command-line/">命令行操作 7zip (附脚本)</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        用命令行操作7zip 实现批量压缩与解压缩
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 21, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="前言">前言</h2>
+<h3 id="概述">概述</h3>
+<p>用命令行操作7zip 实现批量压缩与解压缩</p>
+<p>本文适用于windows, 理论上略作修改也可适配其他系统，但没必要(有更好选择)。</p>
+<h3 id="参考">参考</h3>
+<p><a class="link" href="https://www.dotnetperls.com/7-zip-examples"  target="_blank" rel="noopener"
+    >参考教程(打不开挂代理)</a></p>
+<h3 id="原理">原理</h3>
+<p>利用循环命令操作 <code>7z.exe</code> 文件，实现批量复制与解压缩</p>
+<h2 id="命令介绍">命令介绍</h2>
+<h3 id="命令详情">命令详情</h3>
+<p>在 7zip 安装目录下(含有 7z.exe 文件)输入 <code>7z</code> 可查看命令详情</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> 7-Zip 20.02 alpha <span class="o">(</span>x64<span class="o">)</span> : Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2020 Igor Pavlov : 2020-08-08
+
+ Usage: 7z &lt;command&gt; <span class="o">[</span>&lt;switches&gt;...<span class="o">]</span> &lt;archive_name&gt; <span class="o">[</span>&lt;file_names&gt;...<span class="o">]</span> <span class="o">[</span>@listfile<span class="o">]</span>
+
+ &lt;Commands&gt;
+   a : Add files to archive
+   b : Benchmark
+   d : Delete files from archive
+   e : Extract files from archive <span class="o">(</span>without using directory names<span class="o">)</span>
+   h : Calculate <span class="nb">hash</span> values <span class="k">for</span> files
+   i : Show information about supported formats
+   l : List contents of archive
+   rn : Rename files in archive
+   t : Test integrity of archive
+   u : Update files to archive
+   x : eXtract files with full paths
+
+ &lt;Switches&gt;
+   -- : Stop switches and @listfile parsing
+   -ai<span class="o">[</span>r<span class="o">[</span>-<span class="p">|</span>0<span class="o">]]{</span>@listfile<span class="p">|</span>!wildcard<span class="o">}</span> : Include archives
+   -ax<span class="o">[</span>r<span class="o">[</span>-<span class="p">|</span>0<span class="o">]]{</span>@listfile<span class="p">|</span>!wildcard<span class="o">}</span> : eXclude archives
+   -ao<span class="o">{</span>a<span class="p">|</span>s<span class="p">|</span>t<span class="p">|</span>u<span class="o">}</span> : <span class="nb">set</span> Overwrite mode
+   -an : disable archive_name field
+   -bb<span class="o">[</span>0-3<span class="o">]</span> : <span class="nb">set</span> output log level
+   -bd : disable progress indicator
+   -bs<span class="o">{</span>o<span class="p">|</span>e<span class="p">|</span>p<span class="o">}{</span>0<span class="p">|</span>1<span class="p">|</span>2<span class="o">}</span> : <span class="nb">set</span> output stream <span class="k">for</span> output/error/progress line
+   -bt : show execution <span class="nb">time</span> statistics
+   -i<span class="o">[</span>r<span class="o">[</span>-<span class="p">|</span>0<span class="o">]]{</span>@listfile<span class="p">|</span>!wildcard<span class="o">}</span> : Include filenames
+   -m<span class="o">{</span>Parameters<span class="o">}</span> : <span class="nb">set</span> compression Method
+     -mmt<span class="o">[</span>N<span class="o">]</span> : <span class="nb">set</span> number of CPU threads
+     -mx<span class="o">[</span>N<span class="o">]</span> : <span class="nb">set</span> compression level: -mx1 <span class="o">(</span>fastest<span class="o">)</span> ... -mx9 <span class="o">(</span>ultra<span class="o">)</span>
+   -o<span class="o">{</span>Directory<span class="o">}</span> : <span class="nb">set</span> Output directory
+   -p<span class="o">{</span>Password<span class="o">}</span> : <span class="nb">set</span> Password
+   -r<span class="o">[</span>-<span class="p">|</span>0<span class="o">]</span> : Recurse subdirectories
+   -sa<span class="o">{</span>a<span class="p">|</span>e<span class="p">|</span>s<span class="o">}</span> : <span class="nb">set</span> Archive name mode
+   -scc<span class="o">{</span>UTF-8<span class="p">|</span>WIN<span class="p">|</span>DOS<span class="o">}</span> : <span class="nb">set</span> charset <span class="k">for</span> <span class="k">for</span> console input/output
+   -scs<span class="o">{</span>UTF-8<span class="p">|</span>UTF-16LE<span class="p">|</span>UTF-16BE<span class="p">|</span>WIN<span class="p">|</span>DOS<span class="p">|</span><span class="o">{</span>id<span class="o">}}</span> : <span class="nb">set</span> charset <span class="k">for</span> list files
+   -scrc<span class="o">[</span>CRC32<span class="p">|</span>CRC64<span class="p">|</span>SHA1<span class="p">|</span>SHA256<span class="p">|</span>*<span class="o">]</span> : <span class="nb">set</span> <span class="nb">hash</span> <span class="k">function</span> <span class="k">for</span> x, e, h commands
+   -sdel : delete files after compression
+   -seml<span class="o">[</span>.<span class="o">]</span> : send archive by email
+   -sfx<span class="o">[{</span>name<span class="o">}]</span> : Create SFX archive
+   -si<span class="o">[{</span>name<span class="o">}]</span> : <span class="nb">read</span> data from stdin
+   -slp : <span class="nb">set</span> Large Pages mode
+   -slt : show technical information <span class="k">for</span> l <span class="o">(</span>List<span class="o">)</span> <span class="nb">command</span>
+   -snh : store hard links as links
+   -snl : store symbolic links as links
+   -sni : store NT security information
+   -sns<span class="o">[</span>-<span class="o">]</span> : store NTFS alternate streams
+   -so : write data to stdout
+   -spd : disable wildcard matching <span class="k">for</span> file names
+   -spe : eliminate duplication of root folder <span class="k">for</span> extract <span class="nb">command</span>
+   -spf : use fully qualified file paths
+   -ssc<span class="o">[</span>-<span class="o">]</span> : <span class="nb">set</span> sensitive <span class="k">case</span> mode
+   -sse : stop archive creating, <span class="k">if</span> it can<span class="err">&#39;</span>t open some input file
+   -ssp : <span class="k">do</span> not change Last Access Time of <span class="nb">source</span> files <span class="k">while</span> archiving
+   -ssw : compress shared files
+   -stl : <span class="nb">set</span> archive timestamp from the most recently modified file
+   -stm<span class="o">{</span>HexMask<span class="o">}</span> : <span class="nb">set</span> CPU thread affinity mask <span class="o">(</span>hexadecimal number<span class="o">)</span>
+   -stx<span class="o">{</span>Type<span class="o">}</span> : exclude archive <span class="nb">type</span>
+   -t<span class="o">{</span>Type<span class="o">}</span> : Set <span class="nb">type</span> of archive
+   -u<span class="o">[</span>-<span class="o">][</span>p#<span class="o">][</span>q#<span class="o">][</span>r#<span class="o">][</span>x#<span class="o">][</span>y#<span class="o">][</span>z#<span class="o">][</span>!newArchiveName<span class="o">]</span> : Update options
+   -v<span class="o">{</span>Size<span class="o">}[</span>b<span class="p">|</span>k<span class="p">|</span>m<span class="p">|</span>g<span class="o">]</span> : Create volumes
+   -w<span class="o">[{</span>path<span class="o">}]</span> : assign Work directory. Empty path means a temporary directory
+   -x<span class="o">[</span>r<span class="o">[</span>-<span class="p">|</span>0<span class="o">]]{</span>@listfile<span class="p">|</span>!wildcard<span class="o">}</span> : eXclude filenames
+   -y : assume Yes on all queries
+</code></pre></div><h3 id="关键命令">关键命令</h3>
+<ol>
+<li>
+<p><code>a</code> 即 <code>add 或 archive</code>  压缩命令</p>
+<p><code>7z a example.7z test.txt</code> 可将当前目录下 test.txt 文件压缩到 example.7z 文件</p>
+</li>
+<li>
+<p><code>e</code> 即 extra 解压命令(会破坏压缩包文件结构)</p>
+</li>
+<li>
+<p><code>x</code> 即 eXtra 解压命令(保留压缩包文件结构)</p>
+</li>
+<li>
+<p><code>-p</code> 添加密码参数</p>
+<p><code>7z a example.7z test.txt -p123456</code> 会将 test.txt 文件压缩到 example.7z 且密码为 <code>123456</code></p>
+<p><code>7z e example.7z -p123456</code> 使用密码<code>123456</code> 解压</p>
+</li>
+</ol>
+<h2 id="脚本内容">脚本内容</h2>
+<h3 id="一键压缩">一键压缩</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> :: archive.bat
+
+ @echo off
+ <span class="k">for</span> %%f in <span class="o">(</span>*<span class="o">)</span> <span class="k">do</span> CALL :run %%f
+ <span class="k">for</span> /d %%d in <span class="o">(</span>*<span class="o">)</span> <span class="k">do</span> CALL :run %%d
+
+ :run
+ <span class="nb">echo</span> %~1
+ <span class="nb">echo</span> %~1<span class="p">|</span>findstr <span class="s2">&#34;.bat&#34;</span> &gt; nul <span class="o">&amp;&amp;</span> <span class="nb">echo</span> bat file <span class="o">||</span> CALL :7zArchive %~1
+ EXIT /B <span class="m">0</span>
+
+ :7zArchive 
+ <span class="k">if</span> not %~dnp1<span class="o">==</span><span class="s2">&#34;&#34;</span> <span class="o">(</span>
+     path a <span class="s2">&#34;%~dnp1.7z&#34;</span> %~1 -ppassword
+ <span class="o">)</span>
+ EXIT /B <span class="m">0</span>
+</code></pre></div><h3 id="一键解压缩">一键解压缩</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> :: extra.bat
+
+ <span class="k">for</span> %%z in <span class="o">(</span>*.7z, *.zip, *.rar<span class="o">)</span> <span class="k">do</span> path x %%z -ppassword
+</code></pre></div><h3 id="使用方法">使用方法</h3>
+<ol>
+<li>
+<p>新建<code>extra.bat</code> 或 <code>archive.bat</code>, 将对应内容复制到对应文件内</p>
+</li>
+<li>
+<p>将脚本内path更改为<code>7z.exe</code>文件路径</p>
+<p>示例  <code>C:\Program Files\7-Zip\7z.exe</code></p>
+</li>
+<li>
+<p>默认设定密码为 <code>password</code> 可自行更改, 注意解压时密码匹配</p>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%84%9A%E6%9C%AC/">脚本</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Eastarpen の Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a>
+      <ol>
+        <li><a href="#概述">概述</a></li>
+        <li><a href="#参考">参考</a></li>
+        <li><a href="#原理">原理</a></li>
+      </ol>
+    </li>
+    <li><a href="#命令介绍">命令介绍</a>
+      <ol>
+        <li><a href="#命令详情">命令详情</a></li>
+        <li><a href="#关键命令">关键命令</a></li>
+      </ol>
+    </li>
+    <li><a href="#脚本内容">脚本内容</a>
+      <ol>
+        <li><a href="#一键压缩">一键压缩</a></li>
+        <li><a href="#一键解压缩">一键解压缩</a></li>
+        <li><a href="#使用方法">使用方法</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
