@@ -175,6 +175,12 @@ menu:
           weight: -100
           pre: task
 
+        - identifier: Tags
+          name: Tags
+          url: /tags
+          weight: -100
+          pre: tag
+
 related:
     includeNewer: true
     threshold: 60
