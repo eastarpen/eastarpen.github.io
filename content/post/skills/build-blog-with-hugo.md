@@ -300,4 +300,7 @@ hugo 本身可通过 `hugo new fileName` 新建文件，预先写入的内容即
 cd /d path
 hugo server -D
 
+## 学习 hugo 配置
+   
+1. [hugo搭建个人博客2-文章写作](https://shuzang.github.io/2019/hugo-blog-article-write/)
 ```

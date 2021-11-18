@@ -1,7 +1,7 @@
 baseurl: https://eastarpen.github.io/
 languageCode: zh-cn
 theme: hugo-theme-stack
-paginate: 5
+paginate: 10
 title: Eastarpen の Blog
 
 # Change it to your Disqus shortname before using

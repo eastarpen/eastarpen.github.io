@@ -6,7 +6,25 @@
     <description>Recent content in Posts on Eastarpen の Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Sep 2021 22:35:45 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 16:15:41 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>声优访谈集锦</title>
+      <link>https://eastarpen.github.io/post/amusement/voice-actor/</link>
+      <pubDate>Wed, 17 Nov 2021 16:15:41 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/amusement/voice-actor/</guid>
+      <description>进击的巨人访谈  【熟肉】進擊的巨人 3期放送直前SP 進擊的声优 大集合 【熟肉】Attack on Titan Special Event 日场 Attack On Titan SPECIAL EVENT 夜场  </description>
+    </item>
+    
+    <item>
+      <title>web学习笔记</title>
+      <link>https://eastarpen.github.io/post/college/web/web-notes/</link>
+      <pubDate>Fri, 29 Oct 2021 13:48:03 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/college/web/web-notes/</guid>
+      <description>在 html 中应用 css 和 JavaScript </description>
+    </item>
+    
     <item>
       <title>命令行操作 7zip (附脚本)</title>
       <link>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</link>

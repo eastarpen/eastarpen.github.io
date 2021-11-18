@@ -6,7 +6,33 @@
         <description>Recent content on Eastarpen の Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 21 Sep 2021 22:35:45 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 17 Nov 2021 16:15:41 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>声优访谈集锦</title>
+        <link>https://eastarpen.github.io/post/amusement/voice-actor/</link>
+        <pubDate>Wed, 17 Nov 2021 16:15:41 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/amusement/voice-actor/</guid>
+        <description>&lt;h2 id=&#34;进击的巨人访谈&#34;&gt;进击的巨人访谈&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rs411w7E4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【熟肉】進擊的巨人 3期放送直前SP 進擊的声优 大集合&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1EK411P7z2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【熟肉】Attack on Titan Special Event 日场&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1s4411177s&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Attack On Titan SPECIAL EVENT 夜场&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>web学习笔记</title>
+        <link>https://eastarpen.github.io/post/college/web/web-notes/</link>
+        <pubDate>Fri, 29 Oct 2021 13:48:03 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/college/web/web-notes/</guid>
+        <description>&lt;h2 id=&#34;在-html-中应用-css-和-javascript&#34;&gt;在 html 中应用 css 和 JavaScript&lt;/h2&gt;
+</description>
+        </item>
+        <item>
         <title>命令行操作 7zip (附脚本)</title>
         <link>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</link>
         <pubDate>Tue, 21 Sep 2021 22:35:45 +0000</pubDate>
@@ -425,6 +451,9 @@ write &lt;span class=&#34;s1&#34;&gt;&amp;#39;---&amp;#39;&lt;/span&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /d path
 hugo server -D
 
+&lt;span class=&#34;c1&#34;&gt;## 学习 hugo 配置&lt;/span&gt;
+   
+1. &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;hugo搭建个人博客2-文章写作&lt;span class=&#34;o&#34;&gt;](&lt;/span&gt;https://shuzang.github.io/2019/hugo-blog-article-write/&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
