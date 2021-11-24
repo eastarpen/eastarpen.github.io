@@ -5,7 +5,6 @@ tags: ["声优"]
 description:
 date: 2021-11-17T16:15:41
 ---
-test
 ## 进击的巨人访谈
 
 * [【熟肉】進擊的巨人 3期放送直前SP 進擊的声优 大集合](https://www.bilibili.com/video/BV1Rs411w7E4/)

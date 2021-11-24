@@ -12,8 +12,7 @@
         <pubDate>Wed, 17 Nov 2021 16:15:41 +0000</pubDate>
         
         <guid>https://eastarpen.github.io/post/amusement/voice-actor/</guid>
-        <description>&lt;p&gt;test&lt;/p&gt;
-&lt;h2 id=&#34;进击的巨人访谈&#34;&gt;进击的巨人访谈&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;进击的巨人访谈&#34;&gt;进击的巨人访谈&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rs411w7E4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【熟肉】進擊的巨人 3期放送直前SP 進擊的声优 大集合&lt;/a&gt;&lt;/li&gt;
@@ -25,12 +24,35 @@
 </description>
         </item>
         <item>
-        <title>web学习笔记</title>
-        <link>https://eastarpen.github.io/post/college/web/web-notes/</link>
-        <pubDate>Fri, 29 Oct 2021 13:48:03 +0000</pubDate>
+        <title>STL初步</title>
+        <link>https://eastarpen.github.io/post/algorithm/record/stl-general/</link>
+        <pubDate>Fri, 15 Oct 2021 10:43:21 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/college/web/web-notes/</guid>
-        <description>&lt;h2 id=&#34;在-html-中应用-css-和-javascript&#34;&gt;在 html 中应用 css 和 JavaScript&lt;/h2&gt;
+        <guid>https://eastarpen.github.io/post/algorithm/record/stl-general/</guid>
+        <description>&lt;h2 id=&#34;algorithm&#34;&gt;algorithm&lt;/h2&gt;
+&lt;h3 id=&#34;sort&#34;&gt;sort&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;sort 是个模板函数，对于非内置数据类型需要定义运算符.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sort(v.begin(), v.end())&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;lower_bound&#34;&gt;lower_bound&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;int pos = lower_bound(arr, arr+n, x) &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查找大于或等于 &lt;code&gt;x&lt;/code&gt; 的第一个位置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;排序后查找&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下面代码输出 0&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lower_bound&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+ &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         <item>
