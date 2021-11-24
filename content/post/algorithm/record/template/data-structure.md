@@ -1,11 +1,9 @@
 ---
 title: "[模板] 数据结构"
 slug: "template-data-structure"
-tags: ["模板"]
-description:
-date: 2021-11-24T13:55:51
+tags: ["template"]
+date: 2021-11-24
 ---
-
 ## 数据结构
 
 ### 数组模拟数据结构
@@ -13,7 +11,6 @@ date: 2021-11-24T13:55:51
 #### 队列
 
 ```c++
-
 // pos 数组用到哪 ne -> next, val -> value
 
 int head, pos, ne[MAXN], val[MAXN];

@@ -3,7 +3,7 @@ title: "vim 实用技巧(二) visual 模式"
 slug: "vim-skills-visual"
 tags: ['vim']
 description:
-drate: 2021-09-20T19:05:21
+date: 2021-09-20T19:05:21
 draft: true
 ---
 
