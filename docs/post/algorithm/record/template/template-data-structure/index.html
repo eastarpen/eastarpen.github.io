@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } '><title>[模板] 数据结构</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
+head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。'><title>[模板] 数据结构</title>
 
 <link rel='canonical' href='https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='[模板] 数据结构'>
-<meta property='og:description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } '>
+<meta property='og:description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
+head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。'>
 <meta property='og:url' content='https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/'>
 <meta property='og:site_name' content='Eastarpen の Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='template' /><meta property='article:published_time' content='2021-11-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-24T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[模板] 数据结构">
-<meta name="twitter:description" content="数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } ">
+<meta name="twitter:description" content="数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
+head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。">
     <link rel="shortcut icon" href="/img/favicon.ico" />
 
     </head>
@@ -129,6 +132,46 @@
 <span class="c1">// 删除头节点
 </span><span class="c1"></span><span class="kt">void</span> <span class="nf">remove_head</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">head</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">head</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">head</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div><h5 id="思考">思考</h5>
+<ul>
+<li>
+<p>为什么不将 ne[] 数组全置为 -1?</p>
+<p><code>head</code> 初始化为 -1, 再插入时由于 <code>ne[pos] = head</code> 或 <code>ne[pos] = ne[k]</code> , -1 会向后传递至链表末。</p>
+</li>
+<li>
+<p>如何判断链表为空?</p>
+<p><code>return head==-1;</code> 删除时 -1 会向前传递, 当 <code>head</code> 值为 -1 时, 链表为空</p>
+</li>
+</ul>
+<h4 id="双端队列">双端队列</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">pos</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="n">MAXN</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">MAXN</span><span class="p">],</span> <span class="n">val</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 在下标为 k 的节点后(右边)插入值为 x 的节点 
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">val</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// 赋值
+</span><span class="c1"></span>	<span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">];</span> <span class="c1">// 建立新节点的两条边
+</span><span class="c1"></span>	<span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pos</span><span class="p">;</span> <span class="c1">// 将节点 k 的右节点的左节点指向新节点 pos
+</span><span class="c1"></span>	<span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos</span><span class="o">++</span><span class="p">;</span> <span class="c1">// 将节点 k 的右节点指向新节点 pos 
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// 在链表最左端插入节点
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">add_to_left</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// 在虚拟的左端点后插入新节点
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// 在链表最右端插入节点
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">add_to_right</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">insert</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// 在虚拟的右端点的左端点(实际的最右端点)右边插入新节点
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// 删除下标为 k 的节点
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">r</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 </section>
@@ -291,6 +334,7 @@
         <li><a href="#数组模拟数据结构">数组模拟数据结构</a>
           <ol>
             <li><a href="#队列">队列</a></li>
+            <li><a href="#双端队列">双端队列</a></li>
           </ol>
         </li>
       </ol>

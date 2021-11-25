@@ -13,7 +13,8 @@
       <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/</guid>
-      <description>数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos++; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } </description>
+      <description>数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos++; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
+head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。</description>
     </item>
     
   </channel>
