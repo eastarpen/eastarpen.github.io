@@ -2,17 +2,17 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
-head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。'><title>[模板] 数据结构</title>
+head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。'><title>模版 [含解释]</title>
 
-<link rel='canonical' href='https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/'>
+<link rel='canonical' href='https://eastarpen.github.io/post/algorithm/record/template/template-explained/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='[模板] 数据结构'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='模版 [含解释]'>
 <meta property='og:description' content='数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
 head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。'>
-<meta property='og:url' content='https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/'>
+<meta property='og:url' content='https://eastarpen.github.io/post/algorithm/record/template/template-explained/'>
 <meta property='og:site_name' content='Eastarpen の Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='template' /><meta property='article:published_time' content='2021-11-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-24T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="[模板] 数据结构">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='template' /><meta property='article:published_time' content='2021-11-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="模版 [含解释]">
 <meta name="twitter:description" content="数据结构 数组模拟数据结构 队列 // pos 数组用到哪 ne -&amp;gt; next, val -&amp;gt; value  int head, pos, ne[MAXN], val[MAXN]; void init() { head = -1; pos = 0; } // 将值插入到头节点 void add_to_head(int x) { val[pos] = x; ne[pos] = head; head = pos&#43;&#43;; } // 删除头节点 void remove_head() { if(head != -1) head = ne[head]; } 思考   为什么不将 ne[] 数组全置为 -1?
 head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1 会向后传递至链表末。">
     <link rel="shortcut icon" href="/img/favicon.ico" />
@@ -70,7 +70,7 @@ head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1
     
 
     <h2 class="article-title">
-        <a href="/post/algorithm/record/template/template-data-structure/">[模板] 数据结构</a>
+        <a href="/post/algorithm/record/template/template-explained/">模版 [含解释]</a>
     </h2>
 
     
@@ -88,7 +88,7 @@ head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Nov 24, 2021</time>
+                <time class="article-time--published">Nov 25, 2021</time>
             </div>
         
 
