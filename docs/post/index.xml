@@ -6,7 +6,22 @@
     <description>Recent content in Posts on Eastarpen の Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>线段树(note)</title>
+      <link>https://eastarpen.github.io/post/algorithm/record/notes/segment-tree/01/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/algorithm/record/notes/segment-tree/01/</guid>
+      <description>基础认知 为求某区间内某属性, 将该区间递归建立线段树, 通过子区间内的属性求得父区间的属性。
+结构 线段树逻辑结构为二叉树, 存储结构为数组
+假设区间内有 n 个节点, 应至少开辟大小为 4n+1 的数组存储
+性质 假设由数组 tr 存储的一线段树, 令tr[1] 为根节点, 表示整个区间。 则对于某节点 u 它的
+ 表示方式 tr[u] 左子树 tr[u &amp;lt;&amp;lt; 1] 右子树 tr[u &amp;lt;&amp;lt; 1 | 1] 父节点 tr[u &amp;gt;&amp;gt; 1]  前提是 tr[1] 为根节点, 原因是 树的顺序存储
+代码实现 节点 &amp;ndash; Node 每个节点都是一个区间, 长度最小为 1, 即 l == r
+struct Node { int l, r; // 区间两端  // 其他 根据题目分析 } 节点存储的信息  题目要求的(最大值, 公因数&amp;hellip;) 辅助信息(分析)  建树 &amp;ndash; build 将一个区间构建为线段树, 采用递归写法</description>
+    </item>
+    
     <item>
       <title>模版 [含解释]</title>
       <link>https://eastarpen.github.io/post/algorithm/record/template/template-explained/</link>
@@ -47,10 +62,10 @@ head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1
     
     <item>
       <title>STL初步</title>
-      <link>https://eastarpen.github.io/post/algorithm/record/function/stl-general/</link>
+      <link>https://eastarpen.github.io/post/algorithm/record/notes/stl-general/</link>
       <pubDate>Fri, 15 Oct 2021 10:43:21 +0000</pubDate>
       
-      <guid>https://eastarpen.github.io/post/algorithm/record/function/stl-general/</guid>
+      <guid>https://eastarpen.github.io/post/algorithm/record/notes/stl-general/</guid>
       <description>algorithm sort  sort 是个模板函数，对于非内置数据类型需要定义运算符. sort(v.begin(), v.end())  lower_bound   int pos = lower_bound(arr, arr+n, x) 
   查找大于或等于 x 的第一个位置
   排序后查找

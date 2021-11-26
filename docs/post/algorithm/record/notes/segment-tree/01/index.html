@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='基础认知 为求某区间内某属性, 将该区间递归建立线段树, 通过子区间内的属性求得父区间的属性。
+结构 线段树逻辑结构为二叉树, 存储结构为数组
+假设区间内有 n 个节点, 应至少开辟大小为 4n&#43;1 的数组存储
+性质 假设由数组 tr 存储的一线段树, 令tr[1] 为根节点, 表示整个区间。 则对于某节点 u 它的
+ 表示方式 tr[u] 左子树 tr[u &amp;lt;&amp;lt; 1] 右子树 tr[u &amp;lt;&amp;lt; 1 | 1] 父节点 tr[u &amp;gt;&amp;gt; 1]  前提是 tr[1] 为根节点, 原因是 树的顺序存储
+代码实现 节点 &amp;ndash; Node 每个节点都是一个区间, 长度最小为 1, 即 l == r
+struct Node { int l, r; // 区间两端  // 其他 根据题目分析 } 节点存储的信息  题目要求的(最大值, 公因数&amp;hellip;) 辅助信息(分析)  建树 &amp;ndash; build 将一个区间构建为线段树, 采用递归写法'><title>线段树(note)</title>
+
+<link rel='canonical' href='https://eastarpen.github.io/post/algorithm/record/notes/segment-tree/01/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='线段树(note)'>
+<meta property='og:description' content='基础认知 为求某区间内某属性, 将该区间递归建立线段树, 通过子区间内的属性求得父区间的属性。
+结构 线段树逻辑结构为二叉树, 存储结构为数组
+假设区间内有 n 个节点, 应至少开辟大小为 4n&#43;1 的数组存储
+性质 假设由数组 tr 存储的一线段树, 令tr[1] 为根节点, 表示整个区间。 则对于某节点 u 它的
+ 表示方式 tr[u] 左子树 tr[u &amp;lt;&amp;lt; 1] 右子树 tr[u &amp;lt;&amp;lt; 1 | 1] 父节点 tr[u &amp;gt;&amp;gt; 1]  前提是 tr[1] 为根节点, 原因是 树的顺序存储
+代码实现 节点 &amp;ndash; Node 每个节点都是一个区间, 长度最小为 1, 即 l == r
+struct Node { int l, r; // 区间两端  // 其他 根据题目分析 } 节点存储的信息  题目要求的(最大值, 公因数&amp;hellip;) 辅助信息(分析)  建树 &amp;ndash; build 将一个区间构建为线段树, 采用递归写法'>
+<meta property='og:url' content='https://eastarpen.github.io/post/algorithm/record/notes/segment-tree/01/'>
+<meta property='og:site_name' content='Eastarpen の Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数据结构' /><meta property='article:published_time' content='2021-11-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-26T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="线段树(note)">
+<meta name="twitter:description" content="基础认知 为求某区间内某属性, 将该区间递归建立线段树, 通过子区间内的属性求得父区间的属性。
+结构 线段树逻辑结构为二叉树, 存储结构为数组
+假设区间内有 n 个节点, 应至少开辟大小为 4n&#43;1 的数组存储
+性质 假设由数组 tr 存储的一线段树, 令tr[1] 为根节点, 表示整个区间。 则对于某节点 u 它的
+ 表示方式 tr[u] 左子树 tr[u &amp;lt;&amp;lt; 1] 右子树 tr[u &amp;lt;&amp;lt; 1 | 1] 父节点 tr[u &amp;gt;&amp;gt; 1]  前提是 tr[1] 为根节点, 原因是 树的顺序存储
+代码实现 节点 &amp;ndash; Node 每个节点都是一个区间, 长度最小为 1, 即 l == r
+struct Node { int l, r; // 区间两端  // 其他 根据题目分析 } 节点存储的信息  题目要求的(最大值, 公因数&amp;hellip;) 辅助信息(分析)  建树 &amp;ndash; build 将一个区间构建为线段树, 采用递归写法">
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://eastarpen.github.io/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/algorithm/record/notes/segment-tree/01/">线段树(note)</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 26, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="基础认知">基础认知</h2>
+<p>为求某区间内某属性, 将该区间递归建立线段树, 通过子区间内的属性求得父区间的属性。</p>
+<h3 id="结构">结构</h3>
+<p>线段树逻辑结构为二叉树, 存储结构为数组</p>
+<p>假设区间内有 n  个节点, 应至少开辟大小为 4n+1 的数组存储</p>
+<h3 id="性质">性质</h3>
+<p>假设由数组 tr 存储的一线段树, 令tr[1] 为根节点, 表示整个区间。 则对于某节点 u 它的</p>
+<ul>
+<li>表示方式 <code>tr[u]</code></li>
+<li>左子树 <code>tr[u &lt;&lt; 1]</code></li>
+<li>右子树 <code>tr[u &lt;&lt; 1 | 1]</code></li>
+<li>父节点 <code>tr[u &gt;&gt; 1]</code></li>
+</ul>
+<p>前提是 tr[1] 为根节点, 原因是 树的顺序存储</p>
+<h2 id="代码实现">代码实现</h2>
+<h3 id="节点----node">节点 &ndash; Node</h3>
+<p>每个节点都是一个区间, 长度最小为 1, 即 <code>l == r</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">;</span> <span class="c1">// 区间两端
+</span><span class="c1"></span>    <span class="c1">// 其他 根据题目分析
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h4 id="节点存储的信息">节点存储的信息</h4>
+<ol>
+<li>题目要求的(最大值, 公因数&hellip;)</li>
+<li>辅助信息(分析)</li>
+</ol>
+<h3 id="建树----build">建树 &ndash; build</h3>
+<p>将一个区间构建为线段树, 采用递归写法</p>
+<p>假设有一区间为 [l, r], 该区间对应的节点序号为 u, 则其子区间 [l, mid], [mid+1, r] 为 节点 u 的左右子树, 序号分别为 2u 和 2u+1。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">build</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span> <span class="c1">//  将下标(节点) u 与 区间[l, r] 建立联系
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">==</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">build</span><span class="p">(</span><span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">mid</span><span class="p">),</span> <span class="n">build</span><span class="p">(</span><span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span> <span class="c1">// 建立 左子树和右子树
+</span><span class="c1"></span>    <span class="c1">// 这里可能需要更新数据
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h3 id="查询----query">查询 &ndash; query</h3>
+<p>查询指定区间的属性 &ndash; 由子区间的属性计算得到</p>
+<p>对于查询区间 A = [l, r] 和 当前节点 u 和 u 对应的区间 B = [tr[u].l, tr[u].r] 有如下可能</p>
+<ol>
+<li>
+<p>B 是 A 的子集, 即当前子树的所有节点已被完全包括在查询区间中</p>
+<p>直接返回节点 u 的属性, 由调用栈计算结果</p>
+</li>
+<li>
+<p>A 是 B 的子集, 需要向下调用, 也分多种情况</p>
+<ol>
+<li><code>l &lt;= midB</code> 查询区间出现在左子树, 向下调用 <code>query(u&lt;&lt;1, l, r)</code> 查询左子树</li>
+<li><code>r &gt; midB</code> 查询区间出现在右子树, 向下调用 <code>query(u&lt;&lt;1|1, l, r)</code> 查询右子树</li>
+<li>上面两个情况同时满足</li>
+</ol>
+</li>
+<li>
+<p>A 和 B 有交集</p>
+<p>有对称的两种情况, 会演化为上面两种情况</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="err">情况</span> <span class="mi">1</span>            <span class="err">情况</span> <span class="mi">2</span>
+
+<span class="n">A</span>   <span class="o">------</span>        <span class="n">A</span> <span class="o">------</span>
+<span class="n">B</span> <span class="o">------</span>          <span class="n">B</span>   <span class="o">------</span>
+</code></pre></div><ol start="4">
+<li>
+<p>A 和 B 无交集</p>
+<p>由于调用函数时总会选择有交集的部分, 这种情况不可能出现</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">]</span> <span class="err">是固定的区间</span><span class="p">,</span> <span class="n">u</span> <span class="err">表示当前节点</span>
+
+<span class="kt">int</span> <span class="n">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">r</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">v</span><span class="p">;</span>
+    <span class="c1">// 当前节点对应的区间时查询区间的子集
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">l</span> <span class="o">+</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">mid</span><span class="p">)</span> <span class="n">v</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">u</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">mid</span><span class="p">)</span> <span class="n">v</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">query</span><span class="p">(</span><span class="n">u</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="o">|</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">));</span> 
+	<span class="c1">// 这里是求区间最大值的做法, 具体题目需要修改
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="修改----modify">修改 &ndash; modify</h3>
+<p>递归查找某个叶子节点, 将其值修改为指定值, 同时更新父节点属性</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">modify</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="err">找到区间为</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="err">的节点</span><span class="p">,</span> <span class="err">将其属性修改</span><span class="p">,</span> <span class="n">u</span> <span class="err">为当前查找的节点</span>
+
+<span class="kt">void</span> <span class="n">modify</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">l</span> <span class="o">==</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">r</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> 
+    <span class="c1">// 找到了区间为 [x, x] 的节点 u, 修改其属性
+</span><span class="c1"></span>    <span class="k">else</span> <span class="p">{</span> 
+    <span class="c1">// 没找到, 向下递归寻找
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">l</span> <span class="o">+</span> <span class="n">tr</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> 
+        <span class="c1">// 获取当前节点区间的中点
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">mid</span><span class="p">)</span> <span class="n">modify</span><span class="p">(</span><span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span> 
+        <span class="c1">// 如果 x &lt;= mid, 说明 区间为[x, x] 的节点在 u 的左子树上
+</span><span class="c1"></span>        <span class="k">else</span> <span class="nf">modify</span><span class="p">(</span><span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="o">|</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span> 
+        <span class="c1">// 在 u 的右子树上查找
+</span><span class="c1"></span>        <span class="n">pushup</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+        <span class="c1">// 递归更新节点 u 的属性, 视情况调用
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="更新----pushup">更新 &ndash; pushup</h3>
+<p>由子区间信息来更新父区间信息</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Eastarpen の Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#基础认知">基础认知</a>
+      <ol>
+        <li><a href="#结构">结构</a></li>
+        <li><a href="#性质">性质</a></li>
+      </ol>
+    </li>
+    <li><a href="#代码实现">代码实现</a>
+      <ol>
+        <li><a href="#节点----node">节点 &ndash; Node</a>
+          <ol>
+            <li><a href="#节点存储的信息">节点存储的信息</a></li>
+          </ol>
+        </li>
+        <li><a href="#建树----build">建树 &ndash; build</a></li>
+        <li><a href="#查询----query">查询 &ndash; query</a></li>
+        <li><a href="#修改----modify">修改 &ndash; modify</a></li>
+        <li><a href="#更新----pushup">更新 &ndash; pushup</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
