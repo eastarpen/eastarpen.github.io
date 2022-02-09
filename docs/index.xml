@@ -6,7 +6,25 @@
         <description>Recent content on Eastarpen の Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 26 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Feb 2022 19:24:29 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>python使用代理</title>
+        <link>https://eastarpen.github.io/post/python/python-proxy/</link>
+        <pubDate>Tue, 08 Feb 2022 19:24:29 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/python/python-proxy/</guid>
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;proxies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;s1&#34;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;s1&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;proxies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;s1&#34;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;s1&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;https://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Qv2ray/Qv2ray/issues/1393&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python pip 连接问题&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>线段树(note)</title>
         <link>https://eastarpen.github.io/post/algorithm/record/notes/segment-tree/01/</link>
         <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
@@ -209,6 +227,8 @@
     &gt;gdb 使用方法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/whatday/article/details/112169945&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pytho 代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_38256474/article/details/81228492&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Python 3.x | 史上最详解的 导入（import）&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>

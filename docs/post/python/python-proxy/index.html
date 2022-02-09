@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ACM 蒟蒻, 网络仓鼠, 二次元'><title>Posts</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; &#43; address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; &#43; address } Python pip 连接问题'><title>python使用代理</title>
 
-<link rel='canonical' href='https://eastarpen.github.io/post/'>
+<link rel='canonical' href='https://eastarpen.github.io/post/python/python-proxy/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Posts'>
-<meta property='og:description' content='ACM 蒟蒻, 网络仓鼠, 二次元'>
-<meta property='og:url' content='https://eastarpen.github.io/post/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='python使用代理'>
+<meta property='og:description' content='proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; &#43; address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; &#43; address } Python pip 连接问题'>
+<meta property='og:url' content='https://eastarpen.github.io/post/python/python-proxy/'>
 <meta property='og:site_name' content='Eastarpen の Blog'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-02-08T19:24:29&#43;00:00 '/>
-<meta name="twitter:title" content="Posts">
-<meta name="twitter:description" content="ACM 蒟蒻, 网络仓鼠, 二次元"><link rel="alternate" type="application/rss&#43;xml" href="https://eastarpen.github.io/post/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:tag' content='proxy' /><meta property='article:published_time' content='2022-02-08T19:24:29&#43;00:00'/><meta property='article:modified_time' content='2022-02-08T19:24:29&#43;00:00'/>
+<meta name="twitter:title" content="python使用代理">
+<meta name="twitter:description" content="proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; &#43; address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; &#43; address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; &#43; address } Python pip 连接问题">
     <link rel="shortcut icon" href="/img/favicon.ico" />
 
     </head>
-    <body class="">
+    <body class="
+    article-page 
+">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -38,7 +40,13 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -149,135 +157,113 @@
         
     </ol>
 </aside>
-<main class="main full-width">
-    <h3 class="section-title">
-        
-            Section
-        
-    </h3>
 
-    <div class="section-card">
-        <div class="section-details">
-            <h3 class="section-count">10 pages</h3>
-            <h1 class="section-term">Posts</h1>
-            
-        </div>
-    </div>
     
-    <section class="article-list--compact">
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/python/python-proxy/">python使用代理</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
         
-            <article>
-    <a href="/post/python/python-proxy/">
-        <div class="article-details">
-            <h2 class="article-title">python使用代理</h2>
-            <footer class="article-time">
-                <time datetime='2022-02-08T19:24:29Z'>Feb 08, 2022</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 08, 2022</time>
+            </div>
         
-            <article>
-    <a href="/post/algorithm/record/notes/segment-tree/01/">
-        <div class="article-details">
-            <h2 class="article-title">线段树(note)</h2>
-            <footer class="article-time">
-                <time datetime='2021-11-26T00:00:00Z'>Nov 26, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
+
         
-            <article>
-    <a href="/post/algorithm/record/template/template-explained/">
-        <div class="article-details">
-            <h2 class="article-title">模版 [含解释]</h2>
-            <footer class="article-time">
-                <time datetime='2021-11-25T00:00:00Z'>Nov 25, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
         
-            <article>
-    <a href="/post/skills/site-collection/">
-        <div class="article-details">
-            <h2 class="article-title">站点收录</h2>
-            <footer class="article-time">
-                <time datetime='2021-11-25T00:00:00Z'>Nov 25, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;http://&#39;</span> <span class="o">+</span> <span class="n">address</span><span class="p">,</span>
+    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;http://&#39;</span> <span class="o">+</span> <span class="n">address</span>
+<span class="p">}</span>
+<span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;http://&#39;</span> <span class="o">+</span> <span class="n">address</span><span class="p">,</span>
+    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;https://&#39;</span> <span class="o">+</span> <span class="n">address</span>
+<span class="p">}</span>
+</code></pre></div><p><a class="link" href="https://github.com/Qv2ray/Qv2ray/issues/1393"  target="_blank" rel="noopener"
+    >Python pip 连接问题</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
-            <article>
-    <a href="/post/algorithm/record/template/template-data-structure/">
-        <div class="article-details">
-            <h2 class="article-title">[模板] 数据结构</h2>
-            <footer class="article-time">
-                <time datetime='2021-11-24T00:00:00Z'>Nov 24, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <a href="/tags/python/">python</a>
         
-            <article>
-    <a href="/post/amusement/voice-actor/">
-        <div class="article-details">
-            <h2 class="article-title">声优访谈集锦</h2>
-            <footer class="article-time">
-                <time datetime='2021-11-17T16:15:41Z'>Nov 17, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/post/algorithm/record/notes/stl-general/">
-        <div class="article-details">
-            <h2 class="article-title">STL初步</h2>
-            <footer class="article-time">
-                <time datetime='2021-10-15T10:43:21Z'>Oct 15, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/post/tools/operate-7zip-in-command-line/">
-        <div class="article-details">
-            <h2 class="article-title">命令行操作 7zip (附脚本)</h2>
-            <footer class="article-time">
-                <time datetime='2021-09-21T22:35:45Z'>Sep 21, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/post/skills/build-blog-with-hugo/">
-        <div class="article-details">
-            <h2 class="article-title">[blog] 使用 hugo 搭建个人博客</h2>
-            <footer class="article-time">
-                <time datetime='2021-09-18T18:28:57Z'>Sep 18, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/post/python/one-piece-colored-spider/">
-        <div class="article-details">
-            <h2 class="article-title">[python] 多线程爬取海贼王漫画版</h2>
-            <footer class="article-time">
-                <time datetime='2021-09-18T18:15:47Z'>Sep 18, 2021</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <a href="/tags/proxy/">proxy</a>
         
     </section>
-<footer class="site-footer">
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -293,113 +279,86 @@
 </footer>
 
 
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
             </main>
     
-    
-    <aside class="sidebar right-sidebar sticky">
-        
-            <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="输入关键词..." />
-        
-            <button title="搜索">
-                <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1631942152828" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2974" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M826.515614 829.65762H94.474185C42.378083 829.65762 0 787.273538 0 735.179436V288.816564C0 236.722462 42.378083 194.34038 94.474185 194.34038h835.05363c52.094102 0 94.474185 42.382083 94.474185 94.476184v326.288637c0 15.58003-12.634025 28.212055-28.212055 28.212055-15.58003 0-28.212055-12.634025-28.212055-28.212055V288.816564c0-20.982041-17.068033-38.050074-38.048075-38.050074H94.474185c-20.978041-0.002-38.048074 17.068033-38.048075 38.050074V735.181436c0 20.982041 17.068033 38.050074 38.048075 38.050074h732.041429c15.58003 0 28.212055 12.634025 28.212055 28.212055 0 15.58203-12.634025 28.214055-28.212055 28.214055z" fill="#2D527C" p-id="2975"></path><path d="M913.357784 739.061443c-7.222014 0-14.440028-2.756005-19.950039-8.264016l-95.760187-95.756187c-11.018022-11.018022-11.018022-28.882056 0-39.902078 11.020022-11.014022 28.878056-11.014022 39.902078 0l95.760187 95.756187c11.018022 11.018022 11.018022 28.882056 0 39.902078a28.132055 28.132055 0 0 1-19.952039 8.264016z" fill="#2D527C" p-id="2976"></path><path d="M749.529464 547.043068m-122.72024 0a122.72024 122.72024 0 1 0 245.44048 0 122.72024 122.72024 0 1 0-245.44048 0Z" fill="#CEE8FA" p-id="2977"></path><path d="M749.539464 697.963363c-40.316079 0-78.220153-15.698031-106.726209-44.206086-28.506056-28.508056-44.206086-66.41013-44.206086-106.724209 0-40.316079 15.698031-78.220153 44.206086-106.726208 28.508056-28.506056 66.41013-44.206086 106.726209-44.206086s78.220153 15.698031 106.726208 44.206086c58.846115 58.846115 58.846115 154.602302 0 213.448417-28.508056 28.512056-66.41013 44.208086-106.726208 44.208086z m0-245.436479c-25.242049 0-48.974096 9.830019-66.828131 27.682054-17.850035 17.848035-27.682054 41.580081-27.682054 66.82813 0 25.242049 9.830019 48.974096 27.682054 66.824131 17.850035 17.850035 41.582081 27.682054 66.828131 27.682054 25.244049 0 48.974096-9.830019 66.82813-27.682054 36.848072-36.848072 36.848072-96.804189 0-133.650261-17.854035-17.854035-41.586081-27.684054-66.82813-27.684054zM513.349003 635.277241H183.258358c-15.58003 0-28.212055-12.634025-28.212055-28.212055 0-15.58003 12.634025-28.212055 28.212055-28.212055h330.088645c15.58003 0 28.212055 12.634025 28.212055 28.212055 0.002 15.58003-12.628025 28.212055-28.210055 28.212055z" fill="#2D527C" p-id="2978"></path></svg>
-            </button>
-        </p>
-    </form>
-        
-            <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">9</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-        
-            <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12.434 22.586l7.859-7.858.707.707-8.565 8.565-.001-.001v.001l-12.434-12.434.707-.707 11.727 11.727zm-.033-1.7l-12.401-12.405v-8.481h8.441l12.445 12.401-8.485 8.485zm-4.373-19.886h-7.028v7.067l11.401 11.405 7.07-7.07s-7.534-7.506-11.443-11.402zm-1.598 2.594c.78.78.78 2.048 0 2.828-.781.781-2.048.781-2.829 0-.78-.78-.78-2.048 0-2.828.781-.781 2.048-.781 2.829 0zm-.707.707c.39.39.39 1.024 0 1.414-.391.39-1.024.39-1.414 0-.391-.39-.391-1.024 0-1.414.39-.39 1.023-.39 1.414 0z"/></svg>
-    </div>
-    <h2 class="widget-title section-title">标签云</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/template/" class="font_size_2">
-                template
-            </a>
-        
-            <a href="/tags/blog/" class="font_size_1">
-                blog
-            </a>
-        
-            <a href="/tags/proxy/" class="font_size_1">
-                proxy
-            </a>
-        
-            <a href="/tags/python/" class="font_size_1">
-                python
-            </a>
-        
-            <a href="/tags/%E5%A3%B0%E4%BC%98/" class="font_size_1">
-                声优
-            </a>
-        
-            <a href="/tags/%E6%94%B6%E5%BD%95/" class="font_size_1">
-                收录
-            </a>
-        
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="font_size_1">
-                数据结构
-            </a>
-        
-            <a href="/tags/%E7%88%AC%E8%99%AB/" class="font_size_1">
-                爬虫
-            </a>
-        
-            <a href="/tags/%E7%AB%9E%E8%B5%9B/" class="font_size_1">
-                竞赛
-            </a>
-        
-            <a href="/tags/%E8%84%9A%E6%9C%AC/" class="font_size_1">
-                脚本
-            </a>
-        
-    </div>
-</section>
-        
-    </aside>
-
 
         </div>
         <script 
