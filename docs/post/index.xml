@@ -47,7 +47,7 @@ head 初始化为 -1, 再插入时由于 ne[pos] = head 或 ne[pos] = ne[k] , -1
       <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://eastarpen.github.io/post/skills/site-collection/</guid>
-      <description> gdb 使用方法 pytho 代理 Python 3.x | 史上最详解的 导入（import）  </description>
+      <description> gdb 使用方法 pytho 代理 Python 3.x | 史上最详解的 导入（import） Python从URL中提取域名  </description>
     </item>
     
     <item>
