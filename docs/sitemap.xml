@@ -2,11 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-01/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/bfs/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/dfs/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://eastarpen.github.io/</loc>
-    <lastmod>2022-02-08T19:24:29+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/post/</loc>
-    <lastmod>2022-02-08T19:24:29+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E4%BA%8C%E5%88%86/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/proxy/</loc>
     <lastmod>2022-02-08T19:24:29+00:00</lastmod>
@@ -15,9 +30,6 @@
     <lastmod>2022-02-08T19:24:29+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/post/python/python-proxy/</loc>
-    <lastmod>2022-02-08T19:24:29+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/tags/</loc>
     <lastmod>2022-02-08T19:24:29+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>

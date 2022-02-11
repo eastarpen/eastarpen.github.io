@@ -3,7 +3,7 @@ title: "[acwing][2022]寒假每日一题week-1"
 slug: "week-01"
 tags: ["dfs", "二分", "bfs"]
 description:
-date: 2022-02-11T13:14:55
+date: 2022-02-11
 ---
 
 ## 1996 打乱字母

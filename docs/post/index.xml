@@ -6,7 +6,32 @@
     <description>Recent content in Posts on Eastarpen の Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 08 Feb 2022 19:24:29 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[acwing][2022]寒假每日一题week-1</title>
+      <link>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-01/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-01/</guid>
+      <description>1996 打乱字母 题目链接
+每一个单词读入后分别按字典序顺序和字典序逆序排序放入对应序列
+顺序序列和逆序序列皆按字典序顺序排序
+最靠前位置: 在字典序逆序中第一个大于等于本单词字典序顺序的位置。
+最靠后位置: 在字典序逆序中第一个大于本单词字典序顺序的位置。
+对于任意一个单词 string a;, 假设 b=sort(a.begin(), a.end());, c=sort(a.begin(), a.end(), greater&amp;lt;string&amp;gt;());
+在同一个有序序列中, 将a, b, c插入序列且保持序列有序性, 假设a, b, c 位置依次为 x, y, z, 有 y&amp;lt;=x&amp;lt;=z
+因此使用 lower_bound() 查找最靠前位置不会发生越界且原单词不会对查找结果产生影响
+使用 upper_bound() 查找最靠后位置有可能发生越界且原单词会对结果产生影响
+2005 马蹄铁 题目链接
+暴力搜索每一种可能性
+定义搜索规则
+ &amp;lsquo;(&amp;rsquo; -&amp;gt; &amp;lsquo;(&amp;rsquo; 或 &amp;lsquo;)&amp;rsquo; &amp;lsquo;)&amp;rsquo; -&amp;gt; &amp;lsquo;)&amp;rsquo;  即 &amp;lsquo;)&amp;rsquo; -&amp;gt; &amp;lsquo;(&amp;rsquo; 非法
+注意思考 vis[x][y] = 1 的位置
+2014 岛 题目链接
+  只需要枚举出现过的高度
+  分析水淹没每一座山时情况</description>
+    </item>
+    
     <item>
       <title>python使用代理</title>
       <link>https://eastarpen.github.io/post/python/python-proxy/</link>
