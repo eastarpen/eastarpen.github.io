@@ -72,7 +72,7 @@
         <item>
         <title>使用代理的各种姿势</title>
         <link>https://eastarpen.github.io/post/skills/proxies/</link>
-        <pubDate>Tue, 08 Feb 2022 19:24:29 +0000</pubDate>
+        <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>https://eastarpen.github.io/post/skills/proxies/</guid>
         <description>&lt;h2 id=&#34;linux-命令行下使用ssr&#34;&gt;Linux 命令行下使用ssr&lt;/h2&gt;
@@ -86,6 +86,8 @@
     &gt;Linux终端设置代理&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.skihome.xyz/posts/cf71037e/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux下好用的4款ss/ssr客户端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/dhkfo66064/article/details/101746312&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;linux下设置git代理访问.&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;python-使用代理&#34;&gt;python 使用代理&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;proxies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;

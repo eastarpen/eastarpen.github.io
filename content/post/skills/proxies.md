@@ -3,7 +3,7 @@ title: "使用代理的各种姿势"
 slug: "proxies"
 tags: ["proxy"]
 description:
-date: 2022-02-08T19:24:29
+date: 2022-02-08
 ---
 
 ## Linux 命令行下使用ssr
@@ -14,6 +14,7 @@ date: 2022-02-08T19:24:29
 2. [Linux_ssr_script](https://toscode.gitee.com/moqioujun/Linux_ssr_script)
 3. [Linux终端设置代理](https://v2raytech.com/linux-cmd-set-proxy/) 
 4. [Linux下好用的4款ss/ssr客户端](https://blog.skihome.xyz/posts/cf71037e/)
+5. [linux下设置git代理访问.](https://blog.csdn.net/dhkfo66064/article/details/101746312)
 
 ## python 使用代理
 
