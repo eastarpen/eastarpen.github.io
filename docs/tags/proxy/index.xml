@@ -8,12 +8,12 @@
     <language>zh-cn</language>
     <lastBuildDate>Tue, 08 Feb 2022 19:24:29 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>python使用代理</title>
-      <link>https://eastarpen.github.io/post/python/python-proxy/</link>
+      <title>使用代理的各种姿势</title>
+      <link>https://eastarpen.github.io/post/skills/proxies/</link>
       <pubDate>Tue, 08 Feb 2022 19:24:29 +0000</pubDate>
       
-      <guid>https://eastarpen.github.io/post/python/python-proxy/</guid>
-      <description>proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; + address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; + address } Python pip 连接问题</description>
+      <guid>https://eastarpen.github.io/post/skills/proxies/</guid>
+      <description>Linux 命令行下使用ssr 参考  linux下的全局代理工具proxychain Linux_ssr_script Linux终端设置代理 Linux下好用的4款ss/ssr客户端  python 使用代理 proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; + address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; + address } Python pip 连接问题</description>
     </item>
     
   </channel>

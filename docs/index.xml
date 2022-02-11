@@ -70,12 +70,25 @@
 </description>
         </item>
         <item>
-        <title>python使用代理</title>
-        <link>https://eastarpen.github.io/post/python/python-proxy/</link>
+        <title>使用代理的各种姿势</title>
+        <link>https://eastarpen.github.io/post/skills/proxies/</link>
         <pubDate>Tue, 08 Feb 2022 19:24:29 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/python/python-proxy/</guid>
-        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;proxies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        <guid>https://eastarpen.github.io/post/skills/proxies/</guid>
+        <description>&lt;h2 id=&#34;linux-命令行下使用ssr&#34;&gt;Linux 命令行下使用ssr&lt;/h2&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://monkeywie.cn/2020/07/06/linux-global-proxy-tool-proxychain/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;linux下的全局代理工具proxychain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://toscode.gitee.com/moqioujun/Linux_ssr_script&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux_ssr_script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2raytech.com/linux-cmd-set-proxy/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux终端设置代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.skihome.xyz/posts/cf71037e/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux下好用的4款ss/ssr客户端&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;python-使用代理&#34;&gt;python 使用代理&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;proxies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
     &lt;span class=&#34;s1&#34;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
     &lt;span class=&#34;s1&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
