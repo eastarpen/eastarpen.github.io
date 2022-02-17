@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://eastarpen.github.io/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/algorithm/algorithm-tips/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-01/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-02/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/bfs/</loc>
@@ -11,22 +29,22 @@
     <loc>https://eastarpen.github.io/tags/dfs/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/</loc>
-    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/post/</loc>
-    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eastarpen.github.io/tags/</loc>
-    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eastarpen.github.io/tags/%E4%BA%8C%E5%88%86/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E5%B7%AE%E5%88%86/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eastarpen.github.io/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/proxy/</loc>
     <lastmod>2022-02-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/post/skills/proxies/</loc>
+    <loc>https://eastarpen.github.io/post/skills/tools/proxies/</loc>
     <lastmod>2022-02-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
@@ -44,7 +62,7 @@
     <loc>https://eastarpen.github.io/post/algorithm/record/template/template-explained/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/post/skills/site-collection/</loc>
+    <loc>https://eastarpen.github.io/post/skills/tools/site-collection/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/post/algorithm/record/template/template-data-structure/</loc>
@@ -62,19 +80,19 @@
     <loc>https://eastarpen.github.io/tags/%E7%AB%9E%E8%B5%9B/</loc>
     <lastmod>2021-10-15T10:43:21+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</loc>
+    <loc>https://eastarpen.github.io/post/skills/tools/operate-7zip-in-command-line/</loc>
     <lastmod>2021-09-21T22:35:45+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/%E8%84%9A%E6%9C%AC/</loc>
     <lastmod>2021-09-21T22:35:45+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</loc>
+    <loc>https://eastarpen.github.io/post/skills/tools/build-blog-with-hugo/</loc>
     <lastmod>2021-09-18T18:28:57+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/blog/</loc>
     <lastmod>2021-09-18T18:28:57+00:00</lastmod>
   </url><url>
-    <loc>https://eastarpen.github.io/post/python/one-piece-colored-spider/</loc>
+    <loc>https://eastarpen.github.io/post/skills/python/one-piece-colored-spider/</loc>
     <lastmod>2021-09-18T18:15:47+00:00</lastmod>
   </url><url>
     <loc>https://eastarpen.github.io/tags/%E7%88%AC%E8%99%AB/</loc>

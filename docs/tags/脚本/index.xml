@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 21 Sep 2021 22:35:45 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/tags/%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>命令行操作 7zip (附脚本)</title>
-      <link>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</link>
+      <link>https://eastarpen.github.io/post/skills/tools/operate-7zip-in-command-line/</link>
       <pubDate>Tue, 21 Sep 2021 22:35:45 +0000</pubDate>
       
-      <guid>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</guid>
+      <guid>https://eastarpen.github.io/post/skills/tools/operate-7zip-in-command-line/</guid>
       <description>前言 概述 用命令行操作7zip 实现批量压缩与解压缩
 本文适用于windows, 理论上略作修改也可适配其他系统，但没必要(有更好选择)。
 参考 参考教程(打不开挂代理)

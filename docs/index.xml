@@ -6,7 +6,17 @@
         <description>Recent content on Eastarpen の Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 12 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>各类算法细节</title>
+        <link>https://eastarpen.github.io/post/algorithm/algorithm-tips/</link>
+        <pubDate>Sat, 12 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/algorithm/algorithm-tips/</guid>
+        <description>&lt;p&gt;差分&lt;/p&gt;
+&lt;p&gt;注意区间起点和终点&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>[acwing][2022]寒假每日一题week-1</title>
         <link>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-01/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
@@ -70,12 +80,50 @@
 </description>
         </item>
         <item>
+        <title>[acwing][2022]寒假每日一题week-2</title>
+        <link>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-02/</link>
+        <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/algorithm/acwing/22winter/week-02/</guid>
+        <description>&lt;h2 id=&#34;1969-品种接近&#34;&gt;1969 品种接近&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/1971/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;题目链接&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用桶记录同id的上一头牛位置, 直接比较即可&lt;/p&gt;
+&lt;h2 id=&#34;1978-奶牛过马路&#34;&gt;1978 奶牛过马路&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/description/1980/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;题目链接&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;假设某条路径是从 a[i] -&amp;gt; b[i]&lt;/p&gt;
+&lt;p&gt;安全的条件是&lt;/p&gt;
+&lt;p&gt;$$
+\forall i &amp;lt; x, a_i &amp;lt; a_x \iff a_x &amp;gt; max (a_1, &amp;hellip;, a_{x-1})
+$$
+$$
+\forall j &amp;gt; x, a_j &amp;gt; a_x \iff a_x &amp;lt; min (a_{x+1}, &amp;hellip;, a_n)
+$$&lt;/p&gt;
+&lt;p&gt;使用前缀后缀和即可&lt;/p&gt;
+&lt;h2 id=&#34;1987-粉刷栅栏&#34;&gt;1987 粉刷栅栏&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/1989/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;题目链接&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;差分求解, 数据 1e9, 需要优化&lt;/p&gt;
+&lt;p&gt;因为只有 1e5 个区间, 最多 2e5 个区间&lt;/p&gt;
+&lt;p&gt;使用map离散化 &lt;code&gt;map&amp;lt;int, int&amp;gt; d&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;d[l] 表示区间 [l, l+1] 被标记&lt;/p&gt;
+&lt;p&gt;则标记区间 [l, r] 操作为 &lt;code&gt;d[l]++, d[r]--;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;d[r+1]&amp;ndash; 表示标记区间 [r+1, r+2], 需要标记的是 [r, r+1]&lt;/p&gt;
+&lt;p&gt;也可看作一维扫描线&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>使用代理的各种姿势</title>
-        <link>https://eastarpen.github.io/post/skills/proxies/</link>
+        <link>https://eastarpen.github.io/post/skills/tools/proxies/</link>
         <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/skills/proxies/</guid>
+        <guid>https://eastarpen.github.io/post/skills/tools/proxies/</guid>
         <description>&lt;h2 id=&#34;linux-命令行下使用ssr&#34;&gt;Linux 命令行下使用ssr&lt;/h2&gt;
+&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+&lt;p&gt;Linux 使用代理和 Windows 下原理基本一直 &lt;code&gt;将流量转发到某端口后由代理软件处理转发至代理服务器&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可使用 ssr + proxychain 方案&lt;/p&gt;
+&lt;p&gt;ssr 代理 socks5 流量, 因此需要通过 proxychain 将 http/https 请求转为 socks5 协议&lt;/p&gt;
 &lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://monkeywie.cn/2020/07/06/linux-global-proxy-tool-proxychain/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -98,8 +146,13 @@
     &lt;span class=&#34;s1&#34;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
     &lt;span class=&#34;s1&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;https://&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;s1&#34;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;socks5h://127.0.0.1:1080&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;s1&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;socks5h://127.0.0.1:1080&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Qv2ray/Qv2ray/issues/1393&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Python pip 连接问题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/csdn_inside/article/details/89817871&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【Python 爬虫】 requests sock5代理 SSLError:SOCKSHTTPSConnectionPool错误&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -296,10 +349,10 @@
         </item>
         <item>
         <title>站点收录</title>
-        <link>https://eastarpen.github.io/post/skills/site-collection/</link>
+        <link>https://eastarpen.github.io/post/skills/tools/site-collection/</link>
         <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/skills/site-collection/</guid>
+        <guid>https://eastarpen.github.io/post/skills/tools/site-collection/</guid>
         <description>&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wizardforcel.gitbooks.io/100-gdb-tips/content/print-consecutive-array-elements.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;gdb 使用方法&lt;/a&gt;&lt;/li&gt;
@@ -447,10 +500,10 @@
         </item>
         <item>
         <title>命令行操作 7zip (附脚本)</title>
-        <link>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</link>
+        <link>https://eastarpen.github.io/post/skills/tools/operate-7zip-in-command-line/</link>
         <pubDate>Tue, 21 Sep 2021 22:35:45 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/tools/operate-7zip-in-command-line/</guid>
+        <guid>https://eastarpen.github.io/post/skills/tools/operate-7zip-in-command-line/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;h3 id=&#34;概述&#34;&gt;概述&lt;/h3&gt;
 &lt;p&gt;用命令行操作7zip 实现批量压缩与解压缩&lt;/p&gt;
@@ -585,10 +638,10 @@
         </item>
         <item>
         <title>[blog] 使用 hugo 搭建个人博客</title>
-        <link>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</link>
+        <link>https://eastarpen.github.io/post/skills/tools/build-blog-with-hugo/</link>
         <pubDate>Sat, 18 Sep 2021 18:28:57 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</guid>
+        <guid>https://eastarpen.github.io/post/skills/tools/build-blog-with-hugo/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;h3 id=&#34;概述&#34;&gt;概述&lt;/h3&gt;
 &lt;ol&gt;
@@ -871,10 +924,10 @@ hugo server -D
         </item>
         <item>
         <title>[python] 多线程爬取海贼王漫画版</title>
-        <link>https://eastarpen.github.io/post/python/one-piece-colored-spider/</link>
+        <link>https://eastarpen.github.io/post/skills/python/one-piece-colored-spider/</link>
         <pubDate>Sat, 18 Sep 2021 18:15:47 +0000</pubDate>
         
-        <guid>https://eastarpen.github.io/post/python/one-piece-colored-spider/</guid>
+        <guid>https://eastarpen.github.io/post/skills/python/one-piece-colored-spider/</guid>
         <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
 &lt;p&gt;利用python爬取&lt;a class=&#34;link&#34; href=&#34;https://ww8.readonepiece.com/manga/one-piece-digital-colored-comics/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;海贼王漫画彩色版&lt;/a&gt;&lt;/p&gt;

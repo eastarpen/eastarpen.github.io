@@ -9,11 +9,15 @@
     <lastBuildDate>Tue, 08 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用代理的各种姿势</title>
-      <link>https://eastarpen.github.io/post/skills/proxies/</link>
+      <link>https://eastarpen.github.io/post/skills/tools/proxies/</link>
       <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://eastarpen.github.io/post/skills/proxies/</guid>
-      <description>Linux 命令行下使用ssr 参考  linux下的全局代理工具proxychain Linux_ssr_script Linux终端设置代理 Linux下好用的4款ss/ssr客户端 linux下设置git代理访问.  python 使用代理 proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; + address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; + address } Python pip 连接问题</description>
+      <guid>https://eastarpen.github.io/post/skills/tools/proxies/</guid>
+      <description>Linux 命令行下使用ssr 简介 Linux 使用代理和 Windows 下原理基本一直 将流量转发到某端口后由代理软件处理转发至代理服务器
+可使用 ssr + proxychain 方案
+ssr 代理 socks5 流量, 因此需要通过 proxychain 将 http/https 请求转为 socks5 协议
+参考  linux下的全局代理工具proxychain Linux_ssr_script Linux终端设置代理 Linux下好用的4款ss/ssr客户端 linux下设置git代理访问.  python 使用代理 proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;http://&amp;#39; + address } proxies = { &amp;#39;http&amp;#39;: &amp;#39;http://&amp;#39; + address, &amp;#39;https&amp;#39;: &amp;#39;https://&amp;#39; + address } &amp;#39;http&amp;#39;: &amp;#39;socks5h://127.0.0.1:1080&amp;#39; &amp;#39;https&amp;#39;: &amp;#39;socks5h://127.0.0.1:1080&amp;#39; Python pip 连接问题
+【Python 爬虫】 requests sock5代理 SSLError:SOCKSHTTPSConnectionPool错误</description>
     </item>
     
   </channel>

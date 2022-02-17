@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 18 Sep 2021 18:28:57 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[blog] 使用 hugo 搭建个人博客</title>
-      <link>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</link>
+      <link>https://eastarpen.github.io/post/skills/tools/build-blog-with-hugo/</link>
       <pubDate>Sat, 18 Sep 2021 18:28:57 +0000</pubDate>
       
-      <guid>https://eastarpen.github.io/post/skills/build-blog-with-hugo/</guid>
+      <guid>https://eastarpen.github.io/post/skills/tools/build-blog-with-hugo/</guid>
       <description>前言 概述   零成本，使用 hugo 搭建个人网站并部署在 GitHub Page 上。
   附脚本
   本文不能让你对 hugo 有全面的认知，由此需求请自行搜索教程或阅读官方文档
