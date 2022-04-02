@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Spring 1. 简介 1.1 什么是 Spring  Spring 是一个开源的免费框架(容器) Spring 是轻量级的, 非入侵式的框架 特点: 控制反转(IOC), 面向切面编程(AOP) 支持事务的处理, 对框架整合的支持  1.2 Spring 历史  2002 首次推出 Spring 框架的雏形: interface21 框架 2004 正式推出 Spring 1.0 Spring 理念: 使现有的技术更加容易使用 Spring 目的: 解决企业开发复杂性问题 SSM: SpringMvc, Spring, Mybats  1.3. 相关文档/项目  官网 下载地址 github  1.4 包   5.2.0 maven
+&amp;lt;!-- 这个包会自动导入其他包 --&amp;gt; &amp;lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.'><title></title>
+
+<link rel='canonical' href='https://eastarpen.github.io/post/skills/java/spring_kuangshen/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content=''>
+<meta property='og:description' content='Spring 1. 简介 1.1 什么是 Spring  Spring 是一个开源的免费框架(容器) Spring 是轻量级的, 非入侵式的框架 特点: 控制反转(IOC), 面向切面编程(AOP) 支持事务的处理, 对框架整合的支持  1.2 Spring 历史  2002 首次推出 Spring 框架的雏形: interface21 框架 2004 正式推出 Spring 1.0 Spring 理念: 使现有的技术更加容易使用 Spring 目的: 解决企业开发复杂性问题 SSM: SpringMvc, Spring, Mybats  1.3. 相关文档/项目  官网 下载地址 github  1.4 包   5.2.0 maven
+&amp;lt;!-- 这个包会自动导入其他包 --&amp;gt; &amp;lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.'>
+<meta property='og:url' content='https://eastarpen.github.io/post/skills/java/spring_kuangshen/'>
+<meta property='og:site_name' content='Eastarpen の Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' />
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="Spring 1. 简介 1.1 什么是 Spring  Spring 是一个开源的免费框架(容器) Spring 是轻量级的, 非入侵式的框架 特点: 控制反转(IOC), 面向切面编程(AOP) 支持事务的处理, 对框架整合的支持  1.2 Spring 历史  2002 首次推出 Spring 框架的雏形: interface21 框架 2004 正式推出 Spring 1.0 Spring 理念: 使现有的技术更加容易使用 Spring 目的: 解决企业开发复杂性问题 SSM: SpringMvc, Spring, Mybats  1.3. 相关文档/项目  官网 下载地址 github  1.4 包   5.2.0 maven
+&amp;lt;!-- 这个包会自动导入其他包 --&amp;gt; &amp;lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.">
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://eastarpen.github.io/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/skills/java/spring_kuangshen/"></a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h1 id="spring">Spring</h1>
+<h2 id="1-简介">1. 简介</h2>
+<h3 id="11-什么是-spring">1.1 什么是 Spring</h3>
+<ul>
+<li>Spring 是一个开源的免费框架(容器)</li>
+<li>Spring 是轻量级的, 非入侵式的框架</li>
+<li>特点: 控制反转(IOC), 面向切面编程(AOP)</li>
+<li>支持事务的处理, 对框架整合的支持</li>
+</ul>
+<h3 id="12-spring-历史">1.2 Spring 历史</h3>
+<ul>
+<li>2002 首次推出 Spring 框架的雏形: interface21 框架</li>
+<li>2004 正式推出 Spring 1.0</li>
+<li>Spring 理念: 使现有的技术更加容易使用</li>
+<li>Spring 目的: 解决企业开发复杂性问题</li>
+<li>SSM: SpringMvc, Spring, Mybats</li>
+</ul>
+<h3 id="13-相关文档项目">1.3. 相关文档/项目</h3>
+<ul>
+<li><a class="link" href="https://spring.io/projects/spring-framework#overview"  target="_blank" rel="noopener"
+    >官网</a></li>
+<li><a class="link" href="https://repo.spring.io/ui/native/release/org/springframework/spring"  target="_blank" rel="noopener"
+    >下载地址</a></li>
+<li><a class="link" href="https://github.com/spring-projects/spring-framework"  target="_blank" rel="noopener"
+    >github</a></li>
+</ul>
+<h3 id="14-包">1.4 包</h3>
+<ul>
+<li>
+<p>5.2.0 maven</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 这个包会自动导入其他包 --&gt;</span>
+<span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-webmvc<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.2.0.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.2.0.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="15-扩展">1.5 扩展</h3>
+<p><strong>Spring Boot 构建一切, Spring Cloud 协调一切, Spring Cloud 连接一切</strong></p>
+<ul>
+<li>
+<p>Spring Boot</p>
+<ul>
+<li>一个快速开发的脚手架</li>
+<li>基于 SpringBoot可以快速开发单个微服务</li>
+<li>约定大于配置!</li>
+<li>学习 SpringBoot 要完全掌握 Spring 以及 SpringMVC</li>
+</ul>
+</li>
+<li>
+<p>Spring Cloud</p>
+<ul>
+<li>Spring Cloud 是基于 SpringBoot 实现的</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-ioc-理论指导">2. IOC 理论指导</h2>
+<h3 id="21-ioc-体会">2.1 IOC 体会</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">QueryServiceImpl</span> <span class="kd">implements</span> <span class="n">QueryService</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">QueryDao</span> <span class="n">queryDao</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryMysqlDao</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">query</span><span class="o">(){</span>
+        <span class="n">queryDao</span><span class="o">.</span><span class="na">query</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>上面的代码 service 层调用了 dao 层, 而 dao 层接口是固定的 QueryMysqlDao(在程序员编写代码时就写死)</p>
+<p>如果 service 需求发生变更, 只能更改 QueryServiceImpl 或添加一个类</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">QueryServiceImpl</span> <span class="kd">implements</span> <span class="n">QueryService</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">QueryDao</span> <span class="n">queryDao</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">query</span><span class="o">(){</span>
+        <span class="n">queryDao</span><span class="o">.</span><span class="na">query</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setQueryDao</span><span class="o">(</span><span class="n">QueryDao</span> <span class="n">queryDao</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">queryDao</span> <span class="o">=</span> <span class="n">queryDao</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>上面的代码 queryDao 没有写死, 接口控制权在调用者手中 QueryDao 仅限制了接口</p>
+<p>两段代码发生了 QueryServiceImpl 对 queryDao 的权限发生了变化, 从原来的主动实例化对象变为被动的接受对象, 这就是控制反转, 这就是 IOC 思想。</p>
+<h2 id="3-hellospring">3. HelloSpring</h2>
+<p><strong>对象由 Spring 创建，管理，装配</strong></p>
+<ol>
+<li>
+<p>创建实体类</p>
+</li>
+<li>
+<p>在 resources 目录下创建 <code>beans.xml</code> 文件</p>
+<p>这是 Spring 的配置文件, 可以认知命名, 需要加上 Spring 约束</p>
+</li>
+<li>
+<p>写入Spring 约束</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&#34;
+</span><span class="s">        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- bean definitions here --&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></li>
+<li>
+<p>通过 <code>bean</code> 标签添加实例</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 通过 Spring 管理对象
+</span><span class="c">     类型为 com.eastarpen.Hello, 名称为 hello
+</span><span class="c">     设置对象属性 &#34;str&#34; 值为 &#34;Spring&#34;
+</span><span class="c">     str 必须有对应的 set 方法
+</span><span class="c"> --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;str&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- value 是具体赋值
+</span><span class="c">         ref   引用 Spring 中创建好的对象
+</span><span class="c">     --&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div></li>
+<li>
+<p>通过 <code>ClassPathXmlApplicationContext</code> 调用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 获取 Spring 上下文对象
+</span><span class="c1"></span><span class="n">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;beans.xml&#34;</span><span class="o">);</span>
+<span class="c1">// 对象通过 Spring 管理, 如果需要使用, 直接通过 getBean取出
+</span><span class="c1"></span><span class="n">Hello</span> <span class="n">hello</span> <span class="o">=</span> <span class="o">(</span><span class="n">Hello</span><span class="o">)</span><span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">);</span>
+
+<span class="c1">// Hello hello = context.getBean(&#34;hello&#34;, Hello.Class);
+</span></code></pre></div></li>
+<li>
+<p>beans.xml 被加载后所有对象都会被实例化</p>
+</li>
+</ol>
+<h2 id="4-ioc-创建对象的方式">4. IOC 创建对象的方式</h2>
+<p>TODO 自己编写调试探究构造过程</p>
+<ol>
+<li>
+<p>默认使用无参构造创建对象</p>
+</li>
+<li>
+<p>手动设置有参构造器</p>
+<ul>
+<li>
+<p>下标赋值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;constructor-arg</span> <span class="na">index=</span><span class="s">&#34;0&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div></li>
+<li>
+<p>类型赋值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;constructor-arg</span> <span class="na">type=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div><p>不建议使用, 若多个同类型参数, 较麻烦</p>
+</li>
+<li>
+<p>通过参数名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;constructor-arg</span> <span class="na">name=</span><span class="s">&#34;str&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h2 id="5-spring-配置">5. Spring 配置</h2>
+<h3 id="51-别名">5.1 别名</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;str&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="nt">&lt;alias</span> <span class="na">name=</span><span class="s">&#34;hello&#34;</span> <span class="na">value=</span><span class="s">&#34;helloAlias&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></div><p>hello 对象可以通过 &ldquo;hello&rdquo; 或 &ldquo;helloAlias&rdquo; 获取</p>
+<h3 id="52-bean-的配置">5.2 Bean 的配置</h3>
+<ul>
+<li>
+<p><code>id</code> bean 的唯一标识符</p>
+</li>
+<li>
+<p><code>class</code> bean 对象 所有的对应的全限命名(包名+类名)</p>
+</li>
+<li>
+<p><code>name</code> 也是别名, 且可以有多个 <strong>如需别名建议使用</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span> <span class="na">name=</span><span class="s">&#34;hello1, hello2&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="52-import">5.2 import</h3>
+<p>一般用户团队开发, 可以将多个 配置文件 合并为一个</p>
+<p>一般将多个 <code>beans.xml</code> 导入到 <code>applicatinoContext.xml</code> 中, 最后直接调用 <code>applicationContext.xml</code> 即可</p>
+<h2 id="6-di-依赖注入">6. DI 依赖注入</h2>
+<h3 id="61-构造器注入">6.1 构造器注入</h3>
+<p>就是调用构造方法</p>
+<h3 id="62-set-方式注入">6.2 Set 方式注入</h3>
+<p><strong>前言</strong></p>
+<ul>
+<li>依赖注入一般指 Set 注入</li>
+<li>依赖: bean 对象的创建依赖于容器</li>
+<li>注入: bean 对象中的所有属性, 由容器来注入</li>
+</ul>
+<p><strong>注入方式</strong></p>
+<ol>
+<li>
+<p>普通值注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;str&#34;</span> <span class="na">value=</span><span class="s">&#34;hello&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div><p>设置 String 类型的属性 &ldquo;str&rdquo; 值为 &ldquo;hello&rdquo;</p>
+</li>
+<li>
+<p>bean 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;test&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Test&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;hello&#34;</span> <span class="na">ref=</span><span class="s">&#34;hello&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div><p>设置 test 的 name 属性为预先创建的 id 为 hello 的 bean</p>
+</li>
+<li>
+<p>数组注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;books&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;value&gt;</span>红楼梦<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value&gt;</span>西游记<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/array&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div><p>设值对象属性 <code>String[] name</code> 值为 <code>[&quot;红楼梦&quot;, &quot;西游记&quot;]</code></p>
+</li>
+<li>
+<p>list 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;books&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;list&gt;</span>
+        <span class="nt">&lt;value&gt;</span>红楼梦<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value&gt;</span>西游记<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/list&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div><p>设值对象属性 <code>List&lt;String&gt; name</code> 值为 <code>[&quot;红楼梦&quot;, &quot;西游记&quot;]</code></p>
+</li>
+<li>
+<p>map 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cards&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;map&gt;</span>
+        <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&#34;card-1&#34;</span> <span class="na">value=</span><span class="s">&#34;value-1&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&#34;card-2&#34;</span> <span class="na">value=</span><span class="s">&#34;value-2&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/map&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div><p>设值对象属性 <code>map&lt;String, String&gt; cards</code> 值</p>
+</li>
+<li>
+<p>set 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;games&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;set&gt;</span>
+        <span class="nt">&lt;value&gt;</span>LOL<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value&gt;</span>COC<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/set&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div></li>
+<li>
+<p>null 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;test&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;null</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div></li>
+<li>
+<p>properties 注入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;info&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;props&gt;</span>
+        <span class="nt">&lt;prop</span> <span class="na">key=</span><span class="s">&#34;name&#34;</span><span class="nt">&gt;</span>name-01<span class="nt">&lt;/prop&gt;</span>
+    <span class="nt">&lt;/props&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div><p>Properties 对象</p>
+</li>
+</ol>
+<h3 id="63-扩展注入">6.3 扩展注入</h3>
+<ul>
+<li>
+<p>c 命名空间注入 <a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-c-namespace"  target="_blank" rel="noopener"
+    >官网</a></p>
+<p>xml 约束 <code> xmlns:c=&quot;http://www.springframework.org/schema/c&quot;</code></p>
+<p>依靠构造器</p>
+</li>
+<li>
+<p>p 命名空间注入 <a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-p-namespace"  target="_blank" rel="noopener"
+    >官网</a></p>
+<p>xml 约束 <code>xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</code></p>
+<p>依靠 setter</p>
+</li>
+</ul>
+<h2 id="7-bean-作用域">7. bean 作用域</h2>
+<h3 id="71-简介">7.1 简介</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Scope</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-singleton"  target="_blank" rel="noopener"
+    >singleton</a></td>
+<td style="text-align:left">(Default) Scopes a single bean definition to a single object instance for each Spring IoC container.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-prototype"  target="_blank" rel="noopener"
+    >prototype</a></td>
+<td style="text-align:left">Scopes a single bean definition to any number of object instances.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-request"  target="_blank" rel="noopener"
+    >request</a></td>
+<td style="text-align:left">Scopes a single bean definition to the lifecycle of a single HTTP request. That is, each HTTP request has its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring <code>ApplicationContext</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-session"  target="_blank" rel="noopener"
+    >session</a></td>
+<td style="text-align:left">Scopes a single bean definition to the lifecycle of an HTTP <code>Session</code>. Only valid in the context of a web-aware Spring <code>ApplicationContext</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-application"  target="_blank" rel="noopener"
+    >application</a></td>
+<td style="text-align:left">Scopes a single bean definition to the lifecycle of a <code>ServletContext</code>. Only valid in the context of a web-aware Spring <code>ApplicationContext</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/web.html#websocket-stomp-websocket-scope"  target="_blank" rel="noopener"
+    >websocket</a></td>
+<td style="text-align:left">Scopes a single bean definition to the lifecycle of a <code>WebSocket</code>. Only valid in the context of a web-aware Spring <code>ApplicationContext</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-解释">7.2 解释</h3>
+<ol>
+<li>
+<p><code>singleton</code> 默认的作用域, 即单例模式</p>
+</li>
+<li>
+<p><code>prototype</code> 每次从容器中get 的时候都会产生一个新对象</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;accountService&#34;</span> <span class="na">class=</span><span class="s">&#34;com.something.DefaultAccountService&#34;</span> <span class="na">scope=</span><span class="s">&#34;prototype&#34;</span><span class="nt">/&gt;</span>
+</code></pre></div></li>
+<li>
+<p><code>request, seesion, application</code> 在 web 开发中使用</p>
+</li>
+</ol>
+<h2 id="8-bean-的自动装配">8. bean 的自动装配</h2>
+<p>自动装配是Spring满足bean以来的一种方式</p>
+<p>Spring会在上下文自动寻找, 并自动给bean装配属性</p>
+<h3 id="81-bean-autowired--属性自动装配">8.1 bean autowired  属性自动装配</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;hello&#34;</span> <span class="na">class=</span><span class="s">&#34;com.eastarpen.Hello&#34;</span> <span class="na">autowired=</span><span class="s">&#34;byName&#34;</span><span class="nt">/&gt;</span>
+</code></pre></div><ul>
+<li>
+<p>byName 需要待注入的 bean id 和需要自动注入的属性的set方法一致</p>
+<p>如 <code>autowired=&quot;byName&quot;</code> Class Hello 中含有方法 <code>setDog</code> 则 bean <code>dog</code> 能被注入, <code>dog-01</code> 不能</p>
+</li>
+<li>
+<p>byType 需要待注入的 bean 的 Class 唯一并且和需要自动注入的属性类型一致</p>
+<p>如 <code>autowired=&quot;byType&quot;</code> Class Hello 含有属性 <code>Dog dog;</code> 若容器中只有一个 <code>&lt;bean class=&quot;com.eastarpen.Dog&quot;</code> 则 该 bean 可以被装配, 否则不行</p>
+</li>
+</ul>
+<h3 id="82-annotation-自动装配">8.2 Annotation 自动装配</h3>
+<p>jdk 1.5 支持注解, Spring 2.5 支持注解</p>
+<p>Spring 4 之后使用注解开发需要导入 <code>aop</code></p>
+<p><strong>开启注解支持</strong></p>
+<ul>
+<li>
+<p>导入 contex 约束</p>
+</li>
+<li>
+<p>配置注解支持</p>
+</li>
+<li>
+<p>模板</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+    <span class="na">xmlns:context=</span><span class="s">&#34;http://www.springframework.org/schema/context&#34;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans
+</span><span class="s">        https://www.springframework.org/schema/beans/spring-beans.xsd
+</span><span class="s">        http://www.springframework.org/schema/context
+</span><span class="s">        https://www.springframework.org/schema/context/spring-context.xsd&#34;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;context:annotation-config/&gt;</span>
+
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></li>
+</ul>
+<p><strong>使用</strong></p>
+<p>对需要自动装配的属性上加上 <code>@Autowired</code> 注解 (由于注解采用反射实现, 甚至不需要 setter)</p>
+<p>注意被自动装配的 bean 的id应和被装配的属性名相同, 或属性通过 <code>@Qualifier()</code> 注解</p>
+<p>Autowired 先 byType 再 byName</p>
+<p><strong>补充</strong></p>
+<p>javax 的 <code>@Resource</code> 也可以实现自动装配, 默认 byName, 找不到 byType, 还可以设置 <code>name</code></p>
+<h3 id="83-spring-注解概述">8.3 Spring 注解概述</h3>
+<ol start="0">
+<li>
+<p>xml 准备</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Spring 约束省略 --&gt;</span>
+
+<span class="c">&lt;!-- 指定要扫描的包, 包下的注解就会生效 --&gt;</span>
+<span class="nt">&lt;context:component-scan</span> <span class="na">bas-package=</span><span class="s">&#34;com.eastarpen.package&#34;</span><span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- TODO 不准确 --&gt;</span>
+<span class="c">&lt;!-- 注解驱动 --&gt;</span>
+<span class="nt">&lt;context:</span> <span class="err">config</span> <span class="nt">/&gt;</span>
+</code></pre></div></li>
+<li>
+<p>bean</p>
+<p>在需要纳入 Spring 容器管理的实体类上加上注解 <code>@Component</code></p>
+<p>相当于 <code>&lt;bean id=&quot;&quot; class=&quot;&quot; /&gt;</code></p>
+</li>
+<li>
+<p>属性注入</p>
+<p>在属性或对应的setter上添加注解 <code>@Value(&quot;value&quot;)</code>, 相当于 <code>&lt;property name=&quot;&quot; value=&quot;&quot;&gt;</code></p>
+</li>
+<li>
+<p>衍生注解</p>
+<p>component 的衍生注解, 功能和 component 一致</p>
+<ul>
+<li>dao         <code>@Repository</code></li>
+<li>service     <code>@Service</code></li>
+<li>controller  <code>@Controller</code></li>
+</ul>
+</li>
+<li>
+<p>自动装配</p>
+<p>Resource 和 Autowired</p>
+</li>
+<li>
+<p>作用域</p>
+<p>在实体类上加上 <code>@Scope(&quot;scope&quot;)</code> 设置 bean 的作用域</p>
+</li>
+</ol>
+<p><strong>tip</strong></p>
+<ul>
+<li>使用 xml 配置适用性强, 维护简单</li>
+<li>注解 使用便捷, 维护复杂</li>
+<li>推荐 xml 用来管理 bean, 注解注入属性</li>
+</ul>
+<h2 id="9-使用-java-配置">9. 使用 java 配置</h2>
+<p>JavaConfig 原是 Spring 的一个子项目, Spring 4 之后成为核心功能</p>
+<p>TODO 自行测试各类注解</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">User</span> <span class="nf">getUser</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">User</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>MyConfig 类相当于 <code>beans.xml</code></li>
+<li>加了 <code>@Bean</code> 注解的方法就是 <code>bean</code> 标签</li>
+<li>方法名就是 bean id, 返回类型就是 bean class</li>
+</ul>
+<p>调用方式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="kd">static</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationApplicationContext</span><span class="o">(</span><span class="n">MyConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><h2 id="10-aop">10. AOP</h2>
+<h3 id="101-前言">10.1 前言</h3>
+<p>代理模式就是 SpringAop 的底层</p>
+<p><strong>代理模式</strong></p>
+<p>TODO 跟着狂神做 p17-19</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+</ul>
+<h3 id="102-静态代理">10.2 静态代理</h3>
+<p><strong>角色分析</strong></p>
+<ul>
+<li>抽象角色: 用抽象类或接口实现</li>
+<li>真实角色: 被代理的角色</li>
+<li>代理角色: 代理真实角色, 一般会实现一些附属操作</li>
+<li>客户    : 访问代理对象的人</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>真实角色的操作更加纯粹, 不需要去关注公共业务</li>
+<li>公共业务由代理角色完成, 实现业务的分工</li>
+<li>公共业务发生扩展的时候, 方便集中管理</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>需要增添代理角色的代码</li>
+</ul>
+<h3 id="103-动态代理">10.3 动态代理</h3>
+<p><strong>动态代理底层是反射, 代理类是动态生成的</strong></p>
+<p>动态代理两大类: 基于接口, 基于类</p>
+<blockquote>
+<p>TIP 了解动态代理原理关键字<br>
+基于接口 JDK 动态代理<br>
+基于类   cglib<br>
+Java字节码 javasist</p>
+</blockquote>
+<p><strong>InvocationHandler</strong></p>
+<p>InvocationHandler 是由代理实例调用的</p>
+<blockquote>
+<p>public interface InvocationHandler</p>
+<p>InvocationHandler is the interface implemented by the invocation handler of a proxy instance.<br>
+Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the invoke method of its invocation handler.</p>
+</blockquote>
+<p><strong>Proxy</strong></p>
+<blockquote>
+<p>Proxy provides static methods for creating objects that act like instances of interfaces but allow for customized method invocation.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span> <span class="nf">newProxyInstance</span><span class="o">(</span><span class="n">ClassLoader</span> <span class="n">loader</span><span class="o">,</span>  
+                                      <span class="n">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">interfaces</span><span class="o">,</span>  
+                                      <span class="n">InvocationHandler</span> <span class="n">h</span><span class="o">)</span>  
+</code></pre></div><p><strong>模板及调用示例</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProxyInvocationHandler</span> <span class="kd">implements</span> <span class="n">InvocationHandler</span> <span class="o">{</span>
+
+    <span class="c1">// 被代理的接口
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Object</span> <span class="n">target</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTarget</span><span class="o">(</span><span class="n">Object</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 生成代理类
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getProxy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span>  <span class="n">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getClassLoader</span><span class="o">(),</span>
+                                       <span class="n">target</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getInterfaces</span><span class="o">(),</span>
+                                       <span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 处理代理实例并返回结果
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">target</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 额外功能的方法, 记得加入到 invoke
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div><p>实例</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 需要代理的真实角色
+</span><span class="c1"></span>    <span class="n">UserService</span> <span class="n">userService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserServiceImpl</span><span class="o">();</span>
+
+    <span class="n">ProxyInvocationHandler</span> <span class="n">pih</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProxyInvocationHandler</span><span class="o">();</span>
+    <span class="n">pih</span><span class="o">.</span><span class="na">setTarget</span><span class="o">(</span><span class="n">userService</span><span class="o">);</span>
+
+    <span class="c1">// 动态生成代理对象
+</span><span class="c1"></span>    <span class="n">UserService</span> <span class="n">proxy</span> <span class="o">=</span> <span class="o">(</span><span class="n">UserService</span><span class="o">)</span> <span class="n">pih</span><span class="o">.</span><span class="na">getProxy</span><span class="o">();</span>
+
+    <span class="c1">// 代理对象调用真实角色方法
+</span><span class="c1"></span>    <span class="n">proxy</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div><p><strong>优点</strong></p>
+<ol>
+<li>一个动态代理类代理一个接口(即可代理实现该接口的所有类), 一般就是对应一个业务</li>
+</ol>
+<h3 id="104-使用-spring实现-aop">10.4 使用 Spring实现 AOP</h3>
+<p><strong>导包</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.aspectj<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>aspectjweaver<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.9.6<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div><p><strong>Aop在Spring中的作用</strong></p>
+<p>提供声明式事务, 允许用户自定义切面</p>
+<p><strong>相关名词</strong></p>
+<ul>
+<li>
+<p>横切关注点: 跨越应用程序多个模块的方法或功能。即, 与业务逻辑无关的, 但需要关注的部分，例如日志，安全，缓存，事务等</p>
+</li>
+<li>
+<p>切面(Aspect) 横切关注点被模块化的特殊对象(一个类)</p>
+</li>
+<li>
+<p>通知(Advice) 切面必须要完成的一个工作, 类中的一个方法</p>
+</li>
+<li>
+<p>目标(Target) 被通知对象</p>
+</li>
+<li>
+<p>代理(Proxy) 向目标对象应用通知后创建的对象</p>
+</li>
+<li>
+<p>切入点(PointCut) 切面通知执行的地点的定义</p>
+</li>
+<li>
+<p>连接点(JointPoint) 与切入点匹配的执行点</p>
+</li>
+</ul>
+<p><strong>方式一  使用 Spring 接口</strong></p>
+<ol>
+<li>
+<p>业务逻辑接口和实现类</p>
+</li>
+<li>
+<p>实现 Spring 提供的 Aop 接口 <code>AfterReturningAdvice, MethodoBeforeAdvicd</code> 等</p>
+</li>
+<li>
+<p>Spring 注册bean</p>
+</li>
+<li>
+<p>Spring 配置 aop(注意导入 aop 约束)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;aop:config&gt;</span>
+    <span class="c">&lt;!-- aop:pointcut 切入点标签
+</span><span class="c">         id           唯一标识
+</span><span class="c">         expression   要执行的位置
+</span><span class="c">         TODO 了解 execution
+</span><span class="c">         execution(* *.*(..)) (返回类型 全限定类名.方法(参数)) .. 表示任意参数, 通过它识别需要执行的类与方法  
+</span><span class="c">     --&gt;</span>
+    <span class="nt">&lt;aop:pointcut</span> <span class="na">id=</span><span class="s">&#34;pointcut&#34;</span> <span class="na">expression=</span><span class="s">&#34;execution(* *(..))&#34;</span> <span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- 执行环绕增加 --&gt;</span>
+    <span class="nt">&lt;aop:advisor</span> <span class="na">advice-ref=</span><span class="s">&#34;bean&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;pointcut&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/ aop:config&gt;</span>
+</code></pre></div></li>
+</ol>
+<p><strong>方式二  自定义类</strong></p>
+<ol>
+<li>
+<p>自定义切面类</p>
+</li>
+<li>
+<p>注册 bean</p>
+</li>
+<li>
+<p>配置 aop</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;aspect&#34;</span> <span class="na">class=</span><span class="s">&#34;&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;aop:config&gt;</span>
+    <span class="c">&lt;!-- 切面 --&gt;</span>
+    <span class="nt">&lt;aop:aspect</span> <span class="na">ref=</span><span class="s">&#34;aspect&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;aop:pointcut</span> <span class="na">id=</span><span class="s">&#34;pointcut&#34;</span> <span class="na">expression=</span><span class="s">&#34;execution(* *(..))&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;aop:advisor</span> <span class="na">advice-ref=</span><span class="s">&#34;bean&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;pointcut&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;aop:before</span> <span class="na">method=</span><span class="s">&#34;before&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;pointcut&#34;</span> <span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- method=&#34;before&#34; &#34;&#34;中是切面类的方法 --&gt;</span>
+    <span class="nt">&lt;/aop:aspect&gt;</span>
+<span class="nt">&lt;/ aop:config&gt;</span>
+</code></pre></div></li>
+</ol>
+<p><strong>方式三 使用注解</strong></p>
+<p>TODO 跟着狂神做 p22</p>
+<ol>
+<li>
+<p>自定义只用注解修饰的切面类</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Aspect</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAspect</span> <span class="o">{</span>
+
+    <span class="c1">// 注意要导入 Spring 的 Before 注解
+</span><span class="c1"></span>    <span class="nd">@Before</span><span class="o">(</span><span class="s">&#34;execution()&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){}</span>
+<span class="o">}</span>
+
+</code></pre></div></li>
+<li>
+<p>注册 bean</p>
+</li>
+<li>
+<p>开启注解支持</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;aop:aspectj-autoproxy/&gt;</span>
+</code></pre></div></li>
+</ol>
+<h2 id="11-spring-中的-mybatis">11. Spring 中的 Mybatis</h2>
+<p><a class="link" href="http://mybatis.org/spring/zh/index.html"  target="_blank" rel="noopener"
+    >mybatis-spring doc</a></p>
+<p>需要添加 <code>spring-jdbc, Mybatis-Spring</code></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Eastarpen の Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-简介">1. 简介</a>
+      <ol>
+        <li><a href="#11-什么是-spring">1.1 什么是 Spring</a></li>
+        <li><a href="#12-spring-历史">1.2 Spring 历史</a></li>
+        <li><a href="#13-相关文档项目">1.3. 相关文档/项目</a></li>
+        <li><a href="#14-包">1.4 包</a></li>
+        <li><a href="#15-扩展">1.5 扩展</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-ioc-理论指导">2. IOC 理论指导</a>
+      <ol>
+        <li><a href="#21-ioc-体会">2.1 IOC 体会</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-hellospring">3. HelloSpring</a></li>
+    <li><a href="#4-ioc-创建对象的方式">4. IOC 创建对象的方式</a></li>
+    <li><a href="#5-spring-配置">5. Spring 配置</a>
+      <ol>
+        <li><a href="#51-别名">5.1 别名</a></li>
+        <li><a href="#52-bean-的配置">5.2 Bean 的配置</a></li>
+        <li><a href="#52-import">5.2 import</a></li>
+      </ol>
+    </li>
+    <li><a href="#6-di-依赖注入">6. DI 依赖注入</a>
+      <ol>
+        <li><a href="#61-构造器注入">6.1 构造器注入</a></li>
+        <li><a href="#62-set-方式注入">6.2 Set 方式注入</a></li>
+        <li><a href="#63-扩展注入">6.3 扩展注入</a></li>
+      </ol>
+    </li>
+    <li><a href="#7-bean-作用域">7. bean 作用域</a>
+      <ol>
+        <li><a href="#71-简介">7.1 简介</a></li>
+        <li><a href="#72-解释">7.2 解释</a></li>
+      </ol>
+    </li>
+    <li><a href="#8-bean-的自动装配">8. bean 的自动装配</a>
+      <ol>
+        <li><a href="#81-bean-autowired--属性自动装配">8.1 bean autowired  属性自动装配</a></li>
+        <li><a href="#82-annotation-自动装配">8.2 Annotation 自动装配</a></li>
+        <li><a href="#83-spring-注解概述">8.3 Spring 注解概述</a></li>
+      </ol>
+    </li>
+    <li><a href="#9-使用-java-配置">9. 使用 java 配置</a></li>
+    <li><a href="#10-aop">10. AOP</a>
+      <ol>
+        <li><a href="#101-前言">10.1 前言</a></li>
+        <li><a href="#102-静态代理">10.2 静态代理</a></li>
+        <li><a href="#103-动态代理">10.3 动态代理</a></li>
+        <li><a href="#104-使用-spring实现-aop">10.4 使用 Spring实现 AOP</a></li>
+      </ol>
+    </li>
+    <li><a href="#11-spring-中的-mybatis">11. Spring 中的 Mybatis</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

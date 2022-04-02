@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Eastarpen の Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Mar 2022 14:36:03 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>idea-personalized</title>
+      <link>https://eastarpen.github.io/post/skills/java/idea-personalized/</link>
+      <pubDate>Thu, 31 Mar 2022 14:36:03 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/idea-personalized/</guid>
+      <description>参考  代码生成利器：IDEA 强大的 Live Templates  </description>
+    </item>
+    
     <item>
       <title>各类算法细节</title>
       <link>https://eastarpen.github.io/post/algorithm/algorithm-tips/</link>
@@ -186,6 +195,121 @@ res = BeautifulSoup(html, &amp;#34;lxml&amp;#34;).find(attrs={&amp;#34;class&amp
 ls = [] for img in res.find_all(name=&amp;#34;img&amp;#34;): url = img.attrs[&amp;#34;src&amp;#34;] if check.search(url) != None: ls.append(url) 将url父标签中所有img标签提取出来，它的&amp;quot;src&amp;quot;属性就是需要的图片url
 将所有的图片url放到列表中，返回主函数
 获取图片 def getPng(pictureName, url): if os.path.exists(pictureName): return True content = getPictureContent(url) if content == None: return False else: with open(pictureName, &amp;#34;wb&amp;#34;) as fout: fout.write(content) return True getPng(pictureName, url) 函数的两个参数分别表示当前下载图片的文件名和url，其中文件名包括路径 示例： .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/</guid>
+      <description>1. 注解 1.1 什么是注解  JDK5.0 开始引入注解 Annotation 不是程序本身, 可以对程序做出解释 Annotation 可以被其他程序(如编译器)读取  1.2 内置注解  @Override 重写方法 @Deprecated 废弃方法， 不推荐使用但可以使用 SuppressWarnings(&amp;quot;all&amp;quot;) 关闭警告  1.3 元注解 元注解负责注解其他注解
+  Target 用于描述注解的使用范围
+  Retention 表示需要在什么级别保存该注解信息, 用于描述注解的生命周期
+SOURCE &amp;lt; CLASS &amp;lt; RUNTIME
+  @Document 是否能将注解生成在 JavaDoc 中
+  @Inherited 子类是否能基础父类注解
+  1.4 定义一个注解 @Target(value = {ElementType.METHOD, ElementType.TYPE}) @Retention(value=RententionPolicy.RUNTIME) public @interface MyAnnotation{ // 参数类型为 String, 参数名称为 value  String value() default &amp;#34;&amp;#34;; }  可以通过 default 来声明参数的默认值, 如果没有默认值, 该参数必须赋值 当只有一个参数时, 赋值时可以不用写参数名直接赋值.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/bootstrap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/bootstrap/</guid>
+      <description>布局容器和栅格网格系统 布局容器  .container 类用于固定宽度并支持响应式布局的容器   ```html &amp;lt;div class = &amp;quot;container&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; ```   .container-fluid 用于 100% 宽度, 占据全部视口(viewport)
+&amp;lt;div class = &amp;#34;container-fluid&amp;#34;&amp;gt;&amp;lt;/div&amp;gt;   栅格网格系统  ```html &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; ``` 1. 将一行分为12列, 自行选择元素宽度, 总和超出12 列则换行 2. md -&amp;gt; middle 表示适配中等大小屏幕, 可替换为 xs, sm, md, lg 3. `&amp;lt;div class=&amp;quot;col-md-4 col-lg-4&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;` 将自动计算 4. `col-md-offset-4` 偏移4格, 超出12格换行 5. `col-md-push-, col-md-pull` 浮动, 会被后面元素覆盖  常用样式 标题 1.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/environment/</guid>
+      <description>1. Maven 1.1 hello maven Windows
+  download maven (apache maven download)
+  config environment variables
+ M2_HOME: maven/bin/ MAVEN_HOME: maven/ path add %MAVEN_HOME%/bin/    cofig maven
+conf/settings.xml
+  mirror
+aliyun guide
+  localRepository
+&amp;lt;localRepository&amp;gt;maven_home\repo&amp;lt;/localRepository&amp;gt; &amp;lt;!-- using full path --&amp;gt;     maven in Intellij Idea
+setting -&amp;gt; (search)maven
+  Maven home path using maven you just downloaded
+  User settings file using the config file you just wrote</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/java_advanced_frank/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/java_advanced_frank/</guid>
+      <description>0.Base API 0.0 引言 0.1 API的定义和用处 0.1 Scanner 0.2 Number 0.3 Math 0.4 Random 0.5 ThreadLocalRandom 0.6 Date 0.7 DateFormat和SimpleDateFormat 0.8 Calendar 0.9 System 1.unit test and main function 1.0 抛出企业问题，脱离main测试，模块化概念抛出 1.1 Junit单元测试的含义和用途 1.2 maven repository 获取junit.jar 1.3 使用Junit 1.4 Assert断言 1.5 更进一步，合理编写随机测试，完善代码 2.StringBuilder 2.0 String存在的问题 2.1 StringBuilder以及链式调用 3.Throwable 3.1 异常的介绍 3.2 异常举例以及解决常见错误bug方案 3.3 RuntimeException 3.4 trycatch 作用以及诱骗毕业设计 3.5 NullPointerException空指针异常 3.6 throws 3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常 3.8 手把手教你编写装逼自定义异常 4.File 4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径 4.0 引言 4.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/javaweb_kuangshen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/javaweb_kuangshen/</guid>
+      <description>1. jsp 1.1 页面引用 ```jsp &amp;lt;%-- 将两个页面合二为一--%&amp;gt; &amp;lt;%@include file=&amp;quot;common/header.jsp&amp;quot;%&amp;gt; &amp;lt;%-- 拼接页面 --%&amp;gt; &amp;lt;jsp:include page=&amp;quot;/common/header.jsp&amp;quot; /&amp;gt; ```  1.2 9大内置对象   PageContext
+  Request
+  Response
+  Session
+  Application [ServletContext]
+  config [SerlvetConfig]
+  out
+  page
+  excepetion
+  1.3 保存数据方式   pageContext.setAttribute();
+在一个页面中有效
+  request.setAttribute();
+在一次请求中有效(请求转发会携带数据)
+  session.setAttribute();
+在一次会话中有效
+  application.setAttribute();
+在服务器中有效
+  JSP标签, JSTL标签, EL表达式</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/mybaits_kuangshen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/mybaits_kuangshen/</guid>
+      <description>1. MyBatis 简介 1.1 什么是 MyBatis  MyBatis 是一款持久层框架 定制化 SQL, 存储过程以及高级映射 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集  1.2 获得 MyBatis   maven 仓库
+狂神使用 3.5.2
+  github 仓库
+  中文文档
+  1.3 持久化 数据持久化
+ 持久化就是将程序的数据在持久状态和瞬时状态转化的过程 数据库, io 文件持久化  为什么要持久化
+ 内存断电即失, 某些对象不能丢失  1.4 持久层  完成持久化工作的代码块 层界限十分明显  1.5 优势  帮助将数据存入数据库 方便 简化, 自动化 sql 和代码分离  2. Hello MyBatis 2.1 搭建环境   搭建数据库</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/spring_kuangshen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/spring_kuangshen/</guid>
+      <description>Spring 1. 简介 1.1 什么是 Spring  Spring 是一个开源的免费框架(容器) Spring 是轻量级的, 非入侵式的框架 特点: 控制反转(IOC), 面向切面编程(AOP) 支持事务的处理, 对框架整合的支持  1.2 Spring 历史  2002 首次推出 Spring 框架的雏形: interface21 框架 2004 正式推出 Spring 1.0 Spring 理念: 使现有的技术更加容易使用 Spring 目的: 解决企业开发复杂性问题 SSM: SpringMvc, Spring, Mybats  1.3. 相关文档/项目  官网 下载地址 github  1.4 包   5.2.0 maven
+&amp;lt;!-- 这个包会自动导入其他包 --&amp;gt; &amp;lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://eastarpen.github.io/post/skills/java/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eastarpen.github.io/post/skills/java/troubleshooting/</guid>
+      <description>1. servlet   resp encoding
+resp.setCharacterEncoding(&amp;#34;utf-8&amp;#34;); resp.setHeader(&amp;#34;content-type&amp;#34;,&amp;#34;text/html;charset=UTF-8&amp;#34;);   </description>
     </item>
     
   </channel>

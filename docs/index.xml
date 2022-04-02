@@ -6,7 +6,20 @@
         <description>Recent content on Eastarpen の Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 12 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 31 Mar 2022 14:36:03 +0000</lastBuildDate><atom:link href="https://eastarpen.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>idea-personalized</title>
+        <link>https://eastarpen.github.io/post/skills/java/idea-personalized/</link>
+        <pubDate>Thu, 31 Mar 2022 14:36:03 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/idea-personalized/</guid>
+        <description>&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/7ec72fc759d8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;代码生成利器：IDEA 强大的 Live Templates&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>各类算法细节</title>
         <link>https://eastarpen.github.io/post/algorithm/algorithm-tips/</link>
         <pubDate>Sat, 12 Feb 2022 00:00:00 +0000</pubDate>
@@ -1033,6 +1046,2075 @@ hugo server -D
 &lt;h2 id=&#34;更新&#34;&gt;更新&lt;/h2&gt;
 &lt;p&gt;刚才重新测试了一波，失败率和网络情况有关，无关是否开启多线程。&lt;/p&gt;
 &lt;p&gt;开启40个线程，5分钟内下完了200章，速度相当可观&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/</guid>
+        <description>&lt;h2 id=&#34;1-注解&#34;&gt;1. 注解&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是注解&#34;&gt;1.1 什么是注解&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;JDK5.0 开始引入注解&lt;/li&gt;
+&lt;li&gt;Annotation 不是程序本身, 可以对程序做出解释&lt;/li&gt;
+&lt;li&gt;Annotation 可以被其他程序(如编译器)读取&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;12-内置注解&#34;&gt;1.2 内置注解&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;@Override&lt;/code&gt; 重写方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Deprecated&lt;/code&gt; 废弃方法， 不推荐使用但可以使用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SuppressWarnings(&amp;quot;all&amp;quot;)&lt;/code&gt; 关闭警告&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-元注解&#34;&gt;1.3 元注解&lt;/h3&gt;
+&lt;p&gt;元注解负责注解其他注解&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Target&lt;/code&gt; 用于描述注解的使用范围&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Retention&lt;/code&gt; 表示需要在什么级别保存该注解信息, 用于描述注解的生命周期&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SOURCE &amp;lt; CLASS &amp;lt; RUNTIME&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;@Document&lt;/code&gt; 是否能将注解生成在 JavaDoc 中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;@Inherited&lt;/code&gt; 子类是否能基础父类注解&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-定义一个注解&#34;&gt;1.4 定义一个注解&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ElementType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;METHOD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ElementType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;TYPE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;})&lt;/span&gt;
+&lt;span class=&#34;nd&#34;&gt;@Retention&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RententionPolicy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;RUNTIME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nd&#34;&gt;@interface&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MyAnnotation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 参数类型为 String, 参数名称为 value
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;可以通过 default 来声明参数的默认值, 如果没有默认值, 该参数必须赋值&lt;/li&gt;
+&lt;li&gt;当只有一个参数时, 赋值时可以不用写参数名直接赋值.&lt;/li&gt;
+&lt;li&gt;当只有一个参数, 一般将其称为 value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-反射&#34;&gt;2. 反射&lt;/h2&gt;
+&lt;h3 id=&#34;21-什么是反射&#34;&gt;2.1 什么是反射&lt;/h3&gt;
+&lt;p&gt;一个类在内存中只有一个 Class 对象
+一个类被加载后, 类的整个结构都会被封装在 Class 对象中&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/bootstrap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/bootstrap/</guid>
+        <description>&lt;h2 id=&#34;布局容器和栅格网格系统&#34;&gt;布局容器和栅格网格系统&lt;/h2&gt;
+&lt;h3 id=&#34;布局容器&#34;&gt;布局容器&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;.container&lt;/code&gt; 类用于固定宽度并支持响应式布局的容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt; ```html
+ &amp;lt;div class = &amp;quot;container&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+ ```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.container-fluid&lt;/code&gt; 用于 100% 宽度, 占据全部视口(viewport)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;container-fluid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;栅格网格系统&#34;&gt;栅格网格系统&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; ```html
+ &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+ &amp;lt;/div&amp;gt;
+ ```
+
+1. 将一行分为12列, 自行选择元素宽度, 总和超出12 列则换行
+
+2. md -&amp;gt; middle 表示适配中等大小屏幕, 可替换为 xs, sm, md, lg
+
+3. `&amp;lt;div class=&amp;quot;col-md-4 col-lg-4&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;` 将自动计算
+
+4. `col-md-offset-4` 偏移4格, 超出12格换行
+
+5. `col-md-push-, col-md-pull` 浮动, 会被后面元素覆盖
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;常用样式&#34;&gt;常用样式&lt;/h2&gt;
+&lt;h3 id=&#34;标题&#34;&gt;标题&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1. 对 html 标题标签样式优化
+
+2. 提供 &amp;quot;.h1~.h6&amp;quot;  类为非标题标签提供标题样式
+
+3. 提供副标题标签 `&amp;lt;small&amp;gt;&amp;lt;/small&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/environment/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/environment/</guid>
+        <description>&lt;h2 id=&#34;1-maven&#34;&gt;1. Maven&lt;/h2&gt;
+&lt;h3 id=&#34;11-hello-maven&#34;&gt;1.1 hello maven&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Windows&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;download maven (apache maven download)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;config environment variables&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;M2_HOME: maven/bin/&lt;/li&gt;
+&lt;li&gt;MAVEN_HOME: maven/&lt;/li&gt;
+&lt;li&gt;path add &lt;code&gt;%MAVEN_HOME%/bin/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cofig maven&lt;/p&gt;
+&lt;p&gt;conf/settings.xml&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;mirror&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.aliyun.com/mirror/maven&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;aliyun guide&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;localRepository&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;localRepository&amp;gt;&lt;/span&gt;maven_home\repo&lt;span class=&#34;nt&#34;&gt;&amp;lt;/localRepository&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- using full path --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;maven in Intellij Idea&lt;/p&gt;
+&lt;p&gt;setting -&amp;gt; (search)maven&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Maven home path&lt;/code&gt; using maven you just downloaded&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;User settings file&lt;/code&gt; using the config file you just wrote&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Local repository&lt;/code&gt; using the repository you just made&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tips: IDEA using &lt;code&gt;~/.m2/&lt;/code&gt; as default repository&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mvnrepository.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mave repository&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;12-understand-maven&#34;&gt;1.2 understand maven&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;file path&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/u013514928/article/details/79360870&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/u013514928/article/details/79360870&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-tomcat&#34;&gt;2. Tomcat&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/java_advanced_frank/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/java_advanced_frank/</guid>
+        <description>&lt;h2 id=&#34;0base-api&#34;&gt;0.Base API&lt;/h2&gt;
+&lt;h3 id=&#34;00-引言&#34;&gt;0.0 引言&lt;/h3&gt;
+&lt;h3 id=&#34;01-api的定义和用处&#34;&gt;0.1 API的定义和用处&lt;/h3&gt;
+&lt;h3 id=&#34;01-scanner&#34;&gt;0.1 Scanner&lt;/h3&gt;
+&lt;h3 id=&#34;02-number&#34;&gt;0.2 Number&lt;/h3&gt;
+&lt;h3 id=&#34;03-math&#34;&gt;0.3 Math&lt;/h3&gt;
+&lt;h3 id=&#34;04-random&#34;&gt;0.4 Random&lt;/h3&gt;
+&lt;h3 id=&#34;05-threadlocalrandom&#34;&gt;0.5 ThreadLocalRandom&lt;/h3&gt;
+&lt;h3 id=&#34;06-date&#34;&gt;0.6 Date&lt;/h3&gt;
+&lt;h3 id=&#34;07-dateformat和simpledateformat&#34;&gt;0.7 DateFormat和SimpleDateFormat&lt;/h3&gt;
+&lt;h3 id=&#34;08-calendar&#34;&gt;0.8 Calendar&lt;/h3&gt;
+&lt;h3 id=&#34;09-system&#34;&gt;0.9 System&lt;/h3&gt;
+&lt;h2 id=&#34;1unit-test-and-main-function&#34;&gt;1.unit test and main function&lt;/h2&gt;
+&lt;h3 id=&#34;10-抛出企业问题脱离main测试模块化概念抛出&#34;&gt;1.0 抛出企业问题，脱离main测试，模块化概念抛出&lt;/h3&gt;
+&lt;h3 id=&#34;11-junit单元测试的含义和用途&#34;&gt;1.1 Junit单元测试的含义和用途&lt;/h3&gt;
+&lt;h3 id=&#34;12-maven-repository-获取junitjar&#34;&gt;1.2 maven repository 获取junit.jar&lt;/h3&gt;
+&lt;h3 id=&#34;13-使用junit&#34;&gt;1.3 使用Junit&lt;/h3&gt;
+&lt;h3 id=&#34;14-assert断言&#34;&gt;1.4 Assert断言&lt;/h3&gt;
+&lt;h3 id=&#34;15-更进一步合理编写随机测试完善代码&#34;&gt;1.5 更进一步，合理编写随机测试，完善代码&lt;/h3&gt;
+&lt;h2 id=&#34;2stringbuilder&#34;&gt;2.StringBuilder&lt;/h2&gt;
+&lt;h3 id=&#34;20-string存在的问题&#34;&gt;2.0 String存在的问题&lt;/h3&gt;
+&lt;h3 id=&#34;21-stringbuilder以及链式调用&#34;&gt;2.1 StringBuilder以及链式调用&lt;/h3&gt;
+&lt;h2 id=&#34;3throwable&#34;&gt;3.Throwable&lt;/h2&gt;
+&lt;h3 id=&#34;31-异常的介绍&#34;&gt;3.1 异常的介绍&lt;/h3&gt;
+&lt;h3 id=&#34;32-异常举例以及解决常见错误bug方案&#34;&gt;3.2 异常举例以及解决常见错误bug方案&lt;/h3&gt;
+&lt;h3 id=&#34;33-runtimeexception&#34;&gt;3.3 RuntimeException&lt;/h3&gt;
+&lt;h3 id=&#34;34-trycatch-作用以及诱骗毕业设计&#34;&gt;3.4 trycatch 作用以及诱骗毕业设计&lt;/h3&gt;
+&lt;h3 id=&#34;35-nullpointerexception空指针异常&#34;&gt;3.5 NullPointerException空指针异常&lt;/h3&gt;
+&lt;h3 id=&#34;36-throws&#34;&gt;3.6 throws&lt;/h3&gt;
+&lt;h3 id=&#34;37-throw和trycatch区别深度剖析用途剖析自定义异常&#34;&gt;3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常&lt;/h3&gt;
+&lt;h3 id=&#34;38-手把手教你编写装逼自定义异常&#34;&gt;3.8 手把手教你编写装逼自定义异常&lt;/h3&gt;
+&lt;h2 id=&#34;4file&#34;&gt;4.File&lt;/h2&gt;
+&lt;h3 id=&#34;40-必须先弄清楚快递怎么寄才能明白相对路径和绝对路径&#34;&gt;4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径&lt;/h3&gt;
+&lt;h3 id=&#34;40-引言&#34;&gt;4.0 引言&lt;/h3&gt;
+&lt;h3 id=&#34;41-绝对路径&#34;&gt;4.1 绝对路径&lt;/h3&gt;
+&lt;h3 id=&#34;42-相对路径&#34;&gt;4.2 相对路径&lt;/h3&gt;
+&lt;h3 id=&#34;43-file&#34;&gt;4.3 File&lt;/h3&gt;
+&lt;h3 id=&#34;44-linux上的绝对路径是有所不同的&#34;&gt;4.4 Linux上的绝对路径是有所不同的&lt;/h3&gt;
+&lt;h2 id=&#34;5io-stream&#34;&gt;5.IO Stream&lt;/h2&gt;
+&lt;h3 id=&#34;51-相对论理解io流&#34;&gt;5.1 相对论理解IO流&lt;/h3&gt;
+&lt;h3 id=&#34;52-汉语文学理解io流&#34;&gt;5.2 汉语文学理解IO流&lt;/h3&gt;
+&lt;h3 id=&#34;53-图解io流&#34;&gt;5.3 图解IO流&lt;/h3&gt;
+&lt;h3 id=&#34;54-俩亲爹inputstream和outputstream&#34;&gt;5.4 俩亲爹InputStream和OutputStream&lt;/h3&gt;
+&lt;h3 id=&#34;55-fileinputstream字节流读取文件&#34;&gt;5.5 FileInputStream字节流读取文件&lt;/h3&gt;
+&lt;h3 id=&#34;56-fileoutputstream字节流写入文件&#34;&gt;5.6 FileOutputStream字节流写入文件&lt;/h3&gt;
+&lt;h3 id=&#34;57-buff缓冲复制文件&#34;&gt;5.7 buff缓冲复制文件&lt;/h3&gt;
+&lt;h3 id=&#34;58-buffered字节缓冲流和装饰设计模式&#34;&gt;5.8 buffered字节缓冲流和装饰设计模式&lt;/h3&gt;
+&lt;h3 id=&#34;59-filereader和filewriter俩专门来搞txt文件的&#34;&gt;5.9 FileReader和FileWriter，俩专门来搞txt文件的&lt;/h3&gt;
+&lt;h3 id=&#34;510-bufferedreader和bufferedwriter&#34;&gt;5.10 BufferedReader和BufferedWriter&lt;/h3&gt;
+&lt;h3 id=&#34;511-一次性讲解剩余的n个流扩展课java里那些极其骚的io流&#34;&gt;5.11 一次性讲解剩余的N个流(扩展课)Java里那些极其骚的IO流&lt;/h3&gt;
+&lt;h3 id=&#34;512-apache-common-io&#34;&gt;5.12 Apache Common IO&lt;/h3&gt;
+&lt;h3 id=&#34;513-io流结束语&#34;&gt;5.13 IO流结束语&lt;/h3&gt;
+&lt;h2 id=&#34;6charset&#34;&gt;6.Charset&lt;/h2&gt;
+&lt;h3 id=&#34;60-阶段&#34;&gt;6.0 阶段&lt;/h3&gt;
+&lt;h3 id=&#34;61-字符集编码吹b&#34;&gt;6.1 字符集编码吹B&lt;/h3&gt;
+&lt;h3 id=&#34;62-转换&#34;&gt;6.2 转换&lt;/h3&gt;
+&lt;h2 id=&#34;7multithreading&#34;&gt;7.Multithreading&lt;/h2&gt;
+&lt;h3 id=&#34;70-问题的提出&#34;&gt;7.0 问题的提出&lt;/h3&gt;
+&lt;h3 id=&#34;71-核心数进程线程&#34;&gt;7.1 核心数、进程、线程&lt;/h3&gt;
+&lt;h3 id=&#34;72-进程和线程的本质区别以及应用&#34;&gt;7.2 进程和线程的本质区别以及应用&lt;/h3&gt;
+&lt;h3 id=&#34;73-多线程程序含义和作用的提出&#34;&gt;7.3 多线程程序含义和作用的提出&lt;/h3&gt;
+&lt;h3 id=&#34;74-多线程的执行过程&#34;&gt;7.4 多线程的执行过程&lt;/h3&gt;
+&lt;h3 id=&#34;75-runnable&#34;&gt;7.5 Runnable&lt;/h3&gt;
+&lt;h3 id=&#34;76-简化操作以及线程名&#34;&gt;7.6 简化操作以及线程名&lt;/h3&gt;
+&lt;h3 id=&#34;77-抢鞋多线程案例&#34;&gt;7.7 抢鞋——多线程案例&lt;/h3&gt;
+&lt;h3 id=&#34;78-后台守护线程的提出&#34;&gt;7.8 后台守护线程的提出&lt;/h3&gt;
+&lt;h3 id=&#34;79-匿名内部类创建线程你们老师最喜欢用的&#34;&gt;7.9 匿名内部类创建线程——你们老师最喜欢用的&lt;/h3&gt;
+&lt;h3 id=&#34;710-发现问题提出synchronized的概念和用途&#34;&gt;7.10 发现问题，提出synchronized的概念和用途&lt;/h3&gt;
+&lt;h3 id=&#34;711-synchronized同步方法&#34;&gt;7.11 synchronized同步方法&lt;/h3&gt;
+&lt;h3 id=&#34;712-1lockreentrantlock同步锁&#34;&gt;7.12 1.Lock、ReentrantLock同步锁&lt;/h3&gt;
+&lt;h3 id=&#34;713-浅谈synchroized和lock区别&#34;&gt;7.13 浅谈synchroized和Lock区别&lt;/h3&gt;
+&lt;h3 id=&#34;714-thread-api说明&#34;&gt;7.14 Thread API说明&lt;/h3&gt;
+&lt;h3 id=&#34;715-cpu线程调度priority线程优先级优先级常量以及小问题&#34;&gt;7.15 CPU线程调度、Priority线程优先级、优先级常量以及小问题&lt;/h3&gt;
+&lt;h3 id=&#34;716-join线程插队&#34;&gt;7.16 join线程插队&lt;/h3&gt;
+&lt;h3 id=&#34;717-sleep线程休眠&#34;&gt;7.17 sleep线程休眠&lt;/h3&gt;
+&lt;h3 id=&#34;718-yield线程让步&#34;&gt;7.18 yield线程让步&lt;/h3&gt;
+&lt;h3 id=&#34;719-线程状态还是斗地主吧&#34;&gt;7.19 线程状态还是斗地主吧&lt;/h3&gt;
+&lt;h3 id=&#34;720-发现实际问题抛出线程通信的含义&#34;&gt;7.20 发现实际问题，抛出线程通信的含义&lt;/h3&gt;
+&lt;h3 id=&#34;721-线程的通信-wait和notify&#34;&gt;7.21 线程的通信 wait和notify&lt;/h3&gt;
+&lt;h3 id=&#34;722-notifyall&#34;&gt;7.22 notifyAll&lt;/h3&gt;
+&lt;h3 id=&#34;723-提及process进程和点到为止章节结束语&#34;&gt;7.23 提及Process进程和点到为止章节结束语&lt;/h3&gt;
+&lt;h2 id=&#34;8java-collections-framework&#34;&gt;8.Java collections framework&lt;/h2&gt;
+&lt;h3 id=&#34;80-原生数组带来的问题&#34;&gt;8.0 原生数组带来的问题&lt;/h3&gt;
+&lt;h3 id=&#34;81-家族&#34;&gt;8.1 家族&lt;/h3&gt;
+&lt;h3 id=&#34;82-黑帮帮规&#34;&gt;8.2 黑帮帮规&lt;/h3&gt;
+&lt;h3 id=&#34;83-arraylist第一讲&#34;&gt;8.3 ArrayList第一讲&lt;/h3&gt;
+&lt;h3 id=&#34;84-arraylist第二讲&#34;&gt;8.4 ArrayList第二讲&lt;/h3&gt;
+&lt;h3 id=&#34;85-arraylist第三讲&#34;&gt;8.5 ArrayList第三讲&lt;/h3&gt;
+&lt;h3 id=&#34;86-linked链表&#34;&gt;8.6 Linked链表&lt;/h3&gt;
+&lt;h3 id=&#34;87-linkedlist一带而过&#34;&gt;8.7 LinkedList一带而过&lt;/h3&gt;
+&lt;h3 id=&#34;88-提醒&#34;&gt;8.8 提醒&lt;/h3&gt;
+&lt;h3 id=&#34;89-iterator迭代器初试&#34;&gt;8.9 Iterator迭代器初试&lt;/h3&gt;
+&lt;h3 id=&#34;810-fori-增强for-迭代器区别和注意事项&#34;&gt;8.10 fori 增强for 迭代器区别和注意事项&lt;/h3&gt;
+&lt;h3 id=&#34;811-谈谈三者性能&#34;&gt;8.11 谈谈三者性能&lt;/h3&gt;
+&lt;h3 id=&#34;812-set和hashset&#34;&gt;8.12 Set和HashSet&lt;/h3&gt;
+&lt;h3 id=&#34;813-linkedhashset&#34;&gt;8.13 LinkedHashSet&lt;/h3&gt;
+&lt;h3 id=&#34;814-map和hashmap-以及entry&#34;&gt;8.14 Map和HashMap 以及Entry&lt;/h3&gt;
+&lt;h3 id=&#34;815-map注意点&#34;&gt;8.15 Map注意点&lt;/h3&gt;
+&lt;h3 id=&#34;816-entry与map转换set之后遍历&#34;&gt;8.16 Entry与map转换set之后遍历&lt;/h3&gt;
+&lt;h3 id=&#34;817-提及linkedhashmap以及课后作业&#34;&gt;8.17 提及LinkedHashMap以及课后作业&lt;/h3&gt;
+&lt;h3 id=&#34;818-集合框架结束语&#34;&gt;8.18 集合框架结束语&lt;/h3&gt;
+&lt;h2 id=&#34;9jdbc&#34;&gt;9.JDBC&lt;/h2&gt;
+&lt;h3 id=&#34;90-说明&#34;&gt;9.0 说明&lt;/h3&gt;
+&lt;h3 id=&#34;91-jdbc由来和定义&#34;&gt;9.1 JDBC由来和定义&lt;/h3&gt;
+&lt;h3 id=&#34;92-jdbc体验&#34;&gt;9.2 JDBC体验&lt;/h3&gt;
+&lt;h3 id=&#34;93-整理和释放&#34;&gt;9.3 整理和释放&lt;/h3&gt;
+&lt;h3 id=&#34;94-封装jdbcutils&#34;&gt;9.4 封装JDBCUtils&lt;/h3&gt;
+&lt;h3 id=&#34;95-增删改executeupdate&#34;&gt;9.5 增删改executeUpdate&lt;/h3&gt;
+&lt;h3 id=&#34;96-字符编码问题装x需谨慎&#34;&gt;9.6 字符编码问题(装X需谨慎)&lt;/h3&gt;
+&lt;h3 id=&#34;97-preparedstatement和问号占位&#34;&gt;9.7 PreparedStatement和问号占位&lt;/h3&gt;
+&lt;h3 id=&#34;981-最终demo说明&#34;&gt;9.8.1 最终Demo说明&lt;/h3&gt;
+&lt;h3 id=&#34;982-对象封装重构代码学生管理系统模块化编程&#34;&gt;9.8.2 对象封装，重构代码，学生管理系统模块化编程&lt;/h3&gt;
+&lt;h3 id=&#34;982-代码rar&#34;&gt;9.8.2 代码.rar&lt;/h3&gt;
+&lt;h2 id=&#34;10java-人脸识别认证&#34;&gt;10.Java 人脸识别认证&lt;/h2&gt;
+&lt;h3 id=&#34;100-说明txt&#34;&gt;10.0 说明.txt&lt;/h3&gt;
+&lt;h3 id=&#34;101-提出问题引入sdk概念&#34;&gt;10.1 提出问题，引入SDK概念&lt;/h3&gt;
+&lt;h3 id=&#34;102-选择平台&#34;&gt;10.2 选择平台&lt;/h3&gt;
+&lt;h3 id=&#34;103-sdk下载和文档说明&#34;&gt;10.3 SDK下载和文档说明&lt;/h3&gt;
+&lt;h3 id=&#34;104-人脸检测&#34;&gt;10.4 人脸检测&lt;/h3&gt;
+&lt;h3 id=&#34;105-人脸对比&#34;&gt;10.5 人脸对比&lt;/h3&gt;
+&lt;h3 id=&#34;106-建议和结束语&#34;&gt;10.6 建议和结束语&lt;/h3&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/javaweb_kuangshen/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/javaweb_kuangshen/</guid>
+        <description>&lt;h2 id=&#34;1-jsp&#34;&gt;1. jsp&lt;/h2&gt;
+&lt;h3 id=&#34;11-页面引用&#34;&gt;1.1 页面引用&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;```jsp
+&amp;lt;%-- 将两个页面合二为一--%&amp;gt;
+&amp;lt;%@include file=&amp;quot;common/header.jsp&amp;quot;%&amp;gt;
+
+&amp;lt;%-- 拼接页面 --%&amp;gt;
+&amp;lt;jsp:include page=&amp;quot;/common/header.jsp&amp;quot; /&amp;gt;
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;12-9大内置对象&#34;&gt;1.2 9大内置对象&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PageContext&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Request&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Response&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Session&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Application [ServletContext]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;config [SerlvetConfig]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;out&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;page&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;excepetion&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-保存数据方式&#34;&gt;1.3 保存数据方式&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;pageContext.setAttribute();&lt;/p&gt;
+&lt;p&gt;在一个页面中有效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;request.setAttribute();&lt;/p&gt;
+&lt;p&gt;在一次请求中有效(请求转发会携带数据)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;session.setAttribute();&lt;/p&gt;
+&lt;p&gt;在一次会话中有效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;application.setAttribute();&lt;/p&gt;
+&lt;p&gt;在服务器中有效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JSP标签, JSTL标签, EL表达式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;JSTL 表达式依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;javax.servlet.jsp.jstl
+taglibs:standard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;EL表达式 &lt;code&gt;${}&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;获取数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行运算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取 web 开发常用对象&lt;/p&gt;
+&lt;p&gt;获取表单数据 &lt;code&gt;${param.paramName}&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-jsp&#34; data-lang=&#34;jsp&#34;&gt;&amp;lt;input type = &amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot; value=&amp;quot;${param.username}&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JSP标签&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-jsp&#34; data-lang=&#34;jsp&#34;&gt;&amp;lt;%-- example --%&amp;gt;
+&amp;lt;jsp:forward page=&amp;quot;/index.jsp&amp;quot;&amp;gt;
+    &amp;lt;jsp:param name=&amp;quot;name&amp;quot; value=&amp;quot;value&amp;quot;&amp;gt;&amp;lt;/jsp:param&amp;gt;
+&amp;lt;/ jsp:forward&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JSTL 表达式&lt;/p&gt;
+&lt;p&gt;用以弥补html标签不足&lt;/p&gt;
+&lt;p&gt;使用 JSTL 表达式 必须引用 taglib, 如&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;%@ taglib prefix=&amp;quot;c&amp;quot; url=&amp;quot;http://java.sun.com/jsp/jstl/core&amp;quot; %&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此外, Tomcat 也需要引入 jstl 包(jstl, jstl:stand), 否则报错: JSTL 解析错误&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-filter&#34;&gt;2. Filter&lt;/h2&gt;
+&lt;h3 id=&#34;21-filter-简介&#34;&gt;2.1 Filter 简介&lt;/h3&gt;
+&lt;p&gt;Filter: 过滤器, 用来过滤网站的数据;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;处理中文乱码&lt;/li&gt;
+&lt;li&gt;登录验证&lt;/li&gt;
+&lt;li&gt;权限判断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-filter-开发步骤&#34;&gt;2.2 Filter 开发步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;MAVEN 导包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写过滤器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;导包 &lt;code&gt;javax.servlet.Filter&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实现 Filter 接口, 重写对应方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 web.xml 中配置 Filter&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;CharacterEncodingFilter&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Filter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 初始化: 当 web 服务器启动即初始化, 随时等待过滤对象!
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(...)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&#34;cm&#34;&gt;/** 
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;      *  Chain: 链
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;      *  1. 过滤中的所有代码, 在过滤特定请求的时候都会执行
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;      *  2. 必须要让过滤器继续同行, 即 chain.doFilter(request, response);
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;      */&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;doFilter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(...,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FilterChain&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 销毁 web 服务器关闭的时候销毁过滤器
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;destory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-监听器&#34;&gt;3. 监听器&lt;/h2&gt;
+&lt;p&gt;实现一个监听器接口, 监听各种事件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;实现某个监听器接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;web.xml 中注册监听器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-jdbc&#34;&gt;4. JDBC&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;导入 jar 包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;mysql&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mysql-conneter-java&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;5.1.47&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;javax.sql&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mysql-conneter-java&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;数据库环境搭建&lt;/p&gt;
+&lt;p&gt;实体类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;必须有一个无参构造&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;属性必须私有化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;必须有对应得 get/set 方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般用来和数据库得字段做映射&lt;/p&gt;
+&lt;p&gt;ORM: 对象关系映射&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;表 &amp;ndash;&amp;gt; 类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字段 &amp;ndash;&amp;gt; 属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;行记录 &amp;ndash;&amp;gt; 对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mvc-简介&#34;&gt;MVC 简介&lt;/h2&gt;
+&lt;p&gt;什么是MVC: Model, View, Controller 模型, 视图, 控制器&lt;/p&gt;
+&lt;p&gt;约定: Servlet 专注于处理请求以及控制视图跳转, Jsp 专注于显示数据&lt;/p&gt;
+&lt;p&gt;Model&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;业务处理: 业务逻辑* (Service)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据持久层: CRUD (Dao)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;View&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;展示数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提供链接发起 Servlet 请求&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Controller (Servlet)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;接受用户请求 (req, session&amp;hellip;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;交给业务层处理对应代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制视图跳转&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/mybaits_kuangshen/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/mybaits_kuangshen/</guid>
+        <description>&lt;h2 id=&#34;1-mybatis-简介&#34;&gt;1. MyBatis 简介&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是-mybatis&#34;&gt;1.1 什么是 MyBatis&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;MyBatis 是一款&lt;strong&gt;持久层&lt;/strong&gt;框架&lt;/li&gt;
+&lt;li&gt;定制化 SQL, 存储过程以及高级映射&lt;/li&gt;
+&lt;li&gt;避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;12-获得-mybatis&#34;&gt;1.2 获得 MyBatis&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mvnrepository.com/artifact/org.mybatis/mybatis&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;maven 仓库&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;狂神使用 3.5.2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mybatis/mybatis-3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github 仓库&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mybatis.org/mybatis-3/zh/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;中文文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-持久化&#34;&gt;1.3 持久化&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;数据持久化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;持久化就是将程序的数据在持久状态和瞬时状态转化的过程&lt;/li&gt;
+&lt;li&gt;数据库, io 文件持久化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;为什么要持久化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内存&lt;strong&gt;断电即失&lt;/strong&gt;, 某些对象不能丢失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-持久层&#34;&gt;1.4 持久层&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;完成持久化工作的代码块&lt;/li&gt;
+&lt;li&gt;层界限十分明显&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;15-优势&#34;&gt;1.5 优势&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;帮助将数据存入数据库&lt;/li&gt;
+&lt;li&gt;方便&lt;/li&gt;
+&lt;li&gt;简化, 自动化&lt;/li&gt;
+&lt;li&gt;sql 和代码分离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-hello-mybatis&#34;&gt;2. Hello MyBatis&lt;/h2&gt;
+&lt;h3 id=&#34;21-搭建环境&#34;&gt;2.1 搭建环境&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;搭建数据库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DATABASE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mybatis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;USE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mybatis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NOT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;no&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PRIMAEY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;KEY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AUTO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INCREANENT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;varchar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DEFAULT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;no&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pwd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;varchar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DEFAULT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;no&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kp&#34;&gt;ENGINE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INNODB&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DEFAULT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kp&#34;&gt;CHARSET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;utf8mb4&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;INSERT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;INTO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pwd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;VALUES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;test-01&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pwd_01&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;test-02&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pwd_02&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;test-03&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pwd_03&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个 Maven 项目 &lt;code&gt;MybatisStudy&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意 maven 不要使用 idea 自带的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导入 Maven 依赖&lt;/p&gt;
+&lt;p&gt;junit, mysql-connector-java,
+mybatis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建模块 &lt;code&gt;Mybatis-01&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;src.main.java.resources 目录下创建 &lt;code&gt;mybatis-config.xml&lt;/code&gt; 文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件内容示例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34; ?&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;#34;-//mybatis.org//DTD Config 3.0//EN&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&amp;#34;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;#34;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;environments&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;default=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;development&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;environment&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;development&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;transactionManager&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JDBC&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;dataSource&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;POOLED&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt; 
+                &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;driver&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${driver}&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+                &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${url}&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${username}&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+                &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${password}&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dataSource&amp;gt;&lt;/span&gt; 
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/environment&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/environments&amp;gt;&lt;/span&gt; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mappers&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resource=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;org/mybatis/example/BlogMapper.xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/mappers&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意 xml 中 &lt;code&gt;&amp;amp;&lt;/code&gt; 需写为 &lt;code&gt;&amp;amp;amp&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;22-实例&#34;&gt;2.2 实例&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编写 &lt;code&gt;MybatisUtils&lt;/code&gt; &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1NE411Q7Nx?p=2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考视频 约 28min&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设计代码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实体类&lt;/li&gt;
+&lt;li&gt;Dao/Mapper 接口&lt;/li&gt;
+&lt;li&gt;Mapper 配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;核心配置文件中注册 Mapper&lt;/li&gt;
+&lt;li&gt;pom.xml 配置导出资源文件 p2 55min&lt;/li&gt;
+&lt;li&gt;关闭 sqlSession p 1h:07min&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-crud&#34;&gt;3. CRUD&lt;/h2&gt;
+&lt;h3 id=&#34;31-基础&#34;&gt;3.1 基础&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;id 对应的 namespace 中的方法名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;resultType 返回值类型, 带有完整的包名&lt;/p&gt;
+&lt;p&gt;如 &lt;code&gt;com.eastarpen.entity.User&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;parameterType 参数类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只有一个基本类型参数可以省略 parameterType&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 &lt;code&gt;#{}&lt;/code&gt; 获取方法传递的参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 &lt;code&gt;#{}&lt;/code&gt; 直接获取实体类对象的属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;32-实例&#34;&gt;3.2 实例&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 在对应接口的 Mapper.xml 中 --&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.dao.UserMapper&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getUserList&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.entity.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        SELECT * FORM Mybatis.user; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getUserById&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;int&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.entity.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        SELECT * FORM Mybatis.user WHERE id = #{id}; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;addUser&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.entity.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    INSERT INTO Mybatis.user (name, pwd) VALUES(#{name}, #{pwd});
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;updateUser&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.entity.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        UPDATE TABEL Mybatis.user SET `name`=#{name}, `pwd`=#{pwd} WHERE id=#{id}; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;updateUser&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.entity.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        DELETE FROM Mybatis.user WHERE id=#{id}; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意 增删改 需要提交事务&lt;/p&gt;
+&lt;h3 id=&#34;33-troubleshooting&#34;&gt;3.3 troubleshooting&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;namespace 中包用 &lt;code&gt;.&lt;/code&gt; 分割&lt;/li&gt;
+&lt;li&gt;mybatis-config.xml 中需要使用 &lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;34-map-作为参数&#34;&gt;3.4 map 作为参数&lt;/h3&gt;
+&lt;p&gt;p5&lt;/p&gt;
+&lt;p&gt;当实体类属性过多, 考虑使用 map 简化&lt;/p&gt;
+&lt;h2 id=&#34;4-配置解析&#34;&gt;4. 配置解析&lt;/h2&gt;
+&lt;p&gt;注意各字段有特定的相对位置&lt;/p&gt;
+&lt;h3 id=&#34;41-环境配置-environments&#34;&gt;4.1 环境配置 (environments)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Mybatis 可以配置多个环境, 通过 default 选择&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mybatis 默认的事务管理器是 JDBC, 默认的连接池类型是 POOLED&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-属性properties&#34;&gt;4.2 属性(properties)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可以通过 properties 来实现应用配置文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要设置 properties 及其 resource 属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以在 properties 中增加 property, 若存在重名, 优先外部引用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;43-类型别名typealiases&#34;&gt;4.3 类型别名(typeAliases)&lt;/h3&gt;
+&lt;p&gt;p7&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;typeAliases&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;typeAlias&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.User&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;alias=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;typeAliases&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可以为类和包起别名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为包起别名不能自定义, 如 &lt;code&gt;User&lt;/code&gt; 在 &lt;code&gt;com.eastarpen&lt;/code&gt; 内, 为 &lt;code&gt;com.eastarpen&lt;/code&gt; 注册后可以用 &lt;code&gt;user&lt;/code&gt; 或 &lt;code&gt;User&lt;/code&gt; 访问, 推荐小写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以对类使用注解规定别名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本类型加 &lt;code&gt;_&lt;/code&gt; 如 &lt;code&gt;int&lt;/code&gt; -&amp;gt; &lt;code&gt;Integer&lt;/code&gt; 而 &lt;code&gt;_int&lt;/code&gt; -&amp;gt; &lt;code&gt;int&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;44-设置settings&#34;&gt;4.4 设置(settings)&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mybatis.org/mybatis-3/zh/configuration.html#settings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mybatis.org/mybatis-3/zh/configuration.html#settings&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;45-映射器-mapper&#34;&gt;4.5 映射器 (mapper)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;resource&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;mappers&amp;gt;&lt;/span&gt; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resource=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com/eastarpen/com/UserMapper.xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resource=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com/eastarpen/com/*Mapper.xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mappers&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;class&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;mappers&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.kuang.dao.UserDao&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mappers&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意接口和配置文件必须同名且在同一包下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;package&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;mappers&amp;gt;&lt;/span&gt; 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&amp;#34;com.kuang.dao&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mappers&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意接口和配置文件必须同名且在同一包下&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;46-生命周期和作用域&#34;&gt;4.6 生命周期和作用域&lt;/h3&gt;
+&lt;p&gt;生命周期和作用域的错误使用会导致严重的&lt;strong&gt;并发问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SqlSessionFactoryBuilder&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一旦创建了SqlSessionFactory就不再需要它&lt;/li&gt;
+&lt;li&gt;应作为局部变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SqlSessionFactory&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;类似于数据库连接池&lt;/li&gt;
+&lt;li&gt;SqlSessionFactory 一旦创建就应该在应用的运行期间一直存在, &lt;strong&gt;没有理由丢弃它或重新创建另一个实例&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;最佳作用域是 应用作用域&lt;/li&gt;
+&lt;li&gt;最简单的是使用&lt;strong&gt;单例模式&lt;/strong&gt;或静态单例模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SqlSession&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;连接到连接池的一个请求&lt;/li&gt;
+&lt;li&gt;SqlSession 的实例不是线程安全的, 因此是不能被共享的, 最佳作用域是请求或方法作用域&lt;/li&gt;
+&lt;li&gt;*用完即关, 防止资源占用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每一个 Mapper 就代表一个具体的业务&lt;/p&gt;
+&lt;h2 id=&#34;5-解决类属性和表字段不匹配问题&#34;&gt;5. 解决类属性和表字段不匹配问题&lt;/h2&gt;
+&lt;h3 id=&#34;51-引言&#34;&gt;5.1 引言&lt;/h3&gt;
+&lt;p&gt;若存在一个表含有字段 &lt;code&gt;id, user, pwd&lt;/code&gt; 存在一个对象 &lt;code&gt;id, user, password&lt;/code&gt;, 若通过 &lt;code&gt;SELECT * FROM user WHERE id=#{id};&lt;/code&gt; 得到 User 实例, 则 &lt;code&gt;password&lt;/code&gt; 值为 &lt;code&gt;null&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这是由于 user 表没有 password 字段导致的&lt;/p&gt;
+&lt;h3 id=&#34;52-解决方案&#34;&gt;5.2 解决方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;更改sql语句(为字段去别名)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SELECT id, user, pwd AS Password FROM user WHERE id=#{id};&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;resultMap 结果集映射&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--在对应的 Mapper 中 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;resultMap&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- column 对应字段, property 对应熟悉 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pwd&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个 &lt;code&gt;resultMap&lt;/code&gt; 标签, 并设置 id 和 type&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;映射字段和属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在需要的位置使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;selectUser&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultMap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;resultMap&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+   SELECT * FROM user;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;resultMap 的值就是上面的 &lt;code&gt;resultMap&lt;/code&gt;标签的id, 注意不用设置 resultType 属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;53-resultmap标签认知&#34;&gt;5.3 resultMap标签认知&lt;/h3&gt;
+&lt;p&gt;resultMap 的设计思想是, 对于简单的语句不需要配置显式的结果映射, 对于复杂的语句只需要描述他们的关系&lt;/p&gt;
+&lt;h2 id=&#34;6-日志&#34;&gt;6. 日志&lt;/h2&gt;
+&lt;h3 id=&#34;61-日志工厂&#34;&gt;6.1 日志工厂&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果一个数据库操作出现了异常, 可以通过日志排错&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Mybatis 中具体使用哪一个日志需要设置.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可选的日志工厂&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLF4J&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LOG4J&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;LOG4J2&lt;/li&gt;
+&lt;li&gt;JDK_LOGGING&lt;/li&gt;
+&lt;li&gt;COMMONS_LOGGING&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;STDOUT_LOGGING&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;NO_LOGGING&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- mybatis-config.xml&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;settings&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;    &amp;lt;setting name=&amp;#34;logImpl&amp;#34; value=&amp;#34;STDOUT_LOGGING&amp;#34; /&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;/settings&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LOG4J 需要导包, STDOUT_LOGGING 可以直接用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;62-log4j&#34;&gt;6.2 LOG4J&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;认识 LOG4J&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LOG4J 是 Apache 的一个开源项目, 可以通过它控制日志输出的目的地(控制台、文件、gui、服务器)&lt;/li&gt;
+&lt;li&gt;可以控制日志输出格式&lt;/li&gt;
+&lt;li&gt;可以定义日志等级&lt;/li&gt;
+&lt;li&gt;通过配置文件配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用LOG4J&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;导入 LOG4J 包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;log4j&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;log4j&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.2.17&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;resources 目录下创建 log4j.properties 并进行配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置 LOG4J 为日志的实现&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;自定义类使用 LOG4J&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在要使用 LOG4J 的类中, 导入包 &lt;code&gt;import org.apache.log4j.Logger;&lt;/code&gt; 并添加静态属性 logger&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Logger&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getLogger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TestClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TestClass 换成具体的类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设计日志&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;7-分页&#34;&gt;7. 分页&lt;/h2&gt;
+&lt;h3 id=&#34;71-sql-基础&#34;&gt;7.1 sql 基础&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* 从第 0 条开始, 搜索 5 条数据*/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIMIT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* 只有一个参数, 默认从 0 开始*/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIMIT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;72-mybatis-实现分页&#34;&gt;7.2 Mybatis 实现分页&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;核心是sql&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;接口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getUserByLimit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mapper.xml&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getUserByLimit&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;map&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package.User&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM user LIMIT #{startIndex}, #{pageSize};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getUserByLimitTest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 自己实现得工具类 MybatisUtils
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;SqlSession&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqlSession&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MybatisUtils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSqlSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;UserMapper&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mapper&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqlSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getMapper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UserMapper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;HashMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HashMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;();&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;startIndex&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pageSize&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userList&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mapper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getUserByLimit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sqlSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;73-rowbounds-实现分页&#34;&gt;7.3 RowBounds 实现分页&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;不建议开发使用, 面向对象没有 sql 快&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;本质是先查询所有数据, 然后通过在 java 代码层面实现分页&lt;/p&gt;
+&lt;h3 id=&#34;74-分页插件&#34;&gt;7.4 分页插件&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pagehelper.github.io/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mybatis PageHelper&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;8-使用注解开发&#34;&gt;8. 使用注解开发&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;注解通过反射实现, 底层是动态代理&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;81-基础使用&#34;&gt;8.1 基础使用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;注解在接口上实现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@SELECT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SELECT * FROM user;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getUsers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;核心配置文件绑定接口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;mappers&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.User&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mappers&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;缺点, 若属性和字段存在冲突, 难以解决&lt;/p&gt;
+&lt;p&gt;简单的可以用&lt;/p&gt;
+&lt;h3 id=&#34;82-带参数使用&#34;&gt;8.2 带参数使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;若存在多个参数每个必须用注解声明, 建议单个也声明&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Select&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SELECT * FROM user WHERE id = #{id}&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getUserById&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Param&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;取参数值&lt;code&gt;#{}&lt;/code&gt; 的时候以注解为准&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本类型或String @Param 声明, 引用类型不用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Insert&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;INSERT INTO user (name, pwd) VALUES(#{name}, #{pwd});&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;addUser&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;9-mybatis-流程&#34;&gt;9. Mybatis 流程&lt;/h2&gt;
+&lt;p&gt;加载配置文件 -&amp;gt; 实例化 SqlSessionFactoryBuilder 构造器 -&amp;gt; 解析配置文件流 XMLConfigBuilder -&amp;gt; Configuration 对象 -&amp;gt; 实例化 SqlSessionFactory -&amp;gt; transaction 事务管理器 -&amp;gt; 创建executor 执行器 -&amp;gt; 创建 sqlSession -&amp;gt; 实现 CRUD*(可能回滚) -&amp;gt; 提交事务(可能回滚) -&amp;gt; 关闭&lt;/p&gt;
+&lt;p&gt;可以在创建工具类得时候自动提交事务(不建议开发使用, 可以debug观察流程学习用)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// MybatisUtils
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SqlSession&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getSqlSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqlSessionFactory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;openSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;9-lombok&#34;&gt;9. Lombok&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;偷懒用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Idea Plugins install Lombok&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导入包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.projectlombok&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;lombok&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.18.20&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;provided&lt;span class=&#34;nt&#34;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;添加注解使用(可在Plugins 界面查看注解 index)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 无参构造, get, set, tostring, hashCode, equals.... 通过 做的 Structure 查看
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Data&lt;/span&gt; 
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;10-多对一和一对多案例&#34;&gt;10. 多对一和一对多案例&lt;/h2&gt;
+&lt;h3 id=&#34;101-案例环境&#34;&gt;10.1 案例环境&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据库新建表格 student, teacher, student 中 tid 字段为外键, 指向 teacher id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构建实体类 Teacher, Student&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Student 属性 &lt;code&gt;int id, String name, Teacher teacher&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Teacher 属性 &lt;code&gt;int id, String name, List&amp;lt;Student&amp;gt; studentList&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 TeacherMapper, StudentMapper 接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加对应得注册文件且绑定接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt; 分别完成一对多和多对一(简化实体类属性), 然后尝试多对多(完整得实体类属性)&lt;/p&gt;
+&lt;h3 id=&#34;102-多对一-查询学生信息&#34;&gt;10.2 多对一 查询学生信息&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;按照查询嵌套处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;思路&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;id 和 name 在 student 表格中可以直接查询&lt;/li&gt;
+&lt;li&gt;先获取 tid 然后通过 tid 获取 teacher&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getStudent&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultMap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StudentTeacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM student;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StudentTeacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Student&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- student 中有直接查询 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- student 中没有teacher 需要单独处理--&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 结果是对象: association 是集合 collection--&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;teacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;JavaType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Teacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Teacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM teacher WHERE id=#{tid};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按照结果嵌套处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id =&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;getStudent&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultMap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StudentTeacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT s.id sid, s.name sname, t.name tname 
+    FROM student s, teacher t
+    WHERE s.tid = t.id;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StudentTeacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Student&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sid&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sname&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;teacher&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;javaType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Teacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+       &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tname&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;lt;/association&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;103-一对多查询-老师&#34;&gt;10.3 一对多查询 老师&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;按照结果嵌套处理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacherById&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultMap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacherStudent&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT s.id sid, s.name sname, s.tid stid, t.id tid, t.name tname 
+    FROM student s, teacher t
+    WHERE tid=s.tid AND tid=#{tid};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacherStudent&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Teacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tid&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sname&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- javaType 获取属性得种类, ofType 获取泛型得类--&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 这里 studentList 是 List&amp;lt;Student&amp;gt; javaType 是 List, ofType 是 Student --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;collection&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;studentList&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;ofType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Student&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sid&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sname&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;result&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;stid&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/collection&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按照查询嵌套处理&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;TODO: 仔细探究 &lt;code&gt;id, tid&lt;/code&gt; 的传递 P21&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getTeacherById&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultMap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;TeacherStudent&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM teacher WHERE id=#{id};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getStudentByTid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Student&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM student WHERE tid=#{tid};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;TeacherStudent&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Teacher&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 这里省略了 id, name, TODO 探究为什么可以省略 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;collection&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;property=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;studentList&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;JavaType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;List&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;ofType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Student&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;getStudentByTid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;column=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;11-动态-sql&#34;&gt;11. 动态 sql&lt;/h2&gt;
+&lt;h3 id=&#34;111-案例环境&#34;&gt;11.1 案例环境&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Blog 实体类 属性 &lt;code&gt;id, title, authoer, Date createtime, view&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可以用 java.util.UUID 类生成uuid&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MyBatis 设置文件通过 &lt;code&gt;mapUnderscoreToCamelCase&lt;/code&gt; 可以将数据库的 &lt;code&gt;_&lt;/code&gt; 分割样式改为 驼峰命名法&lt;/p&gt;
+&lt;p&gt;如 &lt;code&gt;c_test&lt;/code&gt; -&amp;gt; &lt;code&gt;cText&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;112-if&#34;&gt;11.2 if&lt;/h3&gt;
+&lt;p&gt;只有满足条件才会添加 &lt;code&gt;if&lt;/code&gt; 里的字段&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;queryBlogIF&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;map&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;blog&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FROM blog WHERE 1=1
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        AND title= #{title}
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;author != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        AND authoer = #{author}
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;113-choosewhen-otherwise&#34;&gt;11.3 choose(when, otherwise)&lt;/h3&gt;
+&lt;p&gt;choose 相当于 switch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 对比 if 看 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;queryBlogChoose&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;map&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;blog&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FORM blog 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;where&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;choose&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+                title= #{title}
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;author != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+                AND authoer = #{author}
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;otherwise&amp;gt;&lt;/span&gt;
+                AND views = #{views}
+            &lt;span class=&#34;nt&#34;&gt;&amp;lt;/otherwise&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;choose&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/where&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;114-trim-where-set&#34;&gt;11.4 trim (where, set)&lt;/h3&gt;
+&lt;p&gt;where tag 可以智能选择是否在 sql 中添加 &lt;code&gt;AND, OR, WHERE&lt;/code&gt; 关键字&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 对比 if 看 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;queryBlogWhere&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;map&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resultType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;blog&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    SELECT * FORM blog 
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;where&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+            AND title= #{title}
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;author != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+            AND authoer = #{author}
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/where&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;set 可以只能选择是否需要加上 &lt;code&gt;,&lt;/code&gt; 用以分割不同关键字&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;updateBlog&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;parameterType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;map&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    UPDATE blog
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;set&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+            title= #{title}
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;author != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+            authoer = #{author}
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/set&amp;gt;&lt;/span&gt;
+    where id = #{uid};
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;where, set 就是用 trim 实现的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;trim&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;prefix=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SET&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;suffixOverrides=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;,&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+...
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/trim&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;trim&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;prefix=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;WHERE&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;prefixOverrides=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AND|OR&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+...
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/trim&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;115-foreach&#34;&gt;11.5 foreach&lt;/h3&gt;
+&lt;p&gt;遍历列表进行相关测试&lt;/p&gt;
+&lt;p&gt;建议通过 map 传入 list&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;foreach&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;item=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;index=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;index&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;collection=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;list&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;open=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;(&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;separator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;,&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;close=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;)&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    #{item}
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/foreach&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;116-sql-片段&#34;&gt;11.6 sql 片段&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;将一些公共部分抽取出来, 方便复用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 include tag 应用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;sql&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sql-id&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;title != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        title= #{title}
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;test=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;author != null&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        authoer = #{author}
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/sql&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 通过 &amp;lt;include refid=&amp;#34;sql-id&amp;#34; /&amp;gt; 引用 --&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最好基于单表编写 sql 片段&lt;/li&gt;
+&lt;li&gt;不要存在 where 标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;12-mybatis-缓存&#34;&gt;12. Mybatis 缓存&lt;/h2&gt;
+&lt;h3 id=&#34;121-简介&#34;&gt;12.1 简介&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;什么是缓存&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存在内存中的临时数据&lt;/li&gt;
+&lt;li&gt;将经常查询的结果放到内存中, 若下次查询同一数据, 直接从内存中读取, 从而提高了查询效率, 解决了高并发系统的性能问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为什么使用缓存&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;减少和数据库的交互次数, 减少系统开销, 提高系统效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什么数据使用缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;经常查询且不常改变的数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;122-mybats-缓存&#34;&gt;12.2 Mybats 缓存&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Mybats默认定义了两级缓存: 一级缓存和二级缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;默认只有一级缓存开启 (SqlSession 级别的缓存, 又称本地缓存)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;二级缓存需要手动开启配置, 基于 namespace 级别的缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bybats 定义了缓存接口 Cache, 通过实现 Cache 接口定义二级缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配合日志使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;先看二级缓存有没有, 再看一级缓存有没有, 最后查询数据库&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;123-一级缓存&#34;&gt;12.3 一级缓存&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;与数据库同一次会话期间查询到的数据会放在本地缓存。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同意会话相同的查询直接从内存调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;增删改会刷新缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一级缓存本质是 map&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;124-二级缓存&#34;&gt;12.4 二级缓存&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;工作机制&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;sqlSession 关闭或提交, 将一级缓存提交到二级缓存&lt;/li&gt;
+&lt;li&gt;不同的 Mapper 有不同的二级缓存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;使用&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;开启缓存&lt;/p&gt;
+&lt;p&gt;mybatis 配置文件 显式开启缓存&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;setting name=&amp;quot;cachedEnabled&amp;quot; value=&amp;quot;true&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在要使用二级缓存的 Mapper.xml 中&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;cache /&amp;gt;&lt;/code&gt; 可自定义参数
+&lt;strong&gt;注意&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Caused by: java.io.NotSerializableException&lt;/code&gt; 未将实体类序列化&lt;/p&gt;
+&lt;p&gt;需要将实体类实现接口 &lt;code&gt;Serializable&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;125-ehcache&#34;&gt;12.5 ehcache&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;不用深究, 了解即可&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ehcache 是一种广泛应用的开源Java分布式缓存。 主要面向通用缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.mybatis.caches&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mybatis-ehcache&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.1.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mapper.xml中&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;cache type=&amp;quot;org.mybatis.caches.ehcache.EncacheCache&amp;quot; /&amp;gt;&lt;/code&gt; 根据包设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;resources 目录下创建 &lt;code&gt;ehcache.xml&lt;/code&gt; 配置文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/spring_kuangshen/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/spring_kuangshen/</guid>
+        <description>&lt;h1 id=&#34;spring&#34;&gt;Spring&lt;/h1&gt;
+&lt;h2 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是-spring&#34;&gt;1.1 什么是 Spring&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring 是一个开源的免费框架(容器)&lt;/li&gt;
+&lt;li&gt;Spring 是轻量级的, 非入侵式的框架&lt;/li&gt;
+&lt;li&gt;特点: 控制反转(IOC), 面向切面编程(AOP)&lt;/li&gt;
+&lt;li&gt;支持事务的处理, 对框架整合的支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-spring-历史&#34;&gt;1.2 Spring 历史&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2002 首次推出 Spring 框架的雏形: interface21 框架&lt;/li&gt;
+&lt;li&gt;2004 正式推出 Spring 1.0&lt;/li&gt;
+&lt;li&gt;Spring 理念: 使现有的技术更加容易使用&lt;/li&gt;
+&lt;li&gt;Spring 目的: 解决企业开发复杂性问题&lt;/li&gt;
+&lt;li&gt;SSM: SpringMvc, Spring, Mybats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-相关文档项目&#34;&gt;1.3. 相关文档/项目&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://spring.io/projects/spring-framework#overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://repo.spring.io/ui/native/release/org/springframework/spring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spring-projects/spring-framework&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-包&#34;&gt;1.4 包&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;5.2.0 maven&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 这个包会自动导入其他包 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-webmvc&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;5.2.0.RELEASE&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-jdbc&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;5.2.0.RELEASE&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;15-扩展&#34;&gt;1.5 扩展&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Spring Boot 构建一切, Spring Cloud 协调一切, Spring Cloud 连接一切&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Boot&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个快速开发的脚手架&lt;/li&gt;
+&lt;li&gt;基于 SpringBoot可以快速开发单个微服务&lt;/li&gt;
+&lt;li&gt;约定大于配置!&lt;/li&gt;
+&lt;li&gt;学习 SpringBoot 要完全掌握 Spring 以及 SpringMVC&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Cloud&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Cloud 是基于 SpringBoot 实现的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-ioc-理论指导&#34;&gt;2. IOC 理论指导&lt;/h2&gt;
+&lt;h3 id=&#34;21-ioc-体会&#34;&gt;2.1 IOC 体会&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryServiceImpl&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryDao&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryMysqlDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码 service 层调用了 dao 层, 而 dao 层接口是固定的 QueryMysqlDao(在程序员编写代码时就写死)&lt;/p&gt;
+&lt;p&gt;如果 service 需求发生变更, 只能更改 QueryServiceImpl 或添加一个类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryServiceImpl&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryDao&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setQueryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QueryDao&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;queryDao&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;queryDao&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码 queryDao 没有写死, 接口控制权在调用者手中 QueryDao 仅限制了接口&lt;/p&gt;
+&lt;p&gt;两段代码发生了 QueryServiceImpl 对 queryDao 的权限发生了变化, 从原来的主动实例化对象变为被动的接受对象, 这就是控制反转, 这就是 IOC 思想。&lt;/p&gt;
+&lt;h2 id=&#34;3-hellospring&#34;&gt;3. HelloSpring&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;对象由 Spring 创建，管理，装配&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建实体类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 resources 目录下创建 &lt;code&gt;beans.xml&lt;/code&gt; 文件&lt;/p&gt;
+&lt;p&gt;这是 Spring 的配置文件, 可以认知命名, 需要加上 Spring 约束&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;写入Spring 约束&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;beans&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.springframework.org/schema/beans&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- bean definitions here --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 &lt;code&gt;bean&lt;/code&gt; 标签添加实例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 通过 Spring 管理对象
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;     类型为 com.eastarpen.Hello, 名称为 hello
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;     设置对象属性 &amp;#34;str&amp;#34; 值为 &amp;#34;Spring&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;     str 必须有对应的 set 方法
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;str&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spring&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- value 是具体赋值
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;         ref   引用 Spring 中创建好的对象
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;     --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 &lt;code&gt;ClassPathXmlApplicationContext&lt;/code&gt; 调用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取 Spring 上下文对象
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ApplicationContext&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;context&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ClassPathXmlApplicationContext&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;beans.xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 对象通过 Spring 管理, 如果需要使用, 直接通过 getBean取出
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Hello&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Hello&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getBean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Hello hello = context.getBean(&amp;#34;hello&amp;#34;, Hello.Class);
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;beans.xml 被加载后所有对象都会被实例化&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-ioc-创建对象的方式&#34;&gt;4. IOC 创建对象的方式&lt;/h2&gt;
+&lt;p&gt;TODO 自己编写调试探究构造过程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;默认使用无参构造创建对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;手动设置有参构造器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;下标赋值&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;constructor-arg&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;index=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spring&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型赋值&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;constructor-arg&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;java.lang.String&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spring&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不建议使用, 若多个同类型参数, 较麻烦&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过参数名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;constructor-arg&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;str&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spring&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-spring-配置&#34;&gt;5. Spring 配置&lt;/h2&gt;
+&lt;h3 id=&#34;51-别名&#34;&gt;5.1 别名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;str&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spring&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;alias&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;helloAlias&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;hello 对象可以通过 &amp;ldquo;hello&amp;rdquo; 或 &amp;ldquo;helloAlias&amp;rdquo; 获取&lt;/p&gt;
+&lt;h3 id=&#34;52-bean-的配置&#34;&gt;5.2 Bean 的配置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;id&lt;/code&gt; bean 的唯一标识符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;class&lt;/code&gt; bean 对象 所有的对应的全限命名(包名+类名)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;name&lt;/code&gt; 也是别名, 且可以有多个 &lt;strong&gt;如需别名建议使用&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello1, hello2&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;52-import&#34;&gt;5.2 import&lt;/h3&gt;
+&lt;p&gt;一般用户团队开发, 可以将多个 配置文件 合并为一个&lt;/p&gt;
+&lt;p&gt;一般将多个 &lt;code&gt;beans.xml&lt;/code&gt; 导入到 &lt;code&gt;applicatinoContext.xml&lt;/code&gt; 中, 最后直接调用 &lt;code&gt;applicationContext.xml&lt;/code&gt; 即可&lt;/p&gt;
+&lt;h2 id=&#34;6-di-依赖注入&#34;&gt;6. DI 依赖注入&lt;/h2&gt;
+&lt;h3 id=&#34;61-构造器注入&#34;&gt;6.1 构造器注入&lt;/h3&gt;
+&lt;p&gt;就是调用构造方法&lt;/p&gt;
+&lt;h3 id=&#34;62-set-方式注入&#34;&gt;6.2 Set 方式注入&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;依赖注入一般指 Set 注入&lt;/li&gt;
+&lt;li&gt;依赖: bean 对象的创建依赖于容器&lt;/li&gt;
+&lt;li&gt;注入: bean 对象中的所有属性, 由容器来注入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注入方式&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;普通值注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;str&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置 String 类型的属性 &amp;ldquo;str&amp;rdquo; 值为 &amp;ldquo;hello&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;bean 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Test&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置 test 的 name 属性为预先创建的 id 为 hello 的 bean&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数组注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;books&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;红楼梦&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;西游记&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设值对象属性 &lt;code&gt;String[] name&lt;/code&gt; 值为 &lt;code&gt;[&amp;quot;红楼梦&amp;quot;, &amp;quot;西游记&amp;quot;]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;list 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;books&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;list&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;红楼梦&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;西游记&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/list&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设值对象属性 &lt;code&gt;List&amp;lt;String&amp;gt; name&lt;/code&gt; 值为 &lt;code&gt;[&amp;quot;红楼梦&amp;quot;, &amp;quot;西游记&amp;quot;]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;map 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cards&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;map&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;entry&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;key=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;card-1&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;value-1&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;entry&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;key=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;card-2&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;value=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;value-2&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/map&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设值对象属性 &lt;code&gt;map&amp;lt;String, String&amp;gt; cards&lt;/code&gt; 值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;set 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;games&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;set&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;LOL&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;COC&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/set&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;null 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;null&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;properties 注入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;props&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;prop&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;key=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;name-01&lt;span class=&#34;nt&#34;&gt;&amp;lt;/prop&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/props&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Properties 对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;63-扩展注入&#34;&gt;6.3 扩展注入&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;c 命名空间注入 &lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-c-namespace&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xml 约束 &lt;code&gt; xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;依靠构造器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;p 命名空间注入 &lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-p-namespace&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xml 约束 &lt;code&gt;xmlns:p=&amp;quot;http://www.springframework.org/schema/p&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;依靠 setter&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;7-bean-作用域&#34;&gt;7. bean 作用域&lt;/h2&gt;
+&lt;h3 id=&#34;71-简介&#34;&gt;7.1 简介&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Scope&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-singleton&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;singleton&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;(Default) Scopes a single bean definition to a single object instance for each Spring IoC container.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-prototype&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;prototype&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Scopes a single bean definition to any number of object instances.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-request&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;request&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Scopes a single bean definition to the lifecycle of a single HTTP request. That is, each HTTP request has its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring &lt;code&gt;ApplicationContext&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-session&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;session&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Scopes a single bean definition to the lifecycle of an HTTP &lt;code&gt;Session&lt;/code&gt;. Only valid in the context of a web-aware Spring &lt;code&gt;ApplicationContext&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/core.html#beans-factory-scopes-application&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;application&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Scopes a single bean definition to the lifecycle of a &lt;code&gt;ServletContext&lt;/code&gt;. Only valid in the context of a web-aware Spring &lt;code&gt;ApplicationContext&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.spring.io/spring-framework/docs/5.3.19-SNAPSHOT/reference/html/web.html#websocket-stomp-websocket-scope&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;websocket&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Scopes a single bean definition to the lifecycle of a &lt;code&gt;WebSocket&lt;/code&gt;. Only valid in the context of a web-aware Spring &lt;code&gt;ApplicationContext&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;72-解释&#34;&gt;7.2 解释&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;singleton&lt;/code&gt; 默认的作用域, 即单例模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;prototype&lt;/code&gt; 每次从容器中get 的时候都会产生一个新对象&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;accountService&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.something.DefaultAccountService&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;scope=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;prototype&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;request, seesion, application&lt;/code&gt; 在 web 开发中使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;8-bean-的自动装配&#34;&gt;8. bean 的自动装配&lt;/h2&gt;
+&lt;p&gt;自动装配是Spring满足bean以来的一种方式&lt;/p&gt;
+&lt;p&gt;Spring会在上下文自动寻找, 并自动给bean装配属性&lt;/p&gt;
+&lt;h3 id=&#34;81-bean-autowired--属性自动装配&#34;&gt;8.1 bean autowired  属性自动装配&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.Hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;autowired=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;byName&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;byName 需要待注入的 bean id 和需要自动注入的属性的set方法一致&lt;/p&gt;
+&lt;p&gt;如 &lt;code&gt;autowired=&amp;quot;byName&amp;quot;&lt;/code&gt; Class Hello 中含有方法 &lt;code&gt;setDog&lt;/code&gt; 则 bean &lt;code&gt;dog&lt;/code&gt; 能被注入, &lt;code&gt;dog-01&lt;/code&gt; 不能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;byType 需要待注入的 bean 的 Class 唯一并且和需要自动注入的属性类型一致&lt;/p&gt;
+&lt;p&gt;如 &lt;code&gt;autowired=&amp;quot;byType&amp;quot;&lt;/code&gt; Class Hello 含有属性 &lt;code&gt;Dog dog;&lt;/code&gt; 若容器中只有一个 &lt;code&gt;&amp;lt;bean class=&amp;quot;com.eastarpen.Dog&amp;quot;&lt;/code&gt; 则 该 bean 可以被装配, 否则不行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;82-annotation-自动装配&#34;&gt;8.2 Annotation 自动装配&lt;/h3&gt;
+&lt;p&gt;jdk 1.5 支持注解, Spring 2.5 支持注解&lt;/p&gt;
+&lt;p&gt;Spring 4 之后使用注解开发需要导入 &lt;code&gt;aop&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;开启注解支持&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;导入 contex 约束&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置注解支持&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模板&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;beans&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.springframework.org/schema/beans&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;xmlns:context=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.springframework.org/schema/context&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;na&#34;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.springframework.org/schema/beans
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        https://www.springframework.org/schema/beans/spring-beans.xsd
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        http://www.springframework.org/schema/context
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        https://www.springframework.org/schema/context/spring-context.xsd&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;context:annotation-config/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对需要自动装配的属性上加上 &lt;code&gt;@Autowired&lt;/code&gt; 注解 (由于注解采用反射实现, 甚至不需要 setter)&lt;/p&gt;
+&lt;p&gt;注意被自动装配的 bean 的id应和被装配的属性名相同, 或属性通过 &lt;code&gt;@Qualifier()&lt;/code&gt; 注解&lt;/p&gt;
+&lt;p&gt;Autowired 先 byType 再 byName&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;javax 的 &lt;code&gt;@Resource&lt;/code&gt; 也可以实现自动装配, 默认 byName, 找不到 byType, 还可以设置 &lt;code&gt;name&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;83-spring-注解概述&#34;&gt;8.3 Spring 注解概述&lt;/h3&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;xml 准备&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- Spring 约束省略 --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 指定要扫描的包, 包下的注解就会生效 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;context:component-scan&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;bas-package=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.eastarpen.package&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- TODO 不准确 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 注解驱动 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;context:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;config&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;bean&lt;/p&gt;
+&lt;p&gt;在需要纳入 Spring 容器管理的实体类上加上注解 &lt;code&gt;@Component&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;相当于 &lt;code&gt;&amp;lt;bean id=&amp;quot;&amp;quot; class=&amp;quot;&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;属性注入&lt;/p&gt;
+&lt;p&gt;在属性或对应的setter上添加注解 &lt;code&gt;@Value(&amp;quot;value&amp;quot;)&lt;/code&gt;, 相当于 &lt;code&gt;&amp;lt;property name=&amp;quot;&amp;quot; value=&amp;quot;&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;衍生注解&lt;/p&gt;
+&lt;p&gt;component 的衍生注解, 功能和 component 一致&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dao         &lt;code&gt;@Repository&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;service     &lt;code&gt;@Service&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;controller  &lt;code&gt;@Controller&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动装配&lt;/p&gt;
+&lt;p&gt;Resource 和 Autowired&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作用域&lt;/p&gt;
+&lt;p&gt;在实体类上加上 &lt;code&gt;@Scope(&amp;quot;scope&amp;quot;)&lt;/code&gt; 设置 bean 的作用域&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;tip&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 xml 配置适用性强, 维护简单&lt;/li&gt;
+&lt;li&gt;注解 使用便捷, 维护复杂&lt;/li&gt;
+&lt;li&gt;推荐 xml 用来管理 bean, 注解注入属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;9-使用-java-配置&#34;&gt;9. 使用 java 配置&lt;/h2&gt;
+&lt;p&gt;JavaConfig 原是 Spring 的一个子项目, Spring 4 之后成为核心功能&lt;/p&gt;
+&lt;p&gt;TODO 自行测试各类注解&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Configuration&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+    &lt;span class=&#34;nd&#34;&gt;@Bean&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getUser&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;MyConfig 类相当于 &lt;code&gt;beans.xml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加了 &lt;code&gt;@Bean&lt;/code&gt; 注解的方法就是 &lt;code&gt;bean&lt;/code&gt; 标签&lt;/li&gt;
+&lt;li&gt;方法名就是 bean id, 返回类型就是 bean class&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;调用方式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ApplicationContext&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;context&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AnnotationApplicationContext&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;10-aop&#34;&gt;10. AOP&lt;/h2&gt;
+&lt;h3 id=&#34;101-前言&#34;&gt;10.1 前言&lt;/h3&gt;
+&lt;p&gt;代理模式就是 SpringAop 的底层&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代理模式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;TODO 跟着狂神做 p17-19&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静态代理&lt;/li&gt;
+&lt;li&gt;动态代理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;102-静态代理&#34;&gt;10.2 静态代理&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;角色分析&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;抽象角色: 用抽象类或接口实现&lt;/li&gt;
+&lt;li&gt;真实角色: 被代理的角色&lt;/li&gt;
+&lt;li&gt;代理角色: 代理真实角色, 一般会实现一些附属操作&lt;/li&gt;
+&lt;li&gt;客户    : 访问代理对象的人&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;真实角色的操作更加纯粹, 不需要去关注公共业务&lt;/li&gt;
+&lt;li&gt;公共业务由代理角色完成, 实现业务的分工&lt;/li&gt;
+&lt;li&gt;公共业务发生扩展的时候, 方便集中管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要增添代理角色的代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;103-动态代理&#34;&gt;10.3 动态代理&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;动态代理底层是反射, 代理类是动态生成的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;动态代理两大类: 基于接口, 基于类&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TIP 了解动态代理原理关键字&lt;br&gt;
+基于接口 JDK 动态代理&lt;br&gt;
+基于类   cglib&lt;br&gt;
+Java字节码 javasist&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;InvocationHandler&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;InvocationHandler 是由代理实例调用的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;public interface InvocationHandler&lt;/p&gt;
+&lt;p&gt;InvocationHandler is the interface implemented by the invocation handler of a proxy instance.&lt;br&gt;
+Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the invoke method of its invocation handler.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Proxy&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proxy provides static methods for creating objects that act like instances of interfaces but allow for customized method invocation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;newProxyInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ClassLoader&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;loader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;  
+                                      &lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&amp;gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;interfaces&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;  
+                                      &lt;span class=&#34;n&#34;&gt;InvocationHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;模板及调用示例&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ProxyInvocationHandler&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;InvocationHandler&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 被代理的接口
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setTarget&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;target&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 生成代理类
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;newProxyInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClassLoader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt;
+                                       &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInterfaces&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt;
+                                       &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 处理代理实例并返回结果
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;invoke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;throws&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Throwable&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;invoke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 额外功能的方法, 记得加入到 invoke
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 需要代理的真实角色
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;UserService&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UserServiceImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ProxyInvocationHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pih&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ProxyInvocationHandler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;pih&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setTarget&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;userService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 动态生成代理对象
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;UserService&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proxy&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UserService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pih&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 代理对象调用真实角色方法
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一个动态代理类代理一个接口(即可代理实现该接口的所有类), 一般就是对应一个业务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;104-使用-spring实现-aop&#34;&gt;10.4 使用 Spring实现 AOP&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;导包&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.aspectj&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;aspectjweaver&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.9.6&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;runtime&lt;span class=&#34;nt&#34;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Aop在Spring中的作用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;提供声明式事务, 允许用户自定义切面&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;相关名词&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;横切关注点: 跨越应用程序多个模块的方法或功能。即, 与业务逻辑无关的, 但需要关注的部分，例如日志，安全，缓存，事务等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切面(Aspect) 横切关注点被模块化的特殊对象(一个类)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通知(Advice) 切面必须要完成的一个工作, 类中的一个方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;目标(Target) 被通知对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代理(Proxy) 向目标对象应用通知后创建的对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切入点(PointCut) 切面通知执行的地点的定义&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连接点(JointPoint) 与切入点匹配的执行点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;方式一  使用 Spring 接口&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;业务逻辑接口和实现类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实现 Spring 提供的 Aop 接口 &lt;code&gt;AfterReturningAdvice, MethodoBeforeAdvicd&lt;/code&gt; 等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring 注册bean&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring 配置 aop(注意导入 aop 约束)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:config&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- aop:pointcut 切入点标签
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;         id           唯一标识
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;         expression   要执行的位置
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;         TODO 了解 execution
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;         execution(* *.*(..)) (返回类型 全限定类名.方法(参数)) .. 表示任意参数, 通过它识别需要执行的类与方法  
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;     --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:pointcut&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pointcut&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;expression=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;execution(* *(..))&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 执行环绕增加 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:advisor&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;advice-ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;bean&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;pointcut-ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pointcut&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ aop:config&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;方式二  自定义类&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自定义切面类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注册 bean&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置 aop&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aspect&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:config&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 切面 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:aspect&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aspect&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:pointcut&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pointcut&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;expression=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;execution(* *(..))&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:advisor&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;advice-ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;bean&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;pointcut-ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pointcut&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:before&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;method=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;before&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;pointcut-ref=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;pointcut&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- method=&amp;#34;before&amp;#34; &amp;#34;&amp;#34;中是切面类的方法 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/aop:aspect&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ aop:config&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;方式三 使用注解&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;TODO 跟着狂神做 p22&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自定义只用注解修饰的切面类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Aspect&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyAspect&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// 注意要导入 Spring 的 Before 注解
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nd&#34;&gt;@Before&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;execution()&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注册 bean&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启注解支持&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;aop:aspectj-autoproxy/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;11-spring-中的-mybatis&#34;&gt;11. Spring 中的 Mybatis&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://mybatis.org/spring/zh/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mybatis-spring doc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要添加 &lt;code&gt;spring-jdbc, Mybatis-Spring&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://eastarpen.github.io/post/skills/java/troubleshooting/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://eastarpen.github.io/post/skills/java/troubleshooting/</guid>
+        <description>&lt;h2 id=&#34;1-servlet&#34;&gt;1. servlet&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;resp encoding&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;resp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setCharacterEncoding&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;resp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setHeader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;content-type&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/html;charset=UTF-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         
