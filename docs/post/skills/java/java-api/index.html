@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='0.Base API 0.0 引言 0.1 API的定义和用处 0.1 Scanner 0.2 Number 0.3 Math 0.4 Random 0.5 ThreadLocalRandom 0.6 Date 0.7 DateFormat和SimpleDateFormat 0.8 Calendar 0.9 System 1.unit test and main function 1.0 抛出企业问题，脱离main测试，模块化概念抛出 1.1 Junit单元测试的含义和用途 1.2 maven repository 获取junit.jar 1.3 使用Junit 1.4 Assert断言 1.5 更进一步，合理编写随机测试，完善代码 2.StringBuilder 2.0 String存在的问题 2.1 StringBuilder以及链式调用 3.Throwable 3.1 异常的介绍 3.2 异常举例以及解决常见错误bug方案 3.3 RuntimeException 3.4 trycatch 作用以及诱骗毕业设计 3.5 NullPointerException空指针异常 3.6 throws 3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常 3.8 手把手教你编写装逼自定义异常 4.File 4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径 4.0 引言 4.'><title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='0.Base API 0.0 引言 0.1 API的定义和用处 0.1 Scanner 0.2 Number 0.3 Math 0.4 Random 0.5 ThreadLocalRandom 0.6 Date 0.7 DateFormat和SimpleDateFormat 0.8 Calendar 0.9 System 1.unit test and main function 1.0 抛出企业问题，脱离main测试，模块化概念抛出 1.1 Junit单元测试的含义和用途 1.2 maven repository 获取junit.jar 1.3 使用Junit 1.4 Assert断言 1.5 更进一步，合理编写随机测试，完善代码 2.StringBuilder 2.0 String存在的问题 2.1 StringBuilder以及链式调用 3.Throwable 3.1 异常的介绍 3.2 异常举例以及解决常见错误bug方案 3.3 RuntimeException 3.4 trycatch 作用以及诱骗毕业设计 3.5 NullPointerException空指针异常 3.6 throws 3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常 3.8 手把手教你编写装逼自定义异常 4.File 4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径 4.0 引言 4.'><title>java-api</title>
 
-<link rel='canonical' href='https://eastarpen.github.io/post/skills/java/java_advanced_frank/'>
+<link rel='canonical' href='https://eastarpen.github.io/post/skills/java/java-api/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='java-api'>
 <meta property='og:description' content='0.Base API 0.0 引言 0.1 API的定义和用处 0.1 Scanner 0.2 Number 0.3 Math 0.4 Random 0.5 ThreadLocalRandom 0.6 Date 0.7 DateFormat和SimpleDateFormat 0.8 Calendar 0.9 System 1.unit test and main function 1.0 抛出企业问题，脱离main测试，模块化概念抛出 1.1 Junit单元测试的含义和用途 1.2 maven repository 获取junit.jar 1.3 使用Junit 1.4 Assert断言 1.5 更进一步，合理编写随机测试，完善代码 2.StringBuilder 2.0 String存在的问题 2.1 StringBuilder以及链式调用 3.Throwable 3.1 异常的介绍 3.2 异常举例以及解决常见错误bug方案 3.3 RuntimeException 3.4 trycatch 作用以及诱骗毕业设计 3.5 NullPointerException空指针异常 3.6 throws 3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常 3.8 手把手教你编写装逼自定义异常 4.File 4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径 4.0 引言 4.'>
-<meta property='og:url' content='https://eastarpen.github.io/post/skills/java/java_advanced_frank/'>
+<meta property='og:url' content='https://eastarpen.github.io/post/skills/java/java-api/'>
 <meta property='og:site_name' content='Eastarpen の Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' />
-<meta name="twitter:title" content="">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2022-02-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-02-11T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="java-api">
 <meta name="twitter:description" content="0.Base API 0.0 引言 0.1 API的定义和用处 0.1 Scanner 0.2 Number 0.3 Math 0.4 Random 0.5 ThreadLocalRandom 0.6 Date 0.7 DateFormat和SimpleDateFormat 0.8 Calendar 0.9 System 1.unit test and main function 1.0 抛出企业问题，脱离main测试，模块化概念抛出 1.1 Junit单元测试的含义和用途 1.2 maven repository 获取junit.jar 1.3 使用Junit 1.4 Assert断言 1.5 更进一步，合理编写随机测试，完善代码 2.StringBuilder 2.0 String存在的问题 2.1 StringBuilder以及链式调用 3.Throwable 3.1 异常的介绍 3.2 异常举例以及解决常见错误bug方案 3.3 RuntimeException 3.4 trycatch 作用以及诱骗毕业设计 3.5 NullPointerException空指针异常 3.6 throws 3.7 throw和trycatch区别深度剖析，用途剖析，自定义异常 3.8 手把手教你编写装逼自定义异常 4.File 4.0 必须先弄清楚快递怎么寄才能明白相对路径和绝对路径 4.0 引言 4.">
     <link rel="shortcut icon" href="/img/favicon.ico" />
 
@@ -67,13 +67,26 @@
     
 
     <h2 class="article-title">
-        <a href="/post/skills/java/java_advanced_frank/"></a>
+        <a href="/post/skills/java/java-api/">java-api</a>
     </h2>
 
     
 
     
     <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 11, 2022</time>
+            </div>
         
 
         
@@ -224,6 +237,12 @@
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/java/">java</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">

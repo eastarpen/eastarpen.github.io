@@ -7,11 +7,11 @@
 SOURCE &amp;lt; CLASS &amp;lt; RUNTIME
   @Document 是否能将注解生成在 JavaDoc 中
   @Inherited 子类是否能基础父类注解
-  1.4 定义一个注解 @Target(value = {ElementType.METHOD, ElementType.TYPE}) @Retention(value=RententionPolicy.RUNTIME) public @interface MyAnnotation{ // 参数类型为 String, 参数名称为 value  String value() default &amp;#34;&amp;#34;; }  可以通过 default 来声明参数的默认值, 如果没有默认值, 该参数必须赋值 当只有一个参数时, 赋值时可以不用写参数名直接赋值.'><title></title>
+  1.4 定义一个注解 @Target(value = {ElementType.METHOD, ElementType.TYPE}) @Retention(value=RententionPolicy.RUNTIME) public @interface MyAnnotation{ // 参数类型为 String, 参数名称为 value  String value() default &amp;#34;&amp;#34;; }  可以通过 default 来声明参数的默认值, 如果没有默认值, 该参数必须赋值 当只有一个参数时, 赋值时可以不用写参数名直接赋值.'><title>Java 注解与反射</title>
 
-<link rel='canonical' href='https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/'>
+<link rel='canonical' href='https://eastarpen.github.io/post/skills/java/java-annotation-and-reflection/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java 注解与反射'>
 <meta property='og:description' content='1. 注解 1.1 什么是注解  JDK5.0 开始引入注解 Annotation 不是程序本身, 可以对程序做出解释 Annotation 可以被其他程序(如编译器)读取  1.2 内置注解  @Override 重写方法 @Deprecated 废弃方法， 不推荐使用但可以使用 SuppressWarnings(&amp;quot;all&amp;quot;) 关闭警告  1.3 元注解 元注解负责注解其他注解
   Target 用于描述注解的使用范围
   Retention 表示需要在什么级别保存该注解信息, 用于描述注解的生命周期
@@ -19,10 +19,10 @@ SOURCE &amp;lt; CLASS &amp;lt; RUNTIME
   @Document 是否能将注解生成在 JavaDoc 中
   @Inherited 子类是否能基础父类注解
   1.4 定义一个注解 @Target(value = {ElementType.METHOD, ElementType.TYPE}) @Retention(value=RententionPolicy.RUNTIME) public @interface MyAnnotation{ // 参数类型为 String, 参数名称为 value  String value() default &amp;#34;&amp;#34;; }  可以通过 default 来声明参数的默认值, 如果没有默认值, 该参数必须赋值 当只有一个参数时, 赋值时可以不用写参数名直接赋值.'>
-<meta property='og:url' content='https://eastarpen.github.io/post/skills/java/annotation_and_reflection_kuangshen/'>
+<meta property='og:url' content='https://eastarpen.github.io/post/skills/java/java-annotation-and-reflection/'>
 <meta property='og:site_name' content='Eastarpen の Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' />
-<meta name="twitter:title" content="">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2022-02-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-02-11T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Java 注解与反射">
 <meta name="twitter:description" content="1. 注解 1.1 什么是注解  JDK5.0 开始引入注解 Annotation 不是程序本身, 可以对程序做出解释 Annotation 可以被其他程序(如编译器)读取  1.2 内置注解  @Override 重写方法 @Deprecated 废弃方法， 不推荐使用但可以使用 SuppressWarnings(&amp;quot;all&amp;quot;) 关闭警告  1.3 元注解 元注解负责注解其他注解
   Target 用于描述注解的使用范围
   Retention 表示需要在什么级别保存该注解信息, 用于描述注解的生命周期
@@ -85,13 +85,26 @@ SOURCE &amp;lt; CLASS &amp;lt; RUNTIME
     
 
     <h2 class="article-title">
-        <a href="/post/skills/java/annotation_and_reflection_kuangshen/"></a>
+        <a href="/post/skills/java/java-annotation-and-reflection/">Java 注解与反射</a>
     </h2>
 
     
 
     
     <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 11, 2022</time>
+            </div>
         
 
         
@@ -167,6 +180,12 @@ SOURCE &amp;lt; CLASS &amp;lt; RUNTIME
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/java/">java</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">

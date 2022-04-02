@@ -1,3 +1,11 @@
+---
+title: "bootStrap 基础"
+slug: "bootStrap-basic"
+tags: ["bootStrap"]
+description:
+date: 2022-02-11
+---
+
 ## 布局容器和栅格网格系统
 
 ### 布局容器 

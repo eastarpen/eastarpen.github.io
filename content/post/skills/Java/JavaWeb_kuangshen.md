@@ -1,3 +1,12 @@
+---
+title: "JavaWeb 基础"
+slug: "JavaWeb-basic"
+tags: ["java"]
+description:
+draft: true
+date: 2022-02-11
+---
+
 ## 1. jsp
 
 ### 1.1 页面引用

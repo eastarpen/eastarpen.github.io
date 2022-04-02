@@ -1,3 +1,11 @@
+---
+title: "Maven 基础"
+slug: "Maven-basic"
+tags: ["maven"]
+description:
+date: 2022-02-11
+---
+
 ## 1. Maven
 
 ### 1.1 hello maven

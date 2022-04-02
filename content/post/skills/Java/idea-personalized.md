@@ -3,7 +3,7 @@ title: "idea-personalized"
 slug: "idea-personalized"
 tags: ["idea"]
 description:
-date: 2022-03-31T14:36:03
+date: 2022-03-31
 ---
 
 ## 参考
