@@ -1,0 +1,326 @@
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/"><channel><title>Eastarpen の Corner</title><atom:link href="%7balternate%20%7bRSS%20application/rss+xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/index.xml%20https://eastarpen.github.io/index.xml%7d" rel="self" type="application/rss+xml"/><link>https://eastarpen.github.io/</link><managingEditor>Ice-Hazymoon</managingEditor><description>A simple, performance-first, SEO-friendly Hugo theme</description><lastBuildDate>Sun, 16 Oct 2022 00:00:00 +0800</lastBuildDate><language>en-us</language><generator>Hugo -- gohugo.io</generator><item><title>Git tips</title><link>https://eastarpen.github.io/post/6.html/</link><pubDate>Sun, 16 Oct 2022 00:00:00 +0800</pubDate><guid>https://eastarpen.github.io/post/6.html/</guid><description>
+&lt;h3 class="group " id="reset-all-changes-after-last-commit-in-git"
+>Reset all changes after last commit in git&lt;a href="#reset-all-changes-after-last-commit-in-git"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>&lt;code>git reset HEAD --hard &amp;amp;&amp;amp; git clean -fd&lt;/code>&lt;/p>
+&lt;p>&lt;a
+class="link"
+href="https://stackoverflow.com/questions/4630312/reset-all-changes-after-last-commit-in-git"target="_blank" rel="noopener">https://stackoverflow.com/questions/4630312/reset-all-changes-after-last-commit-in-git&lt;/a
+>
+&lt;/p></description></item><item><title>Vim/Nvim tips</title><link>https://eastarpen.github.io/post/5.html/</link><pubDate>Sun, 16 Oct 2022 00:00:00 +0800</pubDate><guid>https://eastarpen.github.io/post/5.html/</guid><description>
+&lt;h3 class="group " id="vim-macros"
+>vim macros&lt;a href="#vim-macros"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>Generally, you can use &lt;code>@a&lt;/code> to record your macro operations to register &amp;ldquo;a&amp;rdquo;&lt;/p>
+&lt;p>or you can just &lt;code>:let @a='yyp'&lt;/code> to achieve the same effect(change &amp;lsquo;yyp&amp;rsquo; ot any pattern)&lt;/p>
+&lt;p>Besides use &lt;code>&amp;quot;pa&lt;/code> to print the pattern in a register&lt;/p>
+&lt;h3 class="group " id="paste-yanked-text-into-vim-command-line"
+>paste yanked text into vim command line&lt;a href="#paste-yanked-text-into-vim-command-line"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>use &lt;code>&amp;lt;C-R&amp;gt;&amp;quot;&lt;/code>&lt;/p>
+&lt;p>&lt;a
+class="link"
+href="https://stackoverflow.com/questions/3997078/how-to-paste-yanked-text-into-the-vim-command-line"target="_blank" rel="noopener">https://stackoverflow.com/questions/3997078/how-to-paste-yanked-text-into-the-vim-command-line&lt;/a
+>
+&lt;/p>
+&lt;h3 class="group " id="replace-multiple-empty-lines-with-a-single-empty-line-in-bash"
+>replace multiple empty lines with a single empty line in bash&lt;a href="#replace-multiple-empty-lines-with-a-single-empty-line-in-bash"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>&lt;code>:%s/\n\n\n*/\r\r/&lt;/code>&lt;/p></description></item><item><title>GDB usage in algorithm race(ICPC)</title><link>https://eastarpen.github.io/post/3.html/</link><pubDate>Mon, 03 Oct 2022 00:00:00 +0800</pubDate><guid>https://eastarpen.github.io/post/3.html/</guid><description>&lt;div class="border-yellow-400 border-green-400 border-red-400 border-blue-400">&lt;/div>
+&lt;div class="bg-yellow-400 bg-green-400 bg-red-400 bg-blue-400">&lt;/div>
+&lt;div class="text-yellow-400 text-green-400 text-red-400 text-blue-400">&lt;/div>
+&lt;div
+class="border-yellow-400 bg-yellow-400 my-4 ml-0 flex items-start rounded border-l-4 bg-opacity-10 p-5 dark:bg-darkBgAccent"
+>
+&lt;div class="mr-2">
+&lt;i class="eva text-yellow-400 eva-alert-circle-outline text-2xl">&lt;/i>
+&lt;/div>&lt;p style="margin: 0;">This post is not finished.&lt;/p>&lt;/div>
+&lt;h2 class="group " id="baisc"
+>Baisc&lt;a href="#baisc"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;h2 class="group " id="breakpoints"
+>Breakpoints&lt;a href="#breakpoints"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;blockquote class="quote relative pl-10 text-gray-500 dark:text-gray-400">&lt;p>A breakpoint makes your program stop whenever a specific point in the program is reached. For each breakpoint, you can add conditions to control in finer detail whether your program stops.&lt;/p>&lt;/blockquote>
+&lt;h3 class="group " id="comman"
+>comman&lt;a href="#comman"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>info breaks&lt;/code> or &lt;code>i b&lt;/code>&lt;/p>
+&lt;p>show your breakpoints(all type).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>enable number&lt;/code> or &lt;code>en number&lt;/code>&lt;/p>
+&lt;p>enable specific breakpoint&lt;/p>
+&lt;p>&lt;code>en 1&lt;/code> is to enable the breakpoint numbered 1&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>delete number&lt;/code> or &lt;code>d number&lt;/code>&lt;/p>
+&lt;p>delete specific breakpoint&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>disable number&lt;/code> or &lt;code>disable number&lt;/code>&lt;/p>
+&lt;p>disable specific breakpoint&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 class="group " id="conditions"
+>conditions&lt;a href="#conditions"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>You can add conditions for your breakpoints&lt;/p>
+&lt;p>&lt;code>b a if a == 1&lt;/code> this breakpoint only works when the value variable a is 1;&lt;/p>
+&lt;h3 class="group " id="breakpoint"
+>breakpoint&lt;a href="#breakpoint"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>Using &lt;code>b&lt;/code> or &lt;code>break&lt;/code> to add a breakpoint for your program.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>break function&lt;/code>&lt;/p>
+&lt;p>Set a breakpoint at entry to function function.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>break linenum&lt;/code>&lt;/p>
+&lt;p>Set a breakpoint at line linenum in the current source file.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>break&lt;/p>
+&lt;p>When called without any arguments, break sets a breakpoint at &amp;ldquo;current line&amp;rdquo;.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>break ... if cond&lt;/code>&lt;/p>
+&lt;p>Set a breakpoint with condition cond.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 class="group " id="watchpoint"
+>watchpoint&lt;a href="#watchpoint"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;blockquote class="quote relative pl-10 text-gray-500 dark:text-gray-400">&lt;p>A watchpoint is a special breakpoint that stops your program when the value of an expression changes&lt;/p>&lt;/blockquote>
+&lt;p>The watchpoint usage is similar to &lt;a
+class="link"
+href="#breakpoint">breakpoint&lt;/a
+>
+, just remember change &lt;code>break&lt;/code> to &lt;code>watch&lt;/code>&lt;/p>
+&lt;h2 class="group " id="print-value"
+>Print value&lt;a href="#print-value"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;h3 class="group " id="print"
+>print&lt;a href="#print"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>You can use &lt;code>p&lt;/code> or &lt;code>print&lt;/code> to print the value of a specific variable.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>p a&lt;/code>&lt;/p>
+&lt;p>print the value of variable a(works for any type, including array)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>p *a@10&lt;/code>&lt;/p>
+&lt;p>print the first 10 values of the array a;&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 class="group " id="display"
+>display&lt;a href="#display"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;h2 class="group " id="refrence"
+>Refrence&lt;a href="#refrence"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a
+class="link"
+href="https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_toc.html"target="_blank" rel="noopener">Debugging with GDB&lt;/a
+>
+&lt;/li>
+&lt;li>&lt;a
+class="link"
+href="https://www.sourceware.org/gdb/documentation/"target="_blank" rel="noopener">GDB: The GNU Project Debugger&lt;/a
+>
+&lt;/li>
+&lt;/ul></description></item><item><title>music collections</title><link>https://eastarpen.github.io/post/2.html/</link><pubDate>Fri, 30 Sep 2022 00:00:00 +0800</pubDate><guid>https://eastarpen.github.io/post/2.html/</guid><description>&lt;a
+href="https://www.youtube.com/watch?v=b1-s-TOqSyk"
+target="_blank"
+rel="noopener noreferrer"
+class="no-icon my-4 flex w-full cursor-pointer flex-col-reverse justify-between rounded border transition ease-in-out after:hidden hover:bg-gray-100 dark:border-darkBorder hover:dark:bg-darkBg md:flex-row"
+>
+&lt;div class="flex flex-grow flex-col p-4">
+&lt;div class="flex-grow">
+&lt;div class="text-xl font-bold">Ngây Thơ&lt;/div>&lt;div class="my-1 text-gray-400 line-clamp-2 dark:text-darkTextPlaceholder">Ngây Thơ - @Tăng Duy Tân x Phong Max | BAE | OFFICIAL MV 🇻🇳 Vietnamese Music&lt;/div>&lt;/div>&lt;div class="flex items-center">&lt;img class="link-card-img mr-1 h-3 w-3" src="https://www.google.cn/s2/favicons?domain=www.youtube.com" alt="" />
+&lt;div class="text-xs text-gray-400 line-clamp-1 dark:text-darkTextPlaceholder">https://www.youtube.com/watch?v=b1-s-TOqSyk&lt;/div>
+&lt;/div>&lt;/div>&lt;img class="link-card-img h-32 bg-white object-contain dark:bg-transparent" src="https://i.ytimg.com/vi/b1-s-TOqSyk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&amp;amp;rs=AOn4CLCcXGf-dUB0kBYw7_T3dXrBMcEodg" alt="Ngây Thơ" />&lt;/a></description></item><item><title>Build and deploy static github pages blog using hugo(hugo-theme-luna)</title><link>https://eastarpen.github.io/post/1.html/</link><pubDate>Wed, 28 Sep 2022 00:00:00 +0800</pubDate><guid>https://eastarpen.github.io/post/1.html/</guid><description>&lt;div class="border-yellow-400 border-green-400 border-red-400 border-blue-400">&lt;/div>
+&lt;div class="bg-yellow-400 bg-green-400 bg-red-400 bg-blue-400">&lt;/div>
+&lt;div class="text-yellow-400 text-green-400 text-red-400 text-blue-400">&lt;/div>
+&lt;div
+class="border-yellow-400 bg-yellow-400 my-4 ml-0 flex items-start rounded border-l-4 bg-opacity-10 p-5 dark:bg-darkBgAccent"
+>
+&lt;div class="mr-2">
+&lt;i class="eva text-yellow-400 eva-alert-circle-outline text-2xl">&lt;/i>
+&lt;/div>&lt;p style="margin: 0;">This post is not finished.&lt;/p>&lt;/div>
+&lt;h2 class="group " id="what-is-hugo-and-why-hugo"
+>What is hugo and why hugo&lt;a href="#what-is-hugo-and-why-hugo"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;div class="github my-4 rounded border p-4 dark:border-darkBorder">
+&lt;div class="flex items-center text-xl">
+&lt;i class="eva eva-github mr-2">&lt;/i>
+&lt;a class="after:hidden" href="https://github.com/gohugoio/hugo" target="_blank">gohugoio/hugo&lt;/a>
+&lt;/div>
+&lt;div class="my-2 leading-6">The world’s fastest framework for building websites.&lt;/div>
+&lt;div class="flex items-center">
+&lt;div class="mr-4 inline-flex items-center">
+&lt;span class="mr-1 inline-block h-3 w-3 rounded-full" style="background-color:#00ADD8">&lt;/span>
+&lt;span>Go&lt;/span>
+&lt;/div>
+&lt;div class="mr-4 inline-flex items-center">
+&lt;i class="eva eva-star mr-1 text-amber-400">&lt;/i>
+&lt;span>63124&lt;/span>
+&lt;/div>
+&lt;div class="inline-flex items-center">
+&lt;i class="eva eva-shuffle-2 mr-1 text-blue-500">&lt;/i>
+&lt;span>6853&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>As stated in &lt;a
+class="link"
+href="https://gohugo.io/"target="_blank" rel="noopener">gohugo official site&lt;/a
+>
+&lt;/p>
+&lt;blockquote class="quote relative pl-10 text-gray-500 dark:text-gray-400">&lt;p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.&lt;/p>&lt;/blockquote>
+&lt;p>For those who knows little about how to build and maintain a web site or those who care nothing but write, hugo is your friend.
+With hugo, even a normal internet user can build his site.
+Besides, if you has some programming experience(like command-line and github usage experience), you can build and maintain your site easily and conveniently.&lt;/p>
+&lt;h2 class="group " id="preparation-before-we-start"
+>Preparation before we start&lt;a href="#preparation-before-we-start"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;h3 class="group " id="install-hugo"
+>install hugo&lt;a href="#install-hugo"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>&lt;a
+class="link"
+href="https://gohugo.io/getting-started/installing/"target="_blank" rel="noopener">hugo&amp;rsquo;s official guide&lt;/a
+>
+tells you how to install hugo at all platforms.&lt;/p>
+&lt;p>But the most easy way is download releases at &lt;a
+class="link"
+href="https://github.com/gohugoio/hugo/releases/"target="_blank" rel="noopener">hugo github repository&lt;/a
+>
+.&lt;/p>
+&lt;p>&lt;strong>Tips&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>remember add &lt;strong>hugo binary file&lt;/strong> to your environment&lt;/li>
+&lt;li>&lt;strong>extended&lt;/strong> versions are more recommended&lt;/li>
+&lt;li>packer managers(like &lt;strong>apt&lt;/strong> in ubuntu) alwarys download old versions&lt;/li>
+&lt;/ol>
+&lt;h3 class="group " id="install-go-and-git"
+>install go and git&lt;a href="#install-go-and-git"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>go and git are hugo &lt;strong>Prerequisite Tools&lt;/strong>. You can easily download them at any platforms.&lt;/p>
+&lt;p>try google &amp;ldquo;install git at ubuntu&amp;rdquo; or &amp;ldquo;install go at windows&amp;rdquo;&lt;/p>
+&lt;h2 class="group " id="build-your-site"
+>build your site&lt;a href="#build-your-site"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;h3 class="group " id="check-environment"
+>Check environment&lt;a href="#check-environment"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>Before our adventure, make sure you have install all dependencies and add them to your environment path.&lt;/p>
+&lt;p>Run commands below, you should get similar output, otherwise, you may do something wrong.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">$git&lt;/span> version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt; git version 2.25.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">$go&lt;/span> version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt; go version go1.13.8 linux/amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">$hugo&lt;/span> version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt; hugo v0.104.0-c744dbd6edeeb27288c9dd67e0eb92951f911397+extended linux/amd64 &lt;span style="color:#8be9fd;font-style:italic">BuildDate&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>2022-09-23T14:32:56Z &lt;span style="color:#8be9fd;font-style:italic">VendorInfo&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>gohugoio
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;h3 class="group " id="build-site-locally"
+>build site locally&lt;a href="#build-site-locally"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h3>
+&lt;p>Hugo using command &lt;code>hugo new site myBlog&lt;/code> to create local site directory.
+You can change &amp;ldquo;myBlog&amp;rdquo; to any name you like.&lt;/p>
+&lt;p>After run this command, a directory named &amp;ldquo;myBlog&amp;rdquo; should occur in your current directory.
+That is your local site directory.&lt;/p>
+&lt;h2 class="group " id="deploy-your-site-in-github"
+>Deploy your site in github&lt;a href="#deploy-your-site-in-github"
+>&lt;i class="eva eva-link ml-3 align-middle text-theme opacity-0 transition ease-in-out group-hover:opacity-100">&lt;/i>&lt;/a
+>&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;code>$ sudo apt install hugo&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span> $ hugo version&lt;span style="color:#f1fa8c">`&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>Hugo Static Site Generator v0.68.3/extended linux/amd64 BuildDate: 2020-03-25T06:15:45Z&lt;/code>&lt;/p>
+&lt;p>&lt;code>hugo new site sitename &amp;amp;&amp;amp; cd sitename&lt;/code>&lt;/p>
+&lt;p>&lt;code>git init&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>install theme&lt;/p>
+&lt;p>&lt;a
+class="link"
+href="https://themes.gohugo.io/"target="_blank" rel="noopener">https://themes.gohugo.io/&lt;/a
+>
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>Error: Error building site: POSTCSS: failed to transform &lt;span style="color:#f1fa8c">&amp;#34;main.css&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">(&lt;/span>text/css&lt;span style="color:#ff79c6">)&lt;/span>. Check your PostCSS installation; install with &lt;span style="color:#f1fa8c">&amp;#34;npm install postcss-cli&amp;#34;&lt;/span>. See https://gohugo.io/hugo-pipes/postcss/: this feature is not available in your current Hugo version, see https://goo.gl/YMrWcn &lt;span style="color:#ff79c6">for&lt;/span> more information
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Built in &lt;span style="color:#bd93f9">1025&lt;/span> ms
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>fixed&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>npm install -g postcss postcss-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;a
+class="link"
+href="https://gohugo.io/getting-started/quick-start/"target="_blank" rel="noopener">https://gohugo.io/getting-started/quick-start/&lt;/a
+>
+&lt;/p></description></item></channel></rss>
